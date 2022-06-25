@@ -1,0 +1,174 @@
+header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 2rem;
+	align-items: center;
+	text-align: center;
+	padding: 3rem 2rem 0.5rem 2rem;
+}
+header h1 {
+	font-size: 6rem;
+	letter-spacing: 3.5px;
+	transition: all 800ms ease;
+}
+header h1:hover {
+	color: var(--logo-clr);
+}
+header p {
+	font-size: 1.5rem;
+}
+
+main {
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+}
+
+.dashboard {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 1rem;
+	padding: 4rem 0;
+}
+
+.row > .col {
+	padding: 0.5rem;
+}
+
+.dashboard h5 {
+	height: 100%;
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	margin: 2rem 0;
+}
+
+.container .user-fav h2 {
+	margin: 3rem 0;
+	text-align: center;
+}
+.dashboard .col {
+	padding: 0.8rem 0;
+}
+.card-container {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0.5rem;
+	justify-content: center;
+}
+/* drinks container scroll bar  */
+#drinks .card-container {
+	overflow-y: scroll;
+	max-height: 500px;
+}
+#drinks .card-container::-webkit-scrollbar {
+	width: 5px;
+}
+#drinks .card-container::-webkit-scrollbar-track {
+	background-color: rgb(255, 255, 255);
+}
+#drinks .card-container::-webkit-scrollbar-thumb {
+	background-color: rgb(0, 81, 255);
+}
+/* drinks cards and imgs  */
+.card-container .card .activator {
+	min-height: 50%;
+	max-height: 215px;
+}
+.dashboard .card p {
+	color: black;
+}
+.card-container .card {
+	min-width: 280px;
+	max-width: 280px;
+	/* max-height: 300px; */
+	background-color: rgb(209, 223, 255);
+	margin: 1rem;
+}
+.dashboard .card a {
+	color: rgb(3, 0, 163);
+}
+
+/* Favorite Section Styles  */
+.user-fav {
+	padding-bottom: 5rem;
+}
+.user-fav .card-container {
+	display: flex;
+	flex-direction: row;
+}
+.user-fav .card {
+	min-width: 280px;
+	max-width: 280px;
+}
+.user-fav .card-container .card {
+	position: relative;
+}
+.user-fav .card-container .card::after {
+	position: absolute;
+	text-align: center;
+	justify-content: center;
+	padding: 6.5px;
+
+	content: 'X';
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: 1px solid pink;
+	background-color: red;
+	top: -10px;
+	right: -10px;
+	z-index: 2;
+}
+/* footer section  */
+
+footer {
+	background-color: var(--drk-clr);
+	min-height: 30vh;
+	padding: 3.5rem 0;
+}
+
+/* Few media queries  */
+
+@media screen and (max-width: 772px) {
+	h5 {
+		justify-content: center;
+	}
+	.card-container {
+		justify-content: space-evenly;
+	}
+}
+@media screen and (max-width: 500px) {
+	header {
+		padding: 1.5rem 1rem 0.2rem 1rem;
+	}
+	h1 {
+		font-size: 3rem;
+	}
+	.card-container {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+}
+/* animations  */
+
+@keyframes title {
+	0% {
+		font-size: 90%;
+	}
+	25% {
+		font-size: 90%;
+	}
+	50% {
+		font-size: 85%;
+	}
+	75% {
+		font-size: 60%;
+	}
+	100% {
+		font-size: 20%;
+	}
+}

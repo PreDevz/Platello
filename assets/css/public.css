@@ -1,0 +1,166 @@
+/* importing fonts  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+/* Root to store all variables  */
+:root {
+	/* Dark Box  */
+	--box-drk-clr: rgb(24, 33, 48);
+	--box-drk-brder-clr: rgb(73, 93, 146);
+	/* light Box  */
+	--box-lght-clr: rgb(207, 207, 207);
+	--box-lght-brder-clr: rgb(110, 110, 110);
+	/* the smaller boxes within the big boxes  */
+	--box2-clr: rgb(22, 24, 39);
+	--box2-brder-clr: rgb(135, 135, 135);
+	/* backgrounds  */
+	--bg-drk-clr: rgb(19, 23, 33);
+	--bg-lght-clr: #fff;
+	/* drk and white colors  */
+	--drk-clr: rgb(11, 16, 26);
+	--lght-clr: rgb(255, 255, 255);
+	/* logo blue color  */
+	--logo-clr: rgb(0, 115, 255);
+}
+
+/* reset browser padding/margin  */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* basic resetting  */
+html {
+	min-height: 100%;
+}
+body {
+	font-family: 'Montserrat', sans-serif;
+	background-color: var(--bg-drk-clr);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Poppins', sans-serif;
+	color: var(--lght-clr);
+	margin: 0;
+}
+
+/* changing all tags to white  */
+span,
+p,
+em,
+section,
+div,
+article {
+	color: var(--lght-clr);
+}
+
+/* giving all imgs a width of 100%  */
+img {
+	width: 100%;
+}
+
+/* simple classes  */
+.current {
+	border-bottom: 1px solid var(--logo-clr);
+}
+.can-open:hover {
+	box-shadow: 0 0 8px rgb(190, 253, 255);
+	cursor: pointer;
+}
+
+/* navbar component  */
+#navbar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 5vw;
+	height: 8vh;
+	color: var(--lght-clr);
+	border-bottom: 3px solid var(--drk-clr);
+	background-color: transparent;
+	margin: 0;
+}
+.logo {
+	font-weight: bold;
+	font-size: 150%;
+}
+.logo-pre {
+	color: var(--logo-clr);
+}
+ul {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	text-align: center;
+}
+.nav-item {
+	list-style: none;
+	margin-left: 3rem;
+	padding: 0.1rem;
+	align-self: center;
+}
+.nav-item i:hover {
+	color: var(--logo-clr);
+	cursor: pointer;
+}
+.nav-item a:hover {
+	background-color: transparent;
+}
+.material-icons {
+	font-size: 2rem;
+	height: 100%;
+}
+
+/* dasboard boxes  */
+.box {
+	background-color: var(--box-drk-clr);
+	border: 1px solid var(--box-drk-brder-clr);
+	border-radius: 8px;
+	/* max-height: 365px; */
+	min-height: 400px;
+	/* min-width: 150px; */
+	max-width: 100%;
+	color: var(--lght-clr);
+	padding: 0.8rem;
+	transition: all 200ms ease-out;
+}
+.box h5 {
+	margin-top: 1.5rem;
+	margin-bottom: 0.5rem;
+	font-size: 2rem;
+}
+.box-info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	text-align: center;
+	align-items: center;
+	margin-top: 13%;
+	width: 100%;
+}
+.box-info i {
+	font-size: 3rem;
+}
+.box-txt {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1rem;
+	font-size: 1.3rem;
+	margin: 0.5rem;
+	text-align: start;
+}
+
+/* few media queries  */
+
+@media screen and (max-width: 500px) {
+	.box-info {
+		margin-top: 20%;
+	}
+}
