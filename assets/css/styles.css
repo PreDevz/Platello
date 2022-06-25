@@ -22,6 +22,17 @@ header p {
 	font-size: 1.5rem;
 }
 
+#date {
+	color: var(--lght-clr);
+	font-family:'Vesper Libre', serif;
+	font-size: 30px;
+	flex-wrap: wrap;
+}
+
+#sun {
+	padding: 25px;
+}
+
 main {
 	height: 100%;
 	width: 100%;
