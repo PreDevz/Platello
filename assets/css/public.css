@@ -102,8 +102,8 @@ img {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0 5vw;
-	height: 8vh;
+	padding: 0 4vw;
+	height: 12vh;
 	color: var(--lght-clr);
 	border-bottom: solid 2px black;
 	background-color: rgba(37, 37, 37, 0.625);
@@ -115,6 +115,7 @@ img {
 	font-family: 'Cormorant Garamond', serif;
 	
 }
+
 
 /* .logo-pre {
 	color: var(--logo-clr);
@@ -129,8 +130,8 @@ ul {
 }
 .nav-item {
 	list-style: none;
-	margin-left: 3rem;
-	padding: 0.1rem;
+	/* margin-left: 3rem;
+	padding: 0.1rem; */
 	align-self: center;
 }
 .nav-item i:hover {
