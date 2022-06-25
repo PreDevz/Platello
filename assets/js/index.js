@@ -105,3 +105,8 @@ function toggleTheme(e) {
 
 // Event Listeners 
 toggleThemeBtn.on('click', toggleTheme)
+
+let todayEl = moment();
+$("#date").text(todayEl.format("dddd, MMM DD, YYYY"));
+
+const nav = document.getElementById('nav');

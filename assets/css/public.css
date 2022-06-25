@@ -9,7 +9,7 @@
 	--box-drk-clr: rgba(37, 37, 37, 0.737);
 	--box-drk-brder-clr: (solid 2px black);
 	/* light Box  */
-	--box-lght-clr: rgba(207, 207, 207, 0.775);
+	--box-lght-clr: rgba(184, 184, 184, 0.775);
 	--box-lght-brder-clr: rgb(110, 110, 110);
 
 	/* background images  */
@@ -92,8 +92,8 @@ img {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0 5vw;
-	height: 8vh;
+	padding: 0 4vw;
+	height: 12vh;
 	color: var(--lght-clr);
 	border-bottom: solid 2px black;
 	background-color: var(--box-drk-clr);
@@ -117,8 +117,8 @@ ul {
 }
 .nav-item {
 	list-style: none;
-	margin-left: 3rem;
-	padding: 0.1rem;
+	/* margin-left: 3rem;
+	padding: 0.1rem; */
 	align-self: center;
 }
 .nav-item i:hover {
