@@ -8,8 +8,8 @@
 	--box-drk-clr: rgb(24, 33, 48);
 	--box-drk-brder-clr: rgb(73, 93, 146);
 	/* light Box  */
-	--box-lght-clr: rgb(207, 207, 207);
-	--box-lght-brder-clr: rgb(110, 110, 110);
+	--box-lght-clr: rgb(228, 228, 228);
+	--box-lght-brder-clr: rgb(183, 183, 183);
 	/* the smaller boxes within the big boxes  */
 	--box2-clr: rgb(22, 24, 39);
 	--box2-brder-clr: rgb(135, 135, 135);
@@ -40,10 +40,7 @@ body {
 }
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
+h5 {
 	font-family: 'Poppins', sans-serif;
 	color: var(--lght-clr);
 	margin: 0;
@@ -52,10 +49,7 @@ h6 {
 /* changing all tags to white  */
 span,
 p,
-em,
-section,
-div,
-article {
+div {
 	color: var(--lght-clr);
 }
 
