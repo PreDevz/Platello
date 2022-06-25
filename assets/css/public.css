@@ -10,9 +10,6 @@
 	/* light Box  */
 	--box-lght-clr: rgb(228, 228, 228);
 	--box-lght-brder-clr: rgb(183, 183, 183);
-	/* the smaller boxes within the big boxes  */
-	--box2-clr: rgb(22, 24, 39);
-	--box2-brder-clr: rgb(135, 135, 135);
 	/* backgrounds  */
 	--bg-drk-clr: rgb(19, 23, 33);
 	--bg-lght-clr: #fff;

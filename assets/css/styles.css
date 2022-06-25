@@ -84,10 +84,10 @@ main {
 	min-width: 280px;
 	max-width: 280px;
 	/* max-height: 300px; */
-	background-color: rgb(209, 223, 255);
+	background-color: rgb(137, 155, 195);
 	margin: 1rem;
 }
-.dashboard .card a {
+.card a {
 	color: rgb(3, 0, 163);
 }
 
@@ -126,21 +126,26 @@ main {
 
 footer {
 	background-color: var(--drk-clr);
-    min-height: 25vh;
-    padding: 3.5rem 0;
-    display: flex;
-    justify-content: center;
+	min-height: 25vh;
+	padding: 3.5rem 0;
+	display: flex;
+	justify-content: center;
 }
 
 footer a {
 	text-decoration: none;
 }
 
-footer p {
-	transition: all 300ms ease;
+footer ul {
+	flex-direction: column;
 }
 
-footer p:hover {
+footer li a {
+	transition: all 300ms ease;
+	color: var(--lght-clr);
+}
+
+footer li a:hover {
 	color: var(--logo-clr);
 }
 
@@ -150,14 +155,14 @@ footer h3 {
 
 footer .container {
 	display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
 }
 
 #materialize-logo {
 	width: 100px;
-    height: 50px;
+	height: 50px;
 	margin-top: 5px;
 }
 

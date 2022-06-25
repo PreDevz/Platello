@@ -2,17 +2,18 @@
 // Toggle theme button 
 const toggleThemeBtn = $('#themeBtn')
 // Get all DOM elements to change with theme 
-let span = $('span')
+let preLogo = $('.logo-pre')
+let spanEl = $('span')
 let sub = $('#subTitle')
-// let p = $('p')
-let div = $('div')
-let icons = $('.material-icons')
+let liEl = $('a')
+let divEl = $('div')
+let iconsEl = $('.material-icons')
 let headerEls = $(':header')
 let box = $('.box')
 let footer = $('footer')
-let Els = [span, sub, div]
+let Els = [spanEl, sub, divEl, liEl]
 Els.push(headerEls)
-Els.push(icons)
+Els.push(iconsEl)
 const body = $('body')
 // the current theme 
 let theme = 'dark';
@@ -31,8 +32,9 @@ function restoreStorage() {
       eachBox.css('background-color', 'var(--box-drk-clr)')
       eachBox.css('border', '1px solid var(--box-drk-brder-clr)')
     }
-    footer.css('background-color', 'var(--bg-drk-clr)')
+    footer.css('background-color', 'var(--drk-clr)')
     footer.css('color', 'var(--lght-clr)')
+    preLogo.css('color', 'var(--logo-clr)')
   } else {
     // if there is a theme and if it's light, change all elements to light 
     if (themes === 'light') {
@@ -47,6 +49,7 @@ function restoreStorage() {
       }
       footer.css('background-color', 'var(--bg-lght-clr)')
       footer.css('color', 'var(--bg-drk-clr)')
+      preLogo.css('color', 'var(--logo-clr)')
       theme = 'light'
     } else return
   }
@@ -70,6 +73,7 @@ function toggleTheme(e) {
     }
     footer.css('background-color', 'var(--bg-lght-clr)')
     footer.css('color', 'var(--drk-clr)')
+    preLogo.css('color', 'var(--logo-clr)')
     theme = 'light'
     // set the current theme value in localstorage 
     localStorage.setItem('theme', theme)
@@ -85,8 +89,9 @@ function toggleTheme(e) {
       eachBox.css('background-color', 'var(--box-drk-clr)')
       eachBox.css('border', '1px solid var(--box-drk-brder-clr)')
     }
-    footer.css('background-color', 'var(--bg-drk-clr)')
+    footer.css('background-color', 'var(--drk-clr)')
     footer.css('color', 'var(--lght-clr)')
+    preLogo.css('color', 'var(--logo-clr)')
     theme = 'dark'
     // set the current theme value in localstorage 
     localStorage.setItem('theme', theme)
