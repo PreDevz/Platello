@@ -16,6 +16,9 @@ header h1:hover {
 	color: var(--logo-clr);
 }
 header p {
+	font-family: 'Cormorant Garamond', serif;
+	color: var(--lght-clr);
+	font-size: 25px;
 	font-size: 1.5rem;
 }
 
@@ -70,7 +73,7 @@ main {
 	background-color: rgb(255, 255, 255);
 }
 #drinks .card-container::-webkit-scrollbar-thumb {
-	background-color: rgb(0, 81, 255);
+	background-color: rgb(0, 0, 0);
 }
 /* drinks cards and imgs  */
 .card-container .card .activator {
@@ -84,7 +87,7 @@ main {
 	min-width: 280px;
 	max-width: 280px;
 	/* max-height: 300px; */
-	background-color: rgb(137, 155, 195);
+	background-color: rgba(246, 247, 249, 0.943);
 	margin: 1rem;
 }
 .card a {
@@ -116,8 +119,8 @@ main {
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-	border: 1px solid pink;
-	background-color: red;
+	border: 1px solid rgb(254, 254, 254);
+	background-color: rgba(255, 0, 0, 0.819);
 	top: -10px;
 	right: -10px;
 	z-index: 2;
