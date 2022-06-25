@@ -87,7 +87,7 @@ main {
 	min-width: 280px;
 	max-width: 280px;
 	/* max-height: 300px; */
-	background-color: rgb(209, 223, 255);
+	background-color: rgba(246, 247, 249, 0.943);
 	margin: 1rem;
 }
 .dashboard .card a {
@@ -119,8 +119,8 @@ main {
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-	border: 1px solid pink;
-	background-color: red;
+	border: 1px solid rgb(254, 254, 254);
+	background-color: rgba(255, 0, 0, 0.819);
 	top: -10px;
 	right: -10px;
 	z-index: 2;
@@ -128,9 +128,40 @@ main {
 /* footer section  */
 
 footer {
-	background-color: rgb(37, 37, 37);;
-	min-height: 30vh;
-	padding: 3.5rem 0;
+	background-color: var(--drk-clr);
+    min-height: 25vh;
+    padding: 3.5rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer a {
+	text-decoration: none;
+}
+
+footer p {
+	transition: all 300ms ease;
+}
+
+footer p:hover {
+	color: var(--logo-clr);
+}
+
+footer h3 {
+	padding-top: 5px;
+}
+
+footer .container {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#materialize-logo {
+	width: 100px;
+    height: 50px;
+	margin-top: 5px;
 }
 
 /* Few media queries  */
@@ -141,6 +172,14 @@ footer {
 	}
 	.card-container {
 		justify-content: space-evenly;
+	}
+
+	footer {
+		flex-wrap: wrap;
+	}
+
+	footer .container {
+		margin-bottom: 20px;
 	}
 }
 @media screen and (max-width: 500px) {

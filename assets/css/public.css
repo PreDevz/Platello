@@ -1,6 +1,8 @@
 /* importing fonts  */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Trocchi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vesper+Libre&display=swap');
+
 
 /* Root to store all variables  */
 :root {
@@ -10,9 +12,7 @@
 	/* light Box  */
 	--box-lght-clr: rgb(207, 207, 207);
 	--box-lght-brder-clr: rgb(110, 110, 110);
-	/* the smaller boxes within the big boxes  */
-	--box2-clr: rgb(22, 24, 39);
-	--box2-brder-clr: rgb(135, 135, 135);
+	
 
 	/* background images  */
 	--bg-dark: url(../images/wallpaperflare.com_wallpaper\ \(2\).jpg);
@@ -22,7 +22,7 @@
 	 
 
 	/* drk and white colors  */
-	--drk-clr: rgb(11, 16, 26);
+	--drk-clr: rgb(37, 37, 37);
 	--lght-clr: rgb(255, 255, 255);
 	/* logo blue color  */
 	--logo-clr: rgb(0, 115, 255);
@@ -60,7 +60,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Vesper Libre', serif;
 	color: var(--lght-clr);
 	margin: 0;
 }
@@ -115,10 +115,12 @@ img {
 	font-family: 'Cormorant Garamond', serif;
 	
 }
-.logo-pre {
+
+/* .logo-pre {
 	color: var(--logo-clr);
 	
-}
+} */
+
 ul {
 	display: flex;
 	flex-direction: row;
@@ -190,3 +192,4 @@ ul {
 		margin-top: 20%;
 	}
 }
+
