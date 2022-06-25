@@ -13,8 +13,8 @@
 	--box-lght-brder-clr: rgb(110, 110, 110);
 
 	/* background images  */
-	--bg-dark: url('../images/wallpaperflare.com_wallpaper.png');
-	--bg-light: url('../images/3426969.png');
+	--bg-dark: url('../images/backgrounds/wallpaperflare.com_wallpaper.png');
+	--bg-light: url('../images/backgrounds/3426969.png');
 
 	/* drk and white colors  */
 	--drk-clr: rgb(28, 28, 28);
