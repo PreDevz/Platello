@@ -1,4 +1,6 @@
-// js linked
+// Get Today's Date 
+let todayEl = moment();
+$("#date").text(todayEl.format("dddd, MMM DD, YYYY"));
 // Toggle theme button 
 const toggleThemeBtn = $('#themeBtn')
 // Get all DOM elements to change with theme 
@@ -11,6 +13,7 @@ let divEl = $('div')
 let iconsEl = $('.material-icons')
 let headerEls = $(':header')
 let box = $('.box')
+let CardXIcon = $('.right')
 let footer = $('footer')
 let Els = [spanEl, sub, divEl, liEl]
 Els.push(headerEls)
@@ -34,6 +37,7 @@ function restoreStorage() {
       eachBox.css('background-color', "'var(--box-drk-clr)'")
       eachBox.css('border', 'var(--box-drk-brder-clr)')
     }
+    CardXIcon.css('color', 'black')
     footer.css('background-color', 'var(--drk-clr)')
     footer.css('color', 'var(--lght-clr)')
     preLogo.css('color', 'var(--logo-clr)')
@@ -94,6 +98,7 @@ function toggleTheme(e) {
       eachBox.css('background-color', 'var(--box-drk-clr)')
       eachBox.css('border', '1px solid var(--box-drk-brder-clr)')
     }
+    CardXIcon.css('color', 'black')
     footer.css('background-color', 'var(--drk-clr)')
     footer.css('color', 'var(--lght-clr)')
     preLogo.css('color', 'var(--logo-clr)')
@@ -105,8 +110,3 @@ function toggleTheme(e) {
 
 // Event Listeners 
 toggleThemeBtn.on('click', toggleTheme)
-
-let todayEl = moment();
-$("#date").text(todayEl.format("dddd, MMM DD, YYYY"));
-
-const nav = document.getElementById('nav');

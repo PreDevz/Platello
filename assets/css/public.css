@@ -85,6 +85,9 @@ img {
 	box-shadow: 0 0 8px rgb(190, 253, 255);
 	cursor: pointer;
 }
+.card-reveal .material-icons {
+	color: black;
+}
 
 /* navbar component  */
 #navbar {
