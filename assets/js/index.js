@@ -1,9 +1,8 @@
 // js linked
+let todayEl = moment();
+$("#date").text(todayEl.format("dddd, MMM DD, YYYY"));
 
 const nav = document.getElementById('nav')
-
-
-
 
 //Spoonacular API
 //For every request to Spoonacular, the first query parameter has to be the API key
