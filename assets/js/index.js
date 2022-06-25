@@ -2,6 +2,7 @@
 // Toggle theme button 
 const toggleThemeBtn = $('#themeBtn')
 // Get all DOM elements to change with theme 
+let navEl = $('nav')
 let preLogo = $('.logo-pre')
 let spanEl = $('span')
 let sub = $('#subTitle')
@@ -23,14 +24,15 @@ function restoreStorage() {
   let themes = localStorage.getItem('theme');
   // if there is no theme, by default give the dark theme 
   if (themes === null) {
-    body.css('background-color', 'var(--bg-drk-clr)')
+    body.css('background-image', "var(--bg-dark)")
+    navEl.css('background-color', 'var(--box-drk-clr)')
     for (i = 0; i < Els.length; i++) {
       Els[i].css('color', 'var(--lght-clr)')
     }
     for (i = 0; i < box.length; i++) {
       let eachBox = $(box[i])
-      eachBox.css('background-color', 'var(--box-drk-clr)')
-      eachBox.css('border', '1px solid var(--box-drk-brder-clr)')
+      eachBox.css('background-color', "'var(--box-drk-clr)'")
+      eachBox.css('border', 'var(--box-drk-brder-clr)')
     }
     footer.css('background-color', 'var(--drk-clr)')
     footer.css('color', 'var(--lght-clr)')
@@ -38,7 +40,8 @@ function restoreStorage() {
   } else {
     // if there is a theme and if it's light, change all elements to light 
     if (themes === 'light') {
-      body.css('background-color', 'var(--bg-lght-clr)')
+      body.css('background-image', "var(--bg-light)")
+      navEl.css('background-color', 'var(--box-lght-clr)')
       for (i = 0; i < Els.length; i++) {
         Els[i].css('color', 'var(--drk-clr)')
       }
@@ -47,8 +50,8 @@ function restoreStorage() {
         eachBox.css('background-color', 'var(--box-lght-clr)')
         eachBox.css('border', '1px solid var(--box-lght-brder-clr)')
       }
-      footer.css('background-color', 'var(--bg-lght-clr)')
-      footer.css('color', 'var(--bg-drk-clr)')
+      footer.css('background-color', 'var(--lght-clr)')
+      footer.css('color', 'var(--drk-clr)')
       preLogo.css('color', 'var(--logo-clr)')
       theme = 'light'
     } else return
@@ -62,7 +65,8 @@ function toggleTheme(e) {
   // WHEN user clicks toggle theme button 
   // if the theme is dark switch to light 
   if (theme === 'dark') {
-    body.css('background-color', 'var(--bg-lght-clr)')
+    body.css('background-image', "url('../assets/images/3426969.png')")
+    navEl.css('background-color', 'var(--box-lght-clr)')
     for (i = 0; i < Els.length; i++) {
       Els[i].css('color', 'var(--drk-clr)')
     }
@@ -71,7 +75,7 @@ function toggleTheme(e) {
       eachBox.css('background-color', 'var(--box-lght-clr)')
       eachBox.css('border', '1px solid var(--box-lght-brder-clr)')
     }
-    footer.css('background-color', 'var(--bg-lght-clr)')
+    footer.css('background-color', 'var(--lght-clr)')
     footer.css('color', 'var(--drk-clr)')
     preLogo.css('color', 'var(--logo-clr)')
     theme = 'light'
@@ -79,7 +83,8 @@ function toggleTheme(e) {
     localStorage.setItem('theme', theme)
   } else {
       // if the theme is light switch to dark
-    body.css('background-color', 'var(--bg-drk-clr)')
+    body.css("background-image", "url('../assets/images/wallpaperflare.com_wallpaper.png')")
+    navEl.css('background-color', 'var(--box-drk-clr)')
     headerEls.css('color', 'var(--lght-clr)')
     for (i = 0; i < Els.length; i++) {
       Els[i].css('color', 'var(--lght-clr)')

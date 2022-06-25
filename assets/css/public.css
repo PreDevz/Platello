@@ -3,26 +3,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Trocchi&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Vesper+Libre&display=swap');
 
-
 /* Root to store all variables  */
 :root {
 	/* Dark Box  */
-	--box-drk-clr: rgba(37, 37, 37, 0.775);
+	--box-drk-clr: rgba(37, 37, 37, 0.737);
 	--box-drk-brder-clr: (solid 2px black);
 	/* light Box  */
-	--box-lght-clr: rgb(207, 207, 207);
+	--box-lght-clr: rgba(207, 207, 207, 0.775);
 	--box-lght-brder-clr: rgb(110, 110, 110);
-	
 
 	/* background images  */
-	--bg-dark: url(../images/wallpaperflare.com_wallpaper\ \(2\).jpg);
-	--bg-light: url(../images/3426969.jpg);
-	
-	
-	 
+	--bg-dark: url('../images/wallpaperflare.com_wallpaper.png');
+	--bg-light: url('../images/3426969.png');
 
 	/* drk and white colors  */
-	--drk-clr: rgb(37, 37, 37);
+	--drk-clr: rgb(28, 28, 28);
 	--lght-clr: rgb(255, 255, 255);
 	/* logo blue color  */
 	--logo-clr: rgb(0, 115, 255);
@@ -40,11 +35,11 @@ html {
 	min-height: 100%;
 }
 body {
-	background-image: url(../images/wallpaperflare.com_wallpaper\ \(2\).jpg);
+	background-image: var(--bg-dark);
+	background-size: contain;
+	background-repeat: repeat;
 	font-family: 'Cormorant Garamond', serif;
 }
-
-
 
 h1 {
 	font-family: 'Trocchi', serif;
@@ -53,7 +48,6 @@ h1 {
 	font-size: 50px;
 	text-decoration: underline;
 }
-
 
 h2,
 h3,
@@ -69,7 +63,6 @@ i {
 	font-family: 'Cormorant Garamond', serif;
 	color: var(--lght-clr);
 	font-size: 25px;
-	
 }
 
 /* changing all tags to white  */
@@ -103,19 +96,17 @@ img {
 	height: 8vh;
 	color: var(--lght-clr);
 	border-bottom: solid 2px black;
-	background-color: rgba(37, 37, 37, 0.625);
+	background-color: var(--box-drk-clr);
 	margin: 0;
 }
 .logo {
 	font-weight: bold;
 	font-size: 150%;
 	font-family: 'Cormorant Garamond', serif;
-	
 }
 
 /* .logo-pre {
 	color: var(--logo-clr);
-	
 } */
 
 ul {
@@ -144,7 +135,7 @@ ul {
 
 /* dasboard boxes  */
 .box {
-	background-color: rgba(37, 37, 37, 0.775);
+	background-color: var(--box-drk-clr);
 	border: solid 2px black;
 	border-radius: 8px;
 	/* max-height: 365px; */
