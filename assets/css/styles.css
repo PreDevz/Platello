@@ -18,8 +18,8 @@ header h1:hover {
 header p {
 	font-family: 'Cormorant Garamond', serif;
 	color: var(--lght-clr);
-	font-size: 25px;
-	font-size: 1.5rem;
+	font-weight: bold;
+	font-size: 2rem;
 }
 
 #date {

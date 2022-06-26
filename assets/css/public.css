@@ -14,7 +14,6 @@
 
 	/* background images  */
 	--bg-dark: url('../images/backgrounds/wallpaperflare.com_wallpaper.png');
-	--bg-light: url('../images/backgrounds/3426969.png');
 
 	/* drk and white colors  */
 	--drk-clr: rgb(28, 28, 28);
@@ -36,8 +35,9 @@ html {
 }
 body {
 	background-image: var(--bg-dark);
-	background-size: contain;
-	background-repeat: repeat;
+	background-size: 100% 100%;
+	background-position: center;
+	background-repeat: no-repeat;
 	font-family: 'Cormorant Garamond', serif;
 }
 
@@ -78,6 +78,9 @@ img {
 }
 
 /* simple classes  */
+.light-background {
+	background-image: url('../images/backgrounds/3426969.png');
+}
 .current {
 	border-bottom: 1px solid var(--logo-clr);
 }
