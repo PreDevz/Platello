@@ -18,8 +18,10 @@ const nav = document.getElementById('nav')
 
 //id=12312 - number is an example, but gets specific information from
 
+//NEED TO FIND INGREDIENTS
+
 function getSpoonApi() {
-    let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3&sort=random&number=3&instructionsRequired=true&addRecipeInformation=true&maxReadyTime=30"
+    let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3&sort=random&number=3&instructionsRequired=true&addRecipeInformation=true&maxReadyTime=60"
 
     fetch(requestUrl)
         .then(function(response) {
@@ -28,7 +30,9 @@ function getSpoonApi() {
 
         .then(function(data) {
             console.log(data.results);
-            for (let i = 0; i < data.length; i++) {
+            for (let i = 0; i < data.results.length; i++) {
+                let recipeSteps = data.results[i].analyzedInstructions[0].steps;
+
                 console.log("This is dish #" + i);
                 console.log("-----------------------");
                 console.log(data.results[i].title);
@@ -36,7 +40,14 @@ function getSpoonApi() {
                 console.log(data.results[i].servings);
                 console.log(data.results[i].sourceUrl);
                 console.log(data.results[i].image);
-                console.log(data.results[i].steps);
+                console.log(recipeSteps);
+
+                //This is to find the instructions
+                for (let j = 0; j < recipeSteps.length; j++) {
+                    console.log(recipeSteps[j].number);
+                    console.log(recipeSteps[j].step);
+                }
+
                 console.log("");
 
             }
