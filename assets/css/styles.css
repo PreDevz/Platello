@@ -24,7 +24,7 @@ header p {
 
 #date {
 	color: var(--lght-clr);
-	font-family:'Vesper Libre', serif;
+	font-family: 'Vesper Libre', serif;
 	font-size: 30px;
 	flex-wrap: wrap;
 }
@@ -51,6 +51,10 @@ main {
 	padding: 0.5rem;
 }
 
+body .container .box h5 {
+	font-size: 2.5rem;
+}
+
 .dashboard h5 {
 	height: 100%;
 	display: flex;
@@ -61,6 +65,7 @@ main {
 
 .container .user-fav h2 {
 	margin: 3rem 0;
+	margin-top: 6rem;
 	text-align: center;
 }
 .dashboard .col {
@@ -178,6 +183,57 @@ footer .container {
 	width: 100px;
 	height: 50px;
 	margin-top: 5px;
+}
+
+/* Hidden Section (Selected items)  */
+
+.user-selected .col {
+	padding: 1rem;
+}
+.user-selected h5 {
+	text-align: center;
+	margin: 2rem 0;
+}
+.user-selected .box .row .selected h5 {
+	font-size: 1.8rem;
+	letter-spacing: 2px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.selected {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.479);
+	border-radius: 8px;
+	padding: 1.5rem;
+}
+.selected img {
+	max-width: 490px;
+	max-height: 310px;
+}
+.sects {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin: 0.5rem;
+	padding: 1.5rem;
+	font-size: 1.4rem;
+}
+.sects span {
+	font-weight: bold;
+	font-size: 1.8rem;
+	margin: 0.8rem 0;
+}
+.sects ul {
+	display: flex;
+	flex-direction: column;
+	text-align: start;
+	font-size: 1.5rem;
+}
+.sects ul li {
+	margin: 0.3rem 0;
 }
 
 /* Few media queries  */
