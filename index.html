@@ -35,6 +35,7 @@
 		<header>
 			<h1>Platello</h1>
 			<p id="subTitle">Cheers to a new dish! 🥂</p>
+			<button id="test-button">Test Button</button>
 		</header>
 
 		<main>
@@ -44,25 +45,25 @@
 						<!-- food section  -->
 						<div class="col s12">
 							<div class="box">
-								<h5>Food <i class="material-icons">restaurant</i></h5>
+								<h5>Food <i class="ma4terial-icons">restaurant</i></h5>
 								<div class="card-container">
 									<!-- card 1  -->
-									<div class="card">
+									<div class="card" data-value="0">
 										<div
 											class="card-image waves-effect waves-block waves-light"
 										>
 											<img
-												class="activator"
+												class="activator food-card-img"
 												src="https://th.bing.com/th/id/R.faf34ed0c0e4c5bf47af4b58b3d90ab4?rik=85dyP%2fRNcboyNw&pid=ImgRaw&r=0"
 											/>
 										</div>
 										<div class="card-content">
-											<span class="card-title activator grey-text text-darken-4"
+											<span class="card-title activator grey-text text-darken-4 food-card-title"
 												>Card Title<i class="material-icons right"
 													>more_vert</i
 												></span
 											>
-											<p><a href="#">This is a link</a></p>
+											<p class="prep-time">Prep time: </p>
 										</div>
 										<div class="card-reveal">
 											<span class="card-title grey-text text-darken-4"
@@ -70,28 +71,29 @@
 													>close</i
 												></span
 											>
-											<p>
+											<p class="recipe-summary">
 												Here is some more information about this product that is
 												only revealed once clicked on.
 											</p>
+											<button class="confirm-food"><a href="#">View recipe</a></button>
 										</div>
 									</div>
-									<div class="card">
+									<div class="card" data-value="1">
 										<div
 											class="card-image waves-effect waves-block waves-light"
 										>
 											<img
-												class="activator"
+												class="activator food-card-img"
 												src="https://www.washingtonpost.com/resizer/Y8B2f3IF5ZZSZqdR-EI8wyvGDmc=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/KXWS4XFKMQ5QBN7KGRHVEYJBD4.jpg"
 											/>
 										</div>
 										<div class="card-content">
-											<span class="card-title activator grey-text text-darken-4"
+											<span class="card-title activator grey-text text-darken-4 food-card-title"
 												>Card Title<i class="material-icons right"
 													>more_vert</i
 												></span
 											>
-											<p><a href="#">This is a link</a></p>
+											<p class="prep-time">Prep time: </p>
 										</div>
 										<div class="card-reveal">
 											<span class="card-title grey-text text-darken-4"
@@ -99,28 +101,29 @@
 													>close</i
 												></span
 											>
-											<p>
+											<p class="recipe-summary">
 												Here is some more information about this product that is
 												only revealed once clicked on.
 											</p>
+											<button class="confirm-food"><a href="#">View recipe</a></button>
 										</div>
 									</div>
-									<div class="card">
+									<div class="card" data-value="2">
 										<div
 											class="card-image waves-effect waves-block waves-light"
 										>
 											<img
-												class="activator"
+												class="activator food-card-img"
 												src="https://img.huffingtonpost.com/asset/5d025e362500006813e55475.jpeg?ops=1778_1000"
 											/>
 										</div>
 										<div class="card-content">
-											<span class="card-title activator grey-text text-darken-4"
+											<span class="card-title activator grey-text text-darken-4 food-card-title"
 												>Card Title<i class="material-icons right"
 													>more_vert</i
 												></span
 											>
-											<p><a href="#">This is a link</a></p>
+											<p class="prep-time">Prep time: </p>
 										</div>
 										<div class="card-reveal">
 											<span class="card-title grey-text text-darken-4"
@@ -128,10 +131,11 @@
 													>close</i
 												></span
 											>
-											<p>
+											<p class="recipe-summary">
 												Here is some more information about this product that is
 												only revealed once clicked on.
 											</p>
+											<button class="confirm-food"><a href="#">View recipe</a></button>
 										</div>
 									</div>
 									<!-- card 2  -->
@@ -146,7 +150,7 @@
 								<h5>Drinks<i class="material-icons">local_bar</i></h5>
 								<div class="card-container">
 									<!-- card 1 -->
-									<div class="card">
+									<div class="card" data-value="3">
 										<div
 											class="card-image waves-effect waves-block waves-light"
 										>
@@ -176,7 +180,7 @@
 										</div>
 									</div>
 									<!-- card 2  -->
-									<div class="card">
+									<div class="card" data-value="4">
 										<div
 											class="card-image waves-effect waves-block waves-light"
 										>
@@ -206,7 +210,7 @@
 										</div>
 									</div>
 									<!-- card 3  -->
-									<div class="card">
+									<div class="card" data-value="5">
 										<div
 											class="card-image waves-effect waves-block waves-light"
 										>
