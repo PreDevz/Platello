@@ -13,6 +13,7 @@ let divEl = $('div')
 let iconsEl = $('.material-icons')
 let headerEls = $(':header')
 let box = $('.box')
+let selectedBox = $('.selected')
 let CardXIcon = $('.right')
 let footer = $('footer')
 let Els = [spanEl, sub, divEl, liEl]
@@ -53,6 +54,7 @@ function restoreStorage() {
         eachBox.css('background-color', 'var(--box-lght-clr)')
         eachBox.css('border', '1px solid var(--box-lght-brder-clr)')
       }
+      selectedBox.css('background-color', 'var(--lght-selected)') 
       footer.css('background-color', 'var(--lght-clr)')
       footer.css('color', 'var(--drk-clr)')
       preLogo.css('color', 'var(--logo-clr)')
@@ -78,6 +80,7 @@ function toggleTheme(e) {
       eachBox.css('background-color', 'var(--box-lght-clr)')
       eachBox.css('border', '1px solid var(--box-lght-brder-clr)')
     }
+    selectedBox.css('background-color', 'var(--lght-selected)') 
     footer.css('background-color', 'var(--lght-clr)')
     footer.css('color', 'var(--drk-clr)')
     preLogo.css('color', 'var(--logo-clr)')
@@ -96,6 +99,7 @@ function toggleTheme(e) {
       eachBox.css('background-color', 'var(--box-drk-clr)')
       eachBox.css('border', '1px solid var(--box-drk-brder-clr)')
     }
+    selectedBox.css('background-color', 'var(--drk-selected)') 
     CardXIcon.css('color', 'black')
     footer.css('background-color', 'var(--drk-clr)')
     footer.css('color', 'var(--lght-clr)')

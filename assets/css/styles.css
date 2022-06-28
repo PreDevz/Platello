@@ -205,7 +205,7 @@ footer .container {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: rgba(0, 0, 0, 0.479);
+	background-color: var(--drk-selected);
 	border-radius: 8px;
 	padding: 1.5rem;
 }
