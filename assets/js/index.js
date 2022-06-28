@@ -185,8 +185,8 @@ function getSpoonApi() {
 
                 //Change inside card summary
                 let currentCardSummary = document.getElementsByClassName("recipe-summary");
-                currentCardSummary[i].textContent = "";
-                currentCardSummary[i].textContent = cardSummary;
+                currentCardSummary[i].innerHTML = "";
+                currentCardSummary[i].innerHTML = cardSummary;
 
                 //This is to find the ingredients
                 let ingredients = data.results[i].extendedIngredients;
@@ -210,6 +210,23 @@ function getSpoonApi() {
     return
 
 }
+
+const selectRecipeButton1 = document.getElementById("confirm-food-1");
+const selectRecipeButton2 = document.getElementById("confirm-food-2");
+const selectRecipeButton3 = document.getElementById("confirm-food-3");
+
+selectRecipeButton1.addEventListener("click", function() {
+    console.log("Test 1");
+});
+
+selectRecipeButton2.addEventListener("click", function() {
+    console.log("Test 2");
+});
+
+selectRecipeButton3.addEventListener("click", function() {
+    console.log("Test 3");
+});
+
 
 // let dataResults = await getSpoonApi();
 
