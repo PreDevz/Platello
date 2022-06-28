@@ -1,6 +1,8 @@
 // Get Today's Date 
-let todayEl = moment();
-$("#date").text(todayEl.format("dddd, MMM DD, YYYY"));
+let todayMoment = moment();
+
+let dateEl = $("#date")
+dateEl.text(todayMoment.format("dddd, MMM DD, YYYY"));
 // Toggle theme button 
 const toggleThemeBtn = $('#themeBtn')
 // Get all DOM elements to change with theme 
@@ -16,7 +18,7 @@ let box = $('.box')
 let selectedBox = $('.selected')
 let CardXIcon = $('.right')
 let footer = $('footer')
-let Els = [spanEl, sub, divEl, liEl]
+let Els = [spanEl, sub, divEl, liEl, dateEl]
 Els.push(headerEls)
 Els.push(iconsEl)
 let body = document.querySelector('body');
