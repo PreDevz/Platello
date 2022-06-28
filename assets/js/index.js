@@ -107,29 +107,29 @@ function toggleTheme(e) {
 }
 
 // Event Listeners 
-toggleThemeBtn.on('click', toggleTheme)
-const nav = document.getElementById('nav');
+// toggleThemeBtn.on('click', toggleTheme)
+// const nav = document.getElementById('nav');
 
 
 
-            //  Drink api fetch
-        function getDrink(baseIngredient) {
-            fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + baseIngredient)
-            .then(response => {
-                return response.text()
-            })
-            .then((data) => {
-            console.log(data ? JSON.parse(data) : {})
-            })               
-        }
+//             //  Drink api fetch
+//         function getDrink(baseIngredient) {
+//             fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + baseIngredient)
+//             .then(response => {
+//                 return response.text()
+//             })
+//             .then((data) => {
+//             console.log(data ? JSON.parse(data) : {})
+//             })               
+//         }
 
-        getDrink("gin")
-        getDrink("tequila")
-        getDrink("vodka")
-        getDrink("wine")
-        getDrink("rum")
-        getDrink("whiskey")
-        getDrink("")
+//         getDrink("gin")
+//         getDrink("tequila")
+//         getDrink("vodka")
+//         getDrink("wine")
+//         getDrink("rum")
+//         getDrink("whiskey")
+//         getDrink("")
         
 
 
@@ -143,3 +143,37 @@ const nav = document.getElementById('nav');
 // 4) allow user to select one of three
 // 5) allow user to favorite 1 Daily 
 // 6) repeat randomizer for following day 
+
+
+
+/* Removing the class 'open' from the modal and the class 'blur' from the container. */
+// $('.close').on('click', function () {
+//     $('.modal').removeClass('open');
+//     $('.container').removeClass('blur');
+// });
+
+
+
+/* This is a jQuery function that is checking to see if the document is ready.
+ If it is, it will run
+the function. */
+// $(document).ready(function () {
+
+//     /* Initializing the modal. */
+//     $('.modal').modal();
+//     /* Opening the modal. */
+//     $('#modal1').modal('open');
+//     $('.modal').modal({backdrop: 'static', keyboard: false})
+    
+//     /* This is checking to see if the modal has the class 'open'.
+//     If it does, it will add the class 'blur'
+//     to the container. */
+//     if ($('.modal').hasClass('open')) {
+//         $('.container').addClass('blur');
+//     }
+//     foodModal()
+// });
+
+// function foodModal() {
+
+// }

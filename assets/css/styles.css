@@ -39,6 +39,132 @@ main {
 	justify-content: center;
 }
 
+body {
+position: relative;
+}
+
+/* Class to add on elements if any modals are showing  */
+.blur {
+	filter: blur(8px);
+}
+
+.hidden {
+	display: none;
+}
+
+body .blur {
+	max-height: 60vh;
+	overflow-y: hidden;
+}
+
+/* Modal Styling Section  */
+.modal-container {
+	display: flex;
+	justify-content: center;
+}
+
+.modal-Intro {
+	/* when modal on/off change from flex to none  */
+	display: flex;
+	position: absolute;
+	z-index: 5;
+	flex-direction: column;
+	padding: 4rem 2rem;
+	gap: 1.5rem;
+	/* width: 60%; */
+	max-width: 75%;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	border: 8px solid rgb(0, 0, 0);
+	box-shadow: inset 1px 1px 8px rgb(0, 0, 0);
+	background-image: url("../images/backgrounds/woodmodal.jpg");
+	background-size: cover;
+	/* filter: contrast(110%); */
+	/* background */
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+		rgba(17, 17, 26, 0.1) 0px 16px 56px,
+		rgba(17, 17, 26, 0.1) 0px 24px 80px;
+};
+
+/*  .modalIntro.open .content {
+	transform: scale(1);
+}*/
+
+.modalText {
+	color: white;
+	font-size: 4rem;
+	padding: 10px;
+}
+
+.modalP {
+	color: white;
+	padding: 1rem;
+	border-radius: 6px;
+	font-size: 1.8rem;
+	font-weight: bolder;
+	text-align: center;
+	background-color: rgba(0, 0, 0, .6);
+}
+
+/* This is the next button styles  */
+.next {
+	align-items: center;
+	background-color: #6b3400;
+	border: 2px solid rgb(255, 203, 154);
+	border-radius: 8px;
+	box-sizing: border-box;
+	color: #fff;
+	cursor: pointer;
+	display: flex;
+	font-family: sans-serif;
+	font-size: 16px;
+	height: 48px;
+	justify-content: center;
+	line-height: 24px;
+	max-width: 100%;
+	padding: 25px;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	margin: auto;
+}
+
+.next:after {
+	background-color: #111;
+	border-radius: 8px;
+	content: "";
+	display: block;
+	height: 48px;
+	left: 0;
+	width: 100%;
+	position: absolute;
+	top: -2px;
+	transform: translate(12px, 12px);
+	transition: transform 200ms ease-out;
+	z-index: -1;
+}
+
+.next:hover:after {
+	transform: translate(0, 0);
+}
+
+.next:focus {
+	background-color: #6b3400;
+}
+
+.next:active {
+	background-color: #af5500;
+	outline: 0;
+}
+
+.next:hover {
+	outline: 0;
+}
+
 .dashboard {
 	display: flex;
 	flex-direction: column;
@@ -144,10 +270,11 @@ body .container .box h5 {
 /* footer section  */
 
 footer {
+	/* change footer from flex to none  */
+	display: flex;
 	background-color: var(--drk-clr);
 	min-height: 25vh;
 	padding: 3.5rem 0;
-	display: flex;
 	justify-content: center;
 }
 
