@@ -231,3 +231,35 @@ selectRecipeButton3.addEventListener("click", function() {
 // let dataResults = await getSpoonApi();
 
 // console.log(dataResults.length);
+
+//  Drink api fetch
+function getDrink(baseIngredient) {
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + baseIngredient)
+    .then(response => {
+        return response.text()
+    })
+    .then((data) => {
+    console.log(data ? JSON.parse(data) : {})
+    })               
+}
+
+getDrink("gin")
+getDrink("tequila")
+getDrink("vodka")
+getDrink("wine")
+getDrink("rum")
+getDrink("whiskey")
+getDrink("")
+
+
+
+
+
+
+        
+    
+
+// 3) radnomize 3 cocktails based on Selection
+// 4) allow user to select one of three
+// 5) allow user to favorite 1 Daily 
+// 6) repeat randomizer for following day 
