@@ -40,21 +40,12 @@ main {
 }
 
 body {
-position: relative;
+	position: relative;
 }
 
 /* Class to add on elements if any modals are showing  */
 .blur {
 	filter: blur(8px);
-}
-
-.hidden {
-	display: none;
-}
-
-body .blur {
-	max-height: 60vh;
-	overflow-y: hidden;
 }
 
 /* Modal Styling Section  */
@@ -71,22 +62,30 @@ body .blur {
 	flex-direction: column;
 	padding: 4rem 2rem;
 	gap: 1.5rem;
-	/* width: 60%; */
+	text-align: center;
 	max-width: 75%;
 	justify-content: center;
 	align-items: center;
 	border-radius: 20px;
 	border: 8px solid rgb(0, 0, 0);
 	box-shadow: inset 1px 1px 8px rgb(0, 0, 0);
-	background-image: url("../images/backgrounds/woodmodal.jpg");
+	background-image: url('../images/backgrounds/woodmodal.jpg');
 	background-size: cover;
-	/* filter: contrast(110%); */
-	/* background */
+	filter: blur(0px);
 	box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
-		rgba(17, 17, 26, 0.1) 0px 16px 56px,
-		rgba(17, 17, 26, 0.1) 0px 24px 80px;
-};
+		rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
 
+/* each modal  */
+.modal-welcome {
+	z-index: 6;
+}
+.modal-food {
+	z-index: 5;
+}
+.modal-drink {
+	z-index: 4;
+}
 /*  .modalIntro.open .content {
 	transform: scale(1);
 }*/
@@ -104,7 +103,7 @@ body .blur {
 	font-size: 1.8rem;
 	font-weight: bolder;
 	text-align: center;
-	background-color: rgba(0, 0, 0, .6);
+	background-color: rgba(0, 0, 0, 0.6);
 }
 
 /* This is the next button styles  */
@@ -136,7 +135,7 @@ body .blur {
 .next:after {
 	background-color: #111;
 	border-radius: 8px;
-	content: "";
+	content: '';
 	display: block;
 	height: 48px;
 	left: 0;
@@ -361,6 +360,11 @@ footer .container {
 }
 .sects ul li {
 	margin: 0.3rem 0;
+}
+
+/* hidden is down hear is it can hide all the elements  */
+.hidden {
+	display: none;
 }
 
 /* Few media queries  */
