@@ -55,21 +55,28 @@ body {
 }
 
 .container-choices {
-	padding: 0.2rem;
+	padding: 1rem;
 }
 
 .select-dropdown {
 	height: auto;
 	overflow-y: auto;
 	color: black;
+	align-self: flex-end;
 }
 .input-field {
 	background-color: rgba(255, 255, 255, 0.712);
-	/* margin: 0.2rem; */
 	margin: 0 0;
+	padding: 0 1rem;
 }
 .input-field .col {
-	padding: 0.2rem;
+	padding: 0.5rem;
+}
+.input-field label {
+	font-size: 1.2rem;
+	font-weight: bold;
+	transform: translateY(-0.1px);
+	color: #fff;
 }
 .input-field ul {
 	height: auto;
@@ -88,27 +95,29 @@ body {
 
 .container-modal-btn {
 	width: 100%;
-	/* height: 150px; */
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
 }
+
+/* The Modal  */
 
 .modal-Intro {
 	/* when modal on/off change from flex to none  */
 	display: flex;
 	position: absolute;
 	height: auto;
-	z-index: 5;
+	/* z-index: 5; */
 	flex-direction: column;
+	top: 150px;
 	padding: 3.5rem 2rem;
 	gap: 1.5rem;
 	text-align: center;
 	max-width: 75%;
-	justify-content: center;
-	align-items: center;
+	/* justify-content: center; */
+	/* align-items: center; */
 	border-radius: 20px;
-	border: 8px solid rgb(0, 0, 0);
+	border: 8px solid rgb(5, 3, 0);
 	box-shadow: inset 1px 1px 8px rgb(0, 0, 0);
 	background-image: url('../images/backgrounds/woodmodal.jpg');
 	background-size: cover;
@@ -196,12 +205,13 @@ body {
 	background-color: #6b3400;
 }
 
-.next:active {
-	background-color: #af5500;
+.next:hover {
 	outline: 0;
+	background-color: #ad5400;
 }
 
-.next:hover {
+.next:active {
+	background-color: #ff8b1f;
 	outline: 0;
 }
 

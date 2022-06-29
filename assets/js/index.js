@@ -109,8 +109,8 @@ function toggleTheme(e) {
 }
 
 // Event Listeners
-// toggleThemeBtn.on('click', toggleTheme)
-// const nav = document.getElementById('nav');
+toggleThemeBtn.on('click', toggleTheme)
+const nav = document.getElementById('nav');
 
 
 
