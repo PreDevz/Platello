@@ -346,11 +346,16 @@ footer .container {
 		align-items: center;
 		justify-content: space-evenly;
 		padding: 0 0.6rem;
+		height: 10vh;
 		gap: 1.3rem;
 	}
 
-	.logo {
-		font-size: 1.2rem;
+	#navbar .logo {
+		font-size: 1.5rem;
+	}
+
+	#themeBtn {
+		font-size: 1.5rem;
 	}
 
 	#date {
@@ -385,7 +390,7 @@ footer .container {
 	}
 
 	.box {
-		max-width: 335px;
+		max-width: 330px;
 		justify-content: center;
 		align-items: center;
 	}
@@ -444,7 +449,12 @@ footer .container {
 		justify-content: center;
 		align-items: center;
 	}
+
 	/* increase footer text  */
+	footer .logo {
+		font-size: 1.4rem;
+	}
+
 	footer a {
 		font-size: 1.2rem;
 	}
