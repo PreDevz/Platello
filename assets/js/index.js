@@ -179,7 +179,7 @@ const nav = document.getElementById('nav');
 
 
 
-let storedSections = []
+// Materialize Init Function for Select element 
 document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('select');
   M.FormSelect.init(elems, {
@@ -187,12 +187,10 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-$(document).ready(function() {
-  M.updateTextFields();
-});
-
+// testing variable 
 let isUserNew = true
 
+// Function to check if the user is new 
 function isTheUserNew() {
   if (isUserNew === true) {
     welcomeModal()
@@ -202,6 +200,7 @@ function isTheUserNew() {
 
 // functions for the modals
 
+// Starting welcome modal 
 function welcomeModal() {
   let modal = document.querySelector('.modal-welcome');
   IsModalOpen = true 
@@ -217,24 +216,17 @@ function welcomeModal() {
     }, 750)
   })
 }
-
 foodModal()
 // the Food modal function will get info from the user 
 function foodModal() {
   let modal = document.querySelector('.modal-food')
   IsModalOpen = true 
+
   modal.classList.toggle('hidden')
-
-
-  // storedSections
-  // let options = ''
-
-  
-  let desiredMeals = {}
   let modalBtn = $(modal).children().children('button')
+  // when clicked will call the drink function with slide effect 
   $(modalBtn).on("click", function (e) {
     e.preventDefault()
-
     $(modal).addClass('slide-out')
     setTimeout(() => {
       $(modal).addClass('hidden');
@@ -254,7 +246,6 @@ function drinkModal() {
   let modalBtn = $(modal).children().children('button')
   $(modalBtn).on("click", function (e) {
     e.preventDefault()
-
     // adds cool animation and called the the blur function 
     $(modal).addClass('slide-out')
     setTimeout(() => {
@@ -265,6 +256,7 @@ function drinkModal() {
   })
 }
 
+// Function that will blur the background if a modal is active 
 function blurBackgroundIf() {
   if (IsModalOpen === true) {
     $('#navbar').css('display', 'none')
@@ -275,6 +267,7 @@ function blurBackgroundIf() {
 
     $('#navbar').css('display', 'flex')
     $('#navbar').addClass('slide-down')
+    // after animation is done, then it will officially change the nav style to 0 on the y axis 
     setTimeout(() => {
       $('#navbar').css('transform', "translateY(0px)")
     }, 500)
