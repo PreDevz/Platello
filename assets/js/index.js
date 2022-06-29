@@ -193,3 +193,6 @@ function drinkModal() {
 $(document).ready(function(){
   $('select').formSelect();
 });
+$(document).ready(function() {
+  M.updateTextFields();
+});

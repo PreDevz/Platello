@@ -67,7 +67,7 @@ body {
 .input-field {
 	background-color: rgba(255, 255, 255, 0.712);
 	margin: 0 0;
-	padding: 0 1rem;
+	padding: 0 0.8rem;
 }
 .input-field .col {
 	padding: 0.5rem;
@@ -100,6 +100,36 @@ body {
 	align-items: flex-end;
 }
 
+#formRemove {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	width: 75%;
+	height: auto;
+	justify-self: center;
+	align-self: center;
+}
+
+.explainRemove {
+	width: auto;
+	padding: 0.2rem;
+	font-size: 2rem;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.6);
+	border-radius: 8px;
+}
+
+form #textareaRemove {
+	padding: 0rem 0;
+	outline: none;
+	border-bottom: none;
+	margin: 0 0 0 0;
+}
+
+form .labelRemove {
+	color: #111;
+}
+
 /* The Modal  */
 
 .modal-Intro {
@@ -110,8 +140,8 @@ body {
 	/* z-index: 5; */
 	flex-direction: column;
 	top: 150px;
-	padding: 3.5rem 2rem;
-	gap: 1.5rem;
+	padding: 2.5rem 1.5rem;
+	gap: 0.5rem;
 	text-align: center;
 	max-width: 75%;
 	/* justify-content: center; */
