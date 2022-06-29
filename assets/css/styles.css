@@ -187,6 +187,10 @@ footer .container {
 
 /* Hidden Section (Selected items)  */
 
+.recipe-summary {
+	font-size: 16px;
+}
+
 .recipe-summary a {
 	cursor: default;
 	pointer-events: none;        
@@ -199,6 +203,7 @@ footer .container {
     width: 100%;
     cursor: pointer;
     margin-left: 0px;
+	font-size: 16px;
 }
 
 .select-recipe {

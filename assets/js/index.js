@@ -124,14 +124,16 @@ toggleThemeBtn.on('click', toggleTheme)
 //maxReadyTime=30 - the maximum time in minutes it should take to prepare and cook a recipe
 //type= - 
 //excludeIngredients - A comma-separated list of ingredients that the recipes must not contain
+//cuisine=american+indian+asian+
 
 //id=12312 - number is an example, but gets specific information from
 
 const testButton = document.querySelector("#test-button");
+
 testButton.addEventListener("click", getSpoonApi);
 
 function getSpoonApi() {
-    let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3&sort=random&number=3&instructionsRequired=true&addRecipeInformation=true&maxReadyTime=60&fillIngredients=true&type=maincourse"
+    let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3&sort=random&number=3&instructionsRequired=true&addRecipeInformation=true&maxReadyTime=60&fillIngredients=true&type=main+course"
 
     fetch(requestUrl)
         .then(function(response) {
@@ -140,8 +142,7 @@ function getSpoonApi() {
 
         .then(function(data) {
             console.log(data.results);
-            dataResults = data.results;
-            //return dataResults;
+            //return data.results;
 
             for (let i = 0; i < data.results.length; i++) {
 
@@ -206,50 +207,191 @@ function getSpoonApi() {
                 console.log("");
 
             }
+
+            //Variables for generating full recipes below
+            const selectRecipeButton1 = document.getElementById("confirm-food-1");
+            const selectRecipeButton2 = document.getElementById("confirm-food-2");
+            const selectRecipeButton3 = document.getElementById("confirm-food-3"); 
+            
+            const selectedFoodTitle = document.querySelector(".selected-food-title");
+            const selectedFoodImg = document.querySelector(".selected-food-img");
+            const selectedFoodServings = document.querySelector("#selected-food-servings");
+            const selectedFoodPrepTime = document.querySelector("#selected-food-prep-time");
+            const selectedFoodStepList = document.querySelector("#selected-food-steps");
+            const selectedFoodIngredientList = document.querySelector(".ingr");
+            
+
+            //JS for 'View recipe' button in food card 1
+            selectRecipeButton1.addEventListener("click", () => {
+                console.log("Recipe 1 has been printed");
+
+                //Changes title
+                selectedFoodTitle.innerHTML = data.results[0].title;
+                
+                //Changes food img
+                selectedFoodImg.src = data.results[0].image;
+
+                //Changes amount of servings
+                selectedFoodServings.innerHTML = data.results[0].servings;
+
+                //Changes prep time
+                selectedFoodPrepTime.innerHTML = data.results[0].readyInMinutes + " minutes";
+
+                //Changes ingredients
+                selectedFoodIngredientList.replaceChildren();
+
+                for (let i = 0; i < data.results[0].analyzedInstructions[0].steps.length; i++) {
+
+                    let selectedIngredients = data.results[0].extendedIngredients[i].original;
+
+                    let ingredient = document.createElement("li");
+                    ingredient.textContent = selectedIngredients;
+
+                    selectedFoodIngredientList.append(ingredient);
+                }
+
+                //Changes steps
+                selectedFoodStepList.replaceChildren();
+                
+                for (let i = 0; i < data.results[0].analyzedInstructions[0].steps.length; i++) {
+
+                    let selectedSteps = data.results[0].analyzedInstructions[0].steps[i].step;
+                    console.log(selectedSteps);
+
+                    let step = document.createElement("li");
+                    step.textContent = selectedSteps;
+
+                    selectedFoodStepList.append(step);
+                }
+
+            });
+
+            //JS for 'View recipe' button in food card 2
+            selectRecipeButton2.addEventListener("click", () => {
+                console.log("Recipe 2 has been printed");
+
+                //Changes title
+                selectedFoodTitle.innerHTML = data.results[1].title;
+
+                //Changes food img
+                selectedFoodImg.src = data.results[1].image;
+
+                //Changes amount of servings
+                selectedFoodServings.innerHTML = data.results[1].servings;
+
+                //Changes prep time
+                selectedFoodPrepTime.innerHTML = data.results[1].readyInMinutes + " minutes";
+
+                //Changes ingredients
+                selectedFoodIngredientList.replaceChildren();
+
+                for (let i = 0; i < data.results[1].analyzedInstructions[0].steps.length; i++) {
+
+                    let selectedIngredients = data.results[1].extendedIngredients[i].original;
+
+                    let ingredient = document.createElement("li");
+                    ingredient.textContent = selectedIngredients;
+
+                    selectedFoodIngredientList.append(ingredient);
+                }
+
+                //Changes steps
+                selectedFoodStepList.replaceChildren();
+
+                for (let i = 0; i < data.results[1].analyzedInstructions[0].steps.length; i++) {
+
+                    let selectedSteps = data.results[1].analyzedInstructions[0].steps[i].step;
+                    console.log(selectedSteps);
+
+                    let step = document.createElement("li");
+                    step.textContent = selectedSteps;
+
+                    selectedFoodStepList.append(step);
+                }
+            });
+
+            //JS for 'View recipe' button in food card 3
+            selectRecipeButton3.addEventListener("click", () => {
+                console.log("Recipe 3 has been printed");
+
+                //Changes title
+                selectedFoodTitle.innerHTML = data.results[2].title;
+
+                //Changes food img
+                selectedFoodImg.src = data.results[2].image;
+
+                //Changes amount of servings
+                selectedFoodServings.innerHTML = data.results[1].servings;
+
+                //Changes prep time
+                selectedFoodPrepTime.innerHTML = data.results[1].readyInMinutes + " minutes";
+
+                //Changes ingredients
+                selectedFoodIngredientList.replaceChildren();
+
+                for (let i = 0; i < data.results[2].analyzedInstructions[0].steps.length; i++) {
+
+                    let selectedIngredients = data.results[2].extendedIngredients[i].original;
+
+                    let ingredient = document.createElement("li");
+                    ingredient.textContent = selectedIngredients;
+
+                    selectedFoodIngredientList.append(ingredient);
+                }
+
+                //Changes steps
+                selectedFoodStepList.replaceChildren();
+
+                for (let i = 0; i < data.results[2].analyzedInstructions[0].steps.length; i++) {
+
+                    let selectedSteps = data.results[2].analyzedInstructions[0].steps[i].step;
+                    console.log(selectedSteps);
+
+                    let step = document.createElement("li");
+                    step.textContent = selectedSteps;
+
+                    selectedFoodStepList.append(step);
+                }
+            });
+
         })
     return
 
 }
 
-const selectRecipeButton1 = document.getElementById("confirm-food-1");
-const selectRecipeButton2 = document.getElementById("confirm-food-2");
-const selectRecipeButton3 = document.getElementById("confirm-food-3");
+//let spoonValue = getSpoonApi(); 
 
-selectRecipeButton1.addEventListener("click", function() {
-    console.log("Test 1");
-});
 
-selectRecipeButton2.addEventListener("click", function() {
-    console.log("Test 2");
-});
-
-selectRecipeButton3.addEventListener("click", function() {
-    console.log("Test 3");
-});
 
 
 // let dataResults = await getSpoonApi();
 
 // console.log(dataResults.length);
 
-//  Drink api fetch
-function getDrink(baseIngredient) {
-    fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + baseIngredient)
-    .then(response => {
-        return response.text()
-    })
-    .then((data) => {
-    console.log(data ? JSON.parse(data) : {})
-    })               
-}
 
-getDrink("gin")
-getDrink("tequila")
-getDrink("vodka")
-getDrink("wine")
-getDrink("rum")
-getDrink("whiskey")
-getDrink("")
+
+
+
+
+
+//  Drink api fetch
+// function getDrink(baseIngredient) {
+//     fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + baseIngredient)
+//     .then(response => {
+//         return response.text()
+//     })
+//     .then((data) => {
+//     console.log(data ? JSON.parse(data) : {})
+//     })               
+// }
+
+// getDrink("gin")
+// getDrink("tequila")
+// getDrink("vodka")
+// getDrink("wine")
+// getDrink("rum")
+// getDrink("whiskey")
+// getDrink("")
 
 
 
