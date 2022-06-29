@@ -19,12 +19,14 @@ let Els = [spanEl, sub, divEl, liEl]
 Els.push(headerEls)
 Els.push(iconsEl)
 let body = document.querySelector('body');
-// the current theme 
+// Togglers 
 let theme = 'dark';
+let IsModalOpen = false
 
 // Check if there is something in localstorage 
 function restoreStorage() {
   let themes = localStorage.getItem('theme');
+  // Gets the theme in the localstorage 
   // if there is no theme, by default give the dark theme 
   if (themes === null) {
     navEl.css('background-color', 'var(--box-drk-clr)')
@@ -106,7 +108,7 @@ function toggleTheme(e) {
   }
 }
 
-// Event Listeners 
+// Event Listeners
 // toggleThemeBtn.on('click', toggleTheme)
 // const nav = document.getElementById('nav');
 
@@ -120,7 +122,7 @@ function toggleTheme(e) {
 //             })
 //             .then((data) => {
 //             console.log(data ? JSON.parse(data) : {})
-//             })               
+//             })
 //         }
 
 //         getDrink("gin")
@@ -131,18 +133,12 @@ function toggleTheme(e) {
 //         getDrink("whiskey")
 //         getDrink("")
         
-
-
-        
-
-
-        
     
 
 // 3) radnomize 3 cocktails based on Selection
 // 4) allow user to select one of three
-// 5) allow user to favorite 1 Daily 
-// 6) repeat randomizer for following day 
+// 5) allow user to favorite 1 Daily
+// 6) repeat randomizer for following day
 
 
 
@@ -177,3 +173,7 @@ the function. */
 // function foodModal() {
 
 // }
+
+function welcomeModal() {
+  IsModalOpen = true;
+}
