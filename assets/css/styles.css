@@ -151,8 +151,13 @@ footer {
 	justify-content: center;
 }
 
+footer .logo {
+	font-size: 1.8rem;
+}
+
 footer a {
 	text-decoration: none;
+	font-size: 1.3rem;
 }
 
 footer ul {
