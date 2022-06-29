@@ -166,7 +166,6 @@ function toggleTheme(e) {
 //   key. */
 //   $('.modal-Intro').modal({ backdrop: 'static', keyboard: false })
 // })
-//nate.com
 // functions for the modals 
 
 function welcomeModal() {
