@@ -130,7 +130,7 @@ toggleThemeBtn.on('click', toggleTheme)
 
 const testButton = document.querySelector("#test-button");
 
-testButton.addEventListener("click", getSpoonApi);
+//testButton.addEventListener("click", getSpoonApi);
 
 function getSpoonApi() {
     let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3&sort=random&number=3&instructionsRequired=true&addRecipeInformation=true&maxReadyTime=60&fillIngredients=true&type=main+course"
