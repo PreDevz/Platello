@@ -187,6 +187,28 @@ footer .container {
 
 /* Hidden Section (Selected items)  */
 
+.recipe-summary {
+	font-size: 16px;
+}
+
+.recipe-summary a {
+	cursor: default;
+	pointer-events: none;        
+	text-decoration: none;
+	color: black;
+}
+
+.confirm-food {
+	margin: 10px;
+    width: 100%;
+    cursor: pointer;
+    margin-left: 0px;
+	font-size: 16px;
+}
+
+.select-recipe {
+	color: black;
+}
 .user-selected .col {
 	padding: 1rem;
 }
