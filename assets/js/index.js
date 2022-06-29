@@ -5,6 +5,8 @@ $("#date").text(todayEl.format("dddd, MMM DD, YYYY"));
 const toggleThemeBtn = $('#themeBtn')
 // Get all DOM elements to change with theme 
 let navEl = $('nav')
+let headerEl = $('header')
+let containerDiv = $('.container')
 let preLogo = $('.logo-pre')
 let spanEl = $('span')
 let sub = $('#subTitle')
@@ -21,6 +23,8 @@ Els.push(iconsEl)
 let body = document.querySelector('body');
 // Togglers 
 let theme = 'dark';
+
+// Modals 
 let IsModalOpen = false
 
 // Check if there is something in localstorage 
@@ -167,37 +171,117 @@ const nav = document.getElementById('nav');
 //   $('.modal-Intro').modal({ backdrop: 'static', keyboard: false })
 // })
 
-// Modal Functionality 
+// Modal Functionality
 
-// For Modal, need for materialize js components 
+// For Modal, need for materialize js components
 // $('#textareaRemove').val('Add here');
-M.textareaAutoResize($('#textareaRemove'));
-$(document).ready(function(){
-  $('select').formSelect();
+
+
+
+
+let storedSections = []
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('select');
+  M.FormSelect.init(elems, {
+    classes: 'picked'
+  });
 });
+
 $(document).ready(function() {
   M.updateTextFields();
 });
 
-// functions for the modals 
+let isUserNew = true
+
+function isTheUserNew() {
+  if (isUserNew === true) {
+    welcomeModal()
+  }
+}
+// isTheUserNew()
+
+// functions for the modals
+
 function welcomeModal() {
-  let modal = $('.modal-welcome');
+  let modal = document.querySelector('.modal-welcome');
   IsModalOpen = true 
-  console.log(modal)
-  foodModal()
-  drinkModal()
+  modal.classList.toggle('hidden')
+  let modalBtn = $(modal).children().children('button')
+  // when clicked, it will add cool effect and call the food function 
+  $(modalBtn).on("click", function (e) {
+    e.preventDefault()
+    $(modal).addClass('slide-out')
+    setTimeout(() => {
+      $(modal).addClass('hidden');
+      foodModal()
+    }, 750)
+  })
 }
 
+foodModal()
+// the Food modal function will get info from the user 
 function foodModal() {
   let modal = document.querySelector('.modal-food')
   IsModalOpen = true 
   modal.classList.toggle('hidden')
-  console.log(modal)
-}
-// foodModal()
 
-function drinkModal() {
-  let modal = $('.modal-drink');
-  IsModalOpen = true 
-  console.log(modal)
+
+  // storedSections
+  // let options = ''
+
+  
+  let desiredMeals = {}
+  let modalBtn = $(modal).children().children('button')
+  $(modalBtn).on("click", function (e) {
+    e.preventDefault()
+
+    $(modal).addClass('slide-out')
+    setTimeout(() => {
+      $(modal).addClass('hidden');
+      IsModalOpen = false
+      drinkModal()
+    }, 750)
+
+  })
 }
+
+// the drink function will store the user's favorite drinks 
+function drinkModal() {
+  let modal = document.querySelector('.modal-drink');
+  IsModalOpen = true 
+  modal.classList.toggle('hidden')
+
+  let modalBtn = $(modal).children().children('button')
+  $(modalBtn).on("click", function (e) {
+    e.preventDefault()
+
+    // adds cool animation and called the the blur function 
+    $(modal).addClass('slide-out')
+    setTimeout(() => {
+      $(modal).addClass('hidden');
+      IsModalOpen = false
+      blurBackgroundIf()
+    }, 750)
+  })
+}
+
+function blurBackgroundIf() {
+  if (IsModalOpen === true) {
+    $('#navbar').css('display', 'none')
+    containerDiv.addClass('blur')
+    headerEl.addClass('blur')
+    document.body.style.overflow = 'hidden'
+  } else {
+
+    $('#navbar').css('display', 'flex')
+    $('#navbar').addClass('slide-down')
+    setTimeout(() => {
+      $('#navbar').css('transform', "translateY(0px)")
+    }, 500)
+    containerDiv.removeClass('blur')
+    headerEl.removeClass('blur')
+    document.body.style.overflow = 'auto'
+  }
+}
+
+blurBackgroundIf()

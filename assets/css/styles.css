@@ -501,3 +501,31 @@ footer .container {
 		font-size: 20%;
 	}
 }
+
+.slide-out {
+	animation: slideLeft 1000ms;
+}
+.slide-down {
+	animation: slideDown 500ms;
+}
+
+@keyframes slideLeft {
+	0% {
+		transform: translateX(0px);
+	}
+	50% {
+		transform: translateX(100px);
+	}
+	100% {
+		transform: translateX(-2000px);
+	}
+}
+
+@keyframes slideDown {
+	0% {
+		transform: translateY(-111px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
