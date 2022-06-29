@@ -87,7 +87,7 @@ function toggleTheme(e) {
     // set the current theme value in localstorage 
     localStorage.setItem('theme', theme)
   } else {
-      // if the theme is light switch to dark
+    // if the theme is light switch to dark
     navEl.css('background-color', 'var(--box-drk-clr)')
     headerEls.css('color', 'var(--lght-clr)')
     for (i = 0; i < Els.length; i++) {
@@ -150,30 +150,20 @@ function toggleTheme(e) {
 
 
 
-/* This is a jQuery function that is checking to see if the document is ready.
- If it is, it will run
-the function. */
+/* once the document loads, it will check if the user has visited this page before, if not it will show the modal.
+   also make the modal not close when a user clicks outside of the box. when the user clicks the next button it
+   will go to the next modal.
+   */
 // $(document).ready(function () {
+//   /* Checking to see if the modal has been shown before. If it has not, it will show the modal. If it
+//   has, it will not show the modal. */
+//   if (localStorage.getItem('.modal-Intro') !== 'true') {
+//     $('.modal-Intro').modal('show')
+//     localStorage.setItem('modal-Intro', 'true')
+//   }
 
-//     /* Initializing the modal. */
-//     $('.modal').modal();
-//     /* Opening the modal. */
-//     $('#modal1').modal('open');
-//     $('.modal').modal({backdrop: 'static', keyboard: false})
-    
-//     /* This is checking to see if the modal has the class 'open'.
-//     If it does, it will add the class 'blur'
-//     to the container. */
-//     if ($('.modal').hasClass('open')) {
-//         $('.container').addClass('blur');
-//     }
-//     foodModal()
-// });
+//   /* Creating a modal that will not close when the user clicks outside of the modal or presses the escape
+//   key. */
+//   $('.modal-Intro').modal({ backdrop: 'static', keyboard: false })
+// })
 
-// function foodModal() {
-
-// }
-
-function welcomeModal() {
-  IsModalOpen = true;
-}
