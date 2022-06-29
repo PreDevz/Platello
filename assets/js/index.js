@@ -167,3 +167,19 @@ function toggleTheme(e) {
 //   $('.modal-Intro').modal({ backdrop: 'static', keyboard: false })
 // })
 
+
+function welcomeModal() {
+  let modal = $('.modal-welcome')
+  console.log(modal)
+  foodModal()
+  drinkModal()
+}
+function foodModal() {
+  let modal = $('.modal-food')
+  console.log('food modal')
+}
+function drinkModal() {
+  let modal = $('.modal-drink')
+  console.log('drink modal')
+}
+
