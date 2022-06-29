@@ -143,7 +143,8 @@ form .labelRemove {
 	padding: 2.5rem 1.5rem;
 	gap: 0.5rem;
 	text-align: center;
-	max-width: 75%;
+	min-width: 750px;
+	max-width: 80%;
 	/* justify-content: center; */
 	/* align-items: center; */
 	border-radius: 20px;
@@ -159,6 +160,7 @@ form .labelRemove {
 /* each modal  */
 .modal-welcome {
 	z-index: 6;
+	gap: 4rem;
 }
 .modal-food {
 	z-index: 5;
@@ -178,7 +180,7 @@ form .labelRemove {
 
 .modalP {
 	color: white;
-	padding: 1rem;
+	padding: 1rem 2rem;
 	border-radius: 6px;
 	font-size: 1.8rem;
 	font-weight: bolder;
@@ -201,7 +203,8 @@ form .labelRemove {
 	height: 48px;
 	justify-content: center;
 	line-height: 24px;
-	max-width: 100%;
+	/* max-width: 100%; */
+	width: 100px;
 	padding: 25px;
 	position: relative;
 	text-align: center;

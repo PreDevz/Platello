@@ -166,8 +166,20 @@ const nav = document.getElementById('nav');
 //   key. */
 //   $('.modal-Intro').modal({ backdrop: 'static', keyboard: false })
 // })
-// functions for the modals 
 
+// Modal Functionality 
+
+// For Modal, need for materialize js components 
+// $('#textareaRemove').val('Add here');
+M.textareaAutoResize($('#textareaRemove'));
+$(document).ready(function(){
+  $('select').formSelect();
+});
+$(document).ready(function() {
+  M.updateTextFields();
+});
+
+// functions for the modals 
 function welcomeModal() {
   let modal = $('.modal-welcome');
   IsModalOpen = true 
@@ -182,17 +194,10 @@ function foodModal() {
   modal.classList.toggle('hidden')
   console.log(modal)
 }
-foodModal()
+// foodModal()
 
 function drinkModal() {
   let modal = $('.modal-drink');
   IsModalOpen = true 
   console.log(modal)
 }
-
-$(document).ready(function(){
-  $('select').formSelect();
-});
-$(document).ready(function() {
-  M.updateTextFields();
-});
