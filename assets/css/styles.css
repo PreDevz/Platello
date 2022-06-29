@@ -265,19 +265,72 @@ footer .container {
 
 /* tablets  */
 @media screen and (max-width: 772px) {
+	/* tablet navbar  */
+	#navbar {
+		height: 8vh;
+	}
+
+	#navbar .logo {
+		font-size: 2rem;
+	}
+
+	#themeBtn {
+		font-size: 2.2rem;
+	}
+
+	header h1 {
+		font-size: 4rem;
+	}
+
+	#subTitle {
+		font-size: 1.6rem;
+	}
+
+	/* tablet user selection  */
+	.user-selected .box .row .selected h5 {
+		font-size: 2.3rem;
+	}
+
+	.selected > p {
+		font-size: 1.5rem;
+	}
+
+	.sects span {
+		font-size: 2.2rem;
+	}
+
+	.sects ul {
+		font-size: 1.9rem;
+	}
+
+	.sects ol {
+		font-size: 1.9rem;
+	}
+
+	/* tablet favorite section  */
 	h5 {
 		justify-content: center;
 	}
+
 	.card-container {
 		justify-content: space-evenly;
 	}
 
+	/* footer section  */
 	footer {
 		flex-wrap: wrap;
 	}
 
+	footer .logo {
+		font-size: 2rem;
+	}
+
+	footer a {
+		font-size: 1.7rem;
+	}
+
 	footer .container {
-		margin-bottom: 20px;
+		margin-bottom: 3rem;
 	}
 }
 
@@ -290,14 +343,17 @@ footer .container {
 		padding: 0 0.6rem;
 		gap: 1.3rem;
 	}
+
 	.logo {
 		font-size: 1.2rem;
 	}
+
 	#date {
 		font-size: 1.2rem;
 		flex-wrap: wrap;
 		line-height: 5rem;
 	}
+
 	#sun {
 		padding: 0;
 		font-size: 1.2rem;
@@ -307,12 +363,15 @@ footer .container {
 	header {
 		padding: 2rem 1rem 0.2rem 1rem;
 	}
+
 	header h1 {
 		font-size: 3rem;
 	}
+
 	#subTitle {
 		font-size: 1.3rem;
 	}
+
 	/* mobile main section  */
 	main {
 		width: 100vw;
