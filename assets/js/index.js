@@ -166,20 +166,31 @@ function toggleTheme(e) {
 //   key. */
 //   $('.modal-Intro').modal({ backdrop: 'static', keyboard: false })
 // })
-
+//nate.com
+// functions for the modals 
 
 function welcomeModal() {
-  let modal = $('.modal-welcome')
+  let modal = $('.modal-welcome');
+  IsModalOpen = true 
   console.log(modal)
   foodModal()
   drinkModal()
 }
+
 function foodModal() {
-  let modal = $('.modal-food')
-  console.log('food modal')
+  let modal = document.querySelector('.modal-food')
+  IsModalOpen = true 
+  modal.classList.toggle('hidden')
+  console.log(modal)
 }
+foodModal()
+
 function drinkModal() {
-  let modal = $('.modal-drink')
-  console.log('drink modal')
+  let modal = $('.modal-drink');
+  IsModalOpen = true 
+  console.log(modal)
 }
 
+$(document).ready(function(){
+  $('select').formSelect();
+});

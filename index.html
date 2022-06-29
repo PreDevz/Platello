@@ -18,7 +18,7 @@
 	</head>
 
 	<body>
-		<nav id="navbar" class="blur">
+		<nav id="navbar">
 			<div class="logo"><span class="logo-pre">Pre</span>Devz</div>
 
 			<p id="date" class="headerDate"></p>
@@ -48,16 +48,63 @@
 				<button class="next">Next</button>
 			</div>
 			<!-- food modal  -->
-			<div class="modal-Intro modal-food">
-				<h2 class="modalText">Please pick ur food!</h2>
-				<p class="modalP">
-					New foods and drinks are just a couple clicks away! <br />
-					Be sure to Favorite what you like recommendations change everyday
-				</p>
-				<button class="next">Next</button>
+			<div class="modal-Intro modal-food hidden">
+				<h2 class="modalText">Customize Desired Cuisines</h2>
+				<!-- <p class="modalP">Unselect the dishes you may not want generated.</p> -->
+				<div class="container-choices">
+					<div class="row">
+						<div class="col s12 m6">
+							<div class="input-field">
+								<select multiple>
+									<option value="" disabled selected>Asian</option>
+									<option>Chinese</option>
+									<option>Indian</option>
+									<option>Japanese</option>
+									<option>Korean</option>
+									<option>Option 3</option>
+									<option>Option 3</option>
+									<option>Option 3</option>
+								</select>
+							</div>
+						</div>
+						<div class="col s12 m6">
+							<div class="input-field">
+								<select multiple>
+									<option value="" disabled selected>Asian</option>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 3</option>
+								</select>
+							</div>
+						</div>
+						<div class="col s12 m6">
+							<div class="input-field">
+								<select multiple>
+									<option value="" disabled selected>Asian</option>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 3</option>
+								</select>
+							</div>
+						</div>
+						<div class="col s12 m6">
+							<div class="input-field">
+								<select multiple>
+									<option value="" disabled selected>Asian</option>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 3</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container-modal-btn">
+					<button class="next">Save</button>
+				</div>
 			</div>
 			<!-- drinks modal  -->
-			<div class="modal-Intro modal-drink">
+			<div class="modal-Intro modal-drink hidden">
 				<h2 class="modalText">Selected Your Drinks</h2>
 				<p class="modalP">
 					New foods and drinks are just a couple clicks away! <br />
