@@ -138,8 +138,9 @@ const testButton = document.querySelector("#test-button");
 
 //testButton.addEventListener("click", getSpoonApi);
 
+let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3&sort=random&number=3&instructionsRequired=true&addRecipeInformation=true&maxReadyTime=60&fillIngredients=true&type=main+course"
+
 function getSpoonApi() {
-  let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3&sort=random&number=3&instructionsRequired=true&addRecipeInformation=true&maxReadyTime=60&fillIngredients=true&type=main+course"
 
   fetch(requestUrl)
     .then(function(response) {
@@ -251,6 +252,7 @@ function getSpoonApi() {
           let selectedIngredients = data.results[0].extendedIngredients[i].original;
 
           let ingredient = document.createElement("li");
+          ingredient.textContent = "";
           ingredient.textContent = selectedIngredients;
 
           selectedFoodIngredientList.append(ingredient);
@@ -296,6 +298,7 @@ function getSpoonApi() {
           let selectedIngredients = data.results[1].extendedIngredients[i].original;
 
           let ingredient = document.createElement("li");
+          ingredient.textContent = "";
           ingredient.textContent = selectedIngredients;
 
           selectedFoodIngredientList.append(ingredient);
@@ -340,6 +343,7 @@ function getSpoonApi() {
           let selectedIngredients = data.results[2].extendedIngredients[i].original;
 
           let ingredient = document.createElement("li");
+          ingredient.textContent = "";
           ingredient.textContent = selectedIngredients;
 
           selectedFoodIngredientList.append(ingredient);
