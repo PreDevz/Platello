@@ -46,7 +46,9 @@ function restoreStorage() {
     footer.css('color', 'var(--lght-clr)')
     preLogo.css('color', 'var(--logo-clr)')
   } else {
-    // if there is a theme and if it's light, change all elements to light 
+    // check what color the user pick for the theme
+
+    // if user picked white 
     if (themes === 'light') {
       body.classList.toggle('light-background')
       navEl.css('background-color', 'var(--box-lght-clr)')
@@ -63,10 +65,27 @@ function restoreStorage() {
       footer.css('color', 'var(--drk-clr)')
       preLogo.css('color', 'var(--logo-clr)')
       theme = 'light'
-    } else return
+    } else {
+      // if there is something in local storage
+      // and the user left off on dark mode 
+      navEl.css('background-color', 'var(--box-drk-clr)')
+      for (i = 0; i < Els.length; i++) {
+        Els[i].css('color', 'var(--lght-clr)')
+      }
+      for (i = 0; i < box.length; i++) {
+        let eachBox = $(box[i])
+        eachBox.css('background-color', "'var(--box-drk-clr)'")
+        eachBox.css('border', 'var(--box-drk-brder-clr)')
+      }
+      CardXIcon.css('color', 'black')
+      footer.css('background-color', 'var(--drk-clr)')
+      footer.css('color', 'var(--lght-clr)')
+      preLogo.css('color', 'var(--logo-clr)')
+    }
   }
 }
 restoreStorage()
+// localStorage.clear()
 
 // Once button is clicked, toggle theme function will change theme 
 function toggleTheme(e) {
