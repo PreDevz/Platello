@@ -36,6 +36,9 @@
 /* basic resetting  */
 html {
 	min-height: 100%;
+	width: 100vw;
+	overflow-x: hidden;
+	justify-content: center;
 }
 body {
 	background-image: var(--bg-dark);
