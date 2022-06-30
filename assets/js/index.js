@@ -30,37 +30,49 @@ const nav = document.getElementById('nav')
 // Check if there is something in localstorage 
 function restoreStorage() {
   let themes = localStorage.getItem('theme');
+
   // if there is no theme, by default give the dark theme 
   if (themes === null) {
     navEl.css('background-color', 'var(--box-drk-clr)')
     for (i = 0; i < Els.length; i++) {
       Els[i].css('color', 'var(--lght-clr)')
     }
+
+    // change boxes styles 
     for (i = 0; i < box.length; i++) {
       let eachBox = $(box[i])
       eachBox.css('background-color', "'var(--box-drk-clr)'")
       eachBox.css('border', 'var(--box-drk-brder-clr)')
     }
     CardXIcon.css('color', 'black')
+
+    // change footer styles 
     footer.css('background-color', 'var(--drk-clr)')
     footer.css('color', 'var(--lght-clr)')
     preLogo.css('color', 'var(--logo-clr)')
-  } else {
-    // check what color the user pick for the theme
 
-    // if user picked white 
+    // if there is something in local storage
+    // check what color the user pick for the theme
+  } else {
+
+    // if user picked white theme
     if (themes === 'light') {
       body.classList.toggle('light-background')
+      // change nav and all element's text styles 
       navEl.css('background-color', 'var(--box-lght-clr)')
       for (i = 0; i < Els.length; i++) {
         Els[i].css('color', 'var(--drk-clr)')
       }
+
+      // change boxes styles 
       for (i = 0; i < box.length; i++) {
         let eachBox = $(box[i])
         eachBox.css('background-color', 'var(--box-lght-clr)')
         eachBox.css('border', '1px solid var(--box-lght-brder-clr)')
       }
       selectedBox.css('background-color', 'var(--lght-selected)') 
+
+      // change footer styles 
       footer.css('background-color', 'var(--lght-clr)')
       footer.css('color', 'var(--drk-clr)')
       preLogo.css('color', 'var(--logo-clr)')
@@ -68,16 +80,21 @@ function restoreStorage() {
     } else {
       // if there is something in local storage
       // and the user left off on dark mode 
+
+      // change nav and all element's text styles 
       navEl.css('background-color', 'var(--box-drk-clr)')
       for (i = 0; i < Els.length; i++) {
         Els[i].css('color', 'var(--lght-clr)')
       }
+      // change boxes styles 
       for (i = 0; i < box.length; i++) {
         let eachBox = $(box[i])
         eachBox.css('background-color', "'var(--box-drk-clr)'")
         eachBox.css('border', 'var(--box-drk-brder-clr)')
       }
       CardXIcon.css('color', 'black')
+
+      // change footer styles 
       footer.css('background-color', 'var(--drk-clr)')
       footer.css('color', 'var(--lght-clr)')
       preLogo.css('color', 'var(--logo-clr)')
@@ -91,32 +108,44 @@ restoreStorage()
 function toggleTheme(e) {
   e.preventDefault()
   body.classList.toggle('light-background')
+
   // WHEN user clicks toggle theme button 
   // if the theme is dark switch to light 
   if (theme === 'dark') {
+    
+    // change nav and all element's text styles 
     navEl.css('background-color', 'var(--box-lght-clr)')
     for (i = 0; i < Els.length; i++) {
       Els[i].css('color', 'var(--drk-clr)')
     }
+
+    // change boxes styles 
     for (i = 0; i < box.length; i++) {
       let eachBox = $(box[i])
       eachBox.css('background-color', 'var(--box-lght-clr)')
       eachBox.css('border', '1px solid var(--box-lght-brder-clr)')
     }
     selectedBox.css('background-color', 'var(--lght-selected)') 
+
+    // change footer styles 
     footer.css('background-color', 'var(--lght-clr)')
     footer.css('color', 'var(--drk-clr)')
     preLogo.css('color', 'var(--logo-clr)')
     theme = 'light'
+
     // set the current theme value in localstorage 
     localStorage.setItem('theme', theme)
+    // if the theme is light switch to dark
   } else {
-      // if the theme is light switch to dark
+
+    // change nav and all element's text styles 
     navEl.css('background-color', 'var(--box-drk-clr)')
     headerEls.css('color', 'var(--lght-clr)')
     for (i = 0; i < Els.length; i++) {
       Els[i].css('color', 'var(--lght-clr)')
     }
+
+    // change boxes styles 
     for (i = 0; i < box.length; i++) {
       let eachBox = $(box[i])
       eachBox.css('background-color', 'var(--box-drk-clr)')
@@ -124,10 +153,13 @@ function toggleTheme(e) {
     }
     selectedBox.css('background-color', 'var(--drk-selected)') 
     CardXIcon.css('color', 'black')
+
+    // change footer styles 
     footer.css('background-color', 'var(--drk-clr)')
     footer.css('color', 'var(--lght-clr)')
     preLogo.css('color', 'var(--logo-clr)')
     theme = 'dark'
+
     // set the current theme value in localstorage 
     localStorage.setItem('theme', theme)
   }
