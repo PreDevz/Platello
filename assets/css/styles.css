@@ -5,7 +5,7 @@ header {
 	gap: 2rem;
 	align-items: center;
 	text-align: center;
-	padding: 3rem 2rem 0.5rem 2rem;
+	padding: 3rem 0 0.5rem 0;
 }
 header h1 {
 	font-size: 6rem;
@@ -276,7 +276,12 @@ footer .container {
 	}
 
 	#navbar .logo {
-		font-size: 2rem;
+		font-size: 1.8rem;
+	}
+
+	#date {
+		font-size: 1.5rem;
+		margin-top: 7px;
 	}
 
 	#themeBtn {
