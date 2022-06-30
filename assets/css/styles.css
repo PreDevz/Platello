@@ -96,8 +96,11 @@ body .container .box h5 {
 	min-height: 50%;
 	max-height: 215px;
 }
-.dashboard .card p {
+.card p {
 	color: black;
+}
+.card a {
+	color: rgb(3, 0, 163);
 }
 .card-container .card {
 	min-width: 280px;
@@ -105,9 +108,6 @@ body .container .box h5 {
 	/* max-height: 300px; */
 	background-color: rgba(246, 247, 249, 0.943);
 	margin: 1rem;
-}
-.card a {
-	color: rgb(3, 0, 163);
 }
 
 /* Favorite Section Styles  */
@@ -227,7 +227,7 @@ footer .container {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: rgba(0, 0, 0, 0.479);
+	background-color: var(--drk-selected);
 	border-radius: 8px;
 	padding: 1.5rem;
 }

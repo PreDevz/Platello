@@ -11,6 +11,9 @@
 	/* light Box  */
 	--box-lght-clr: rgba(184, 184, 184, 0.775);
 	--box-lght-brder-clr: rgb(110, 110, 110);
+	/* selected boxes */
+	--drk-selected: rgba(0, 0, 0, 0.479);
+	--lght-selected: rgba(255, 255, 255, 0.7);
 
 	/* background images  */
 	--bg-dark: url('../images/backgrounds/wallpaperflare.com_wallpaper.png');

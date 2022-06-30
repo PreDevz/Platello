@@ -1,6 +1,8 @@
 // Get Today's Date 
-let todayEl = moment();
-$("#date").text(todayEl.format("dddd, MMM DD, YYYY"));
+let todayMoment = moment();
+
+let dateEl = $("#date")
+dateEl.text(todayMoment.format("dddd, MMM DD, YYYY"));
 // Toggle theme button 
 const toggleThemeBtn = $('#themeBtn')
 // Get all DOM elements to change with theme 
@@ -13,9 +15,10 @@ let divEl = $('div')
 let iconsEl = $('.material-icons')
 let headerEls = $(':header')
 let box = $('.box')
+let selectedBox = $('.selected')
 let CardXIcon = $('.right')
 let footer = $('footer')
-let Els = [spanEl, sub, divEl, liEl]
+let Els = [spanEl, sub, divEl, liEl, dateEl]
 Els.push(headerEls)
 Els.push(iconsEl)
 let body = document.querySelector('body');
@@ -55,6 +58,7 @@ function restoreStorage() {
         eachBox.css('background-color', 'var(--box-lght-clr)')
         eachBox.css('border', '1px solid var(--box-lght-brder-clr)')
       }
+      selectedBox.css('background-color', 'var(--lght-selected)') 
       footer.css('background-color', 'var(--lght-clr)')
       footer.css('color', 'var(--drk-clr)')
       preLogo.css('color', 'var(--logo-clr)')
@@ -80,6 +84,7 @@ function toggleTheme(e) {
       eachBox.css('background-color', 'var(--box-lght-clr)')
       eachBox.css('border', '1px solid var(--box-lght-brder-clr)')
     }
+    selectedBox.css('background-color', 'var(--lght-selected)') 
     footer.css('background-color', 'var(--lght-clr)')
     footer.css('color', 'var(--drk-clr)')
     preLogo.css('color', 'var(--logo-clr)')
@@ -98,6 +103,7 @@ function toggleTheme(e) {
       eachBox.css('background-color', 'var(--box-drk-clr)')
       eachBox.css('border', '1px solid var(--box-drk-brder-clr)')
     }
+    selectedBox.css('background-color', 'var(--drk-selected)') 
     CardXIcon.css('color', 'black')
     footer.css('background-color', 'var(--drk-clr)')
     footer.css('color', 'var(--lght-clr)')
