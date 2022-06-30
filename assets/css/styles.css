@@ -78,6 +78,10 @@ body {
 	transform: translateY(-0.1px);
 	color: #fff;
 }
+.input-field.col label {
+	left: 5px;
+	top: 20px;
+}
 .input-field ul {
 	height: auto;
 }
@@ -527,5 +531,30 @@ footer .container {
 	}
 	100% {
 		transform: translateY(0px);
+	}
+}
+
+@media screen and (max-width: 798px) {
+	.modal-Intro {
+		min-width: 200px;
+		max-height: 80vh;
+        overflow-y: auto;
+	}
+
+	.modal-drink {
+		min-width: 200px;
+		overflow: auto;
+	}
+}
+
+@media screen and (max-width: 590px) {
+	#date {
+		font-size: 20px;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	#date {
+		font-size: 15px;
 	}
 }
