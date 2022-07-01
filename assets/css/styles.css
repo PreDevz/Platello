@@ -130,6 +130,10 @@ form #textareaRemove {
 	margin: 0 0 0 0;
 }
 
+#textareaRemove::placeholder {
+	color: rgb(104, 104, 104);
+}
+
 form .labelRemove {
 	color: #111;
 }
@@ -538,7 +542,7 @@ footer .container {
 	.modal-Intro {
 		min-width: 200px;
 		max-height: 80vh;
-        overflow-y: auto;
+		overflow-y: auto;
 	}
 
 	.modal-drink {
