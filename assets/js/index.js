@@ -181,13 +181,23 @@ addRecipeInformation=true - if set to true, you get more information about the r
 maxReadyTime=30 - the maximum time in minutes it should take to prepare and cook a recipe
 excludeIngredients - A comma-separated list of ingredients that the recipes must not contain
 cuisine=american+indian+asian+
+commas in URLs are written as '%2C'
 */
 
 const testButton = document.querySelector("#test-button");
 
 //testButton.addEventListener("click", getSpoonApi);
 
-let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3&sort=random&number=3&instructionsRequired=true&addRecipeInformation=true&maxReadyTime=60&fillIngredients=true&type=main+course"
+let userPreferences = {
+  asianFood: "",
+  americanFood: "",
+  europeanFood: "",
+  otherFood: "",
+  exclusions: "",
+}
+
+
+let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3&sort=random&number=3&instructionsRequired=true&addRecipeInformation=true&maxReadyTime=60&fillIngredients=true&type=main+course&cuisine=middle+eastern%2Camerican%2C"
 
 function getSpoonApi() {
 
@@ -204,10 +214,10 @@ function getSpoonApi() {
       //Generates top three cards with recipes
       for (let i = 0; i < ApiData.length; i++) {
 
-        let cardTitle = ApiData[i].title;
-        let prepTime = ApiData[i].readyInMinutes;
-        let cardSummary = ApiData[i].summary;
-        let cardImage = ApiData[i].image;
+        const cardTitle = ApiData[i].title;
+        const prepTime = ApiData[i].readyInMinutes;
+        const cardSummary = ApiData[i].summary;
+        const cardImage = ApiData[i].image;
 
         //Card section
 
