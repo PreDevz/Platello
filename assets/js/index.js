@@ -252,10 +252,10 @@ function getSpoonApi() {
         selectedImg.src = ApiData[recipeNum].image;
 
         //Changes amount of servings
-        selectedServings.innerHTML = ApiData[recipeNum].servings;
+        selectedServings.innerHTML = "Servings: " + ApiData[recipeNum].servings;
 
-        //Changes prep time
-        selectedPrepTime.innerHTML = ApiData[recipeNum].readyInMinutes + " minutes";
+        //Changes cook time
+        selectedPrepTime.innerHTML = "Cook Time: " + ApiData[recipeNum].readyInMinutes + " minutes";
 
         //Changes ingredients
         selectedIngredientList.replaceChildren();
