@@ -26,6 +26,8 @@ let theme = 'dark';
 
 // Modals 
 let IsModalOpen = false
+// storing the user's meals they have selected 
+let storedUserMeals = []
 
 // Check if there is something in localstorage 
 function restoreStorage() {
@@ -70,8 +72,28 @@ function restoreStorage() {
       theme = 'light'
     } else return
   }
+
+  // Checks User's Preferrences Food/drinks
+
+  let userSelectedMeals = JSON.parse(localStorage.getItem('UserPreferredMeal'))
+
+  // check is the user's selected meals have been stored
+  // if nothing has been stored, just return 
+  if (userSelectedMeals === null) {
+    console.log('no user pref') 
+    return
+  } else {
+    storedUserMeals = userSelectedMeals
+    console.log('the user pref is stored' + storedUserMeals)
+  }
+
+  console.log(userSelectedMeals)
+  
 }
+
 restoreStorage()
+
+localStorage.clear()
 
 // Once button is clicked, toggle theme function will change theme 
 function toggleTheme(e) {
@@ -178,9 +200,6 @@ const nav = document.getElementById('nav');
 
 
 // Modal Functionality
-
-// storing the user's meals they have selected 
-let storedUserMeals = []
 
 // WHEN the DOM is fully loaded excute Materialize Elements
 document.addEventListener('DOMContentLoaded', function () {
