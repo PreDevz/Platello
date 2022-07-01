@@ -29,7 +29,9 @@ let IsModalOpen = false
 
 // Check if there is something in localstorage 
 function restoreStorage() {
+
   let themes = localStorage.getItem('theme');
+
   // Gets the theme in the localstorage 
   // if there is no theme, by default give the dark theme 
   if (themes === null) {
@@ -47,6 +49,7 @@ function restoreStorage() {
     footer.css('color', 'var(--lght-clr)')
     preLogo.css('color', 'var(--logo-clr)')
   } else {
+    
     // if there is a theme and if it's light, change all elements to light 
     if (themes === 'light') {
       body.classList.toggle('light-background')
@@ -173,18 +176,30 @@ const nav = document.getElementById('nav');
 
 // Modal Functionality
 
-// For Modal, need for materialize js components
-// $('#textareaRemove').val('Add here');
+// storing the user's meals they have selected 
+let storedUserMeals = []
 
+// WHEN the DOM is fully loaded excute Materialize Elements
+document.addEventListener('DOMContentLoaded', function () {
 
+  // store the classes for each cuisine for looping
+  let cuisines = ['.asian-cuisines', '.north-america', '.europe-cuisines', '.more-option']
 
+  // loop through each cuisine's options to initialize  
+  for (i = 0; i < cuisines.length; i++) {
+    var el = document.querySelectorAll(cuisines[i]);
+    let init = $(el).formSelect();
+    let inst = M.FormSelect.getInstance(init);
 
-// Materialize Init Function for Select element 
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('select');
-  M.FormSelect.init(elems, {
-    classes: 'picked'
-  });
+    // Get all the users selections 
+    let allSelected = inst.getSelectedValues();
+
+    // for each option in each select element, push to stored variable 
+    $(allSelected).each((sel) => {
+      storedUserMeals.push(allSelected[sel])
+    });
+  }
+  console.log(storedUserMeals)
 });
 
 // testing variable 
@@ -216,16 +231,24 @@ function welcomeModal() {
     }, 750)
   })
 }
+
 foodModal()
+
 // the Food modal function will get info from the user 
 function foodModal() {
+  // get food modal element 
   let modal = document.querySelector('.modal-food')
   IsModalOpen = true 
 
+  // toggle the hidden class to hide it 
   modal.classList.toggle('hidden')
+
+  // get the modal's button 
   let modalBtn = $(modal).children().children('button')
+
   // when clicked will call the drink function with slide effect 
   $(modalBtn).on("click", function (e) {
+    localStorage.setItem('UserPreferredMeal', JSON.stringify(storedUserMeals))
     e.preventDefault()
     $(modal).addClass('slide-out')
     setTimeout(() => {
