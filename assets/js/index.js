@@ -351,7 +351,7 @@ function getSpoonApi() {
 //     })
 //     .then((data) => {
 //     console.log(data ? JSON.parse(data) : {})
-//     })               
+//     })
 // }
 
 // getDrink("gin")
@@ -412,14 +412,23 @@ function getSpoonApi() {
 
 // Modal Functionality
 
+// testing variable 
+let isUserNew = true
+
 // check if there is a users meal preference
 function restoreMealsData() {
+
+  // get the stored meals the user prefers 
   let storedMeals = JSON.parse(localStorage.getItem('UserPreferredMeal'))
+
+  // if nothing is stored, then change new user variable to true 
   if (storedMeals === null) {
-    
+    isUserNew = true
   }
   console.log(storedMeals)
 }
+
+// Call on start 
 restoreMealsData()
 
 // WHEN the DOM is fully loaded excute Materialize Elements
@@ -429,55 +438,69 @@ document.addEventListener('DOMContentLoaded', function () {
   let cuisines = ['.asian-cuisines', '.north-america', '.europe-cuisines', '.more-option']
 
   // loop through each cuisine's options to initialize  
-
   for (i = 0; i < cuisines.length; i++) {
+
+    // get each class section for each cuisine 
     var el = document.querySelectorAll(cuisines[i]);
     let init = $(el).formSelect();
     let inst = M.FormSelect.getInstance(init);
 
+    // when user clicks
     $('#foodSave').on('click', () => {
+
+      // get the values 
       let allSelected = inst.getSelectedValues();
-      // console.log(allSelected[0])
+
+      // loop to push each value into variable for localstorage 
       for (i = 0; i < allSelected.length; i++) {
         storedUserMeals.push(allSelected[i])
       }
-      // console.log(storedUserMeals)
+      
+      // add to storage
       setTimeout(() => {
         saveUserMealPref()
       }, 200);
+
     });
     }
-  // console.log(storedUserMeals)
 });
 
 // seperate function to store the users referrences 
 function saveUserMealPref() {
+
     // save to localstorage 
     localStorage.setItem('UserPreferredMeal', JSON.stringify(storedUserMeals))
 }
 
-// testing variable 
-let isUserNew = true
-
 // Function to check if the user is new 
 function isTheUserNew() {
+
+  // if the user is new, call welcome function 
   if (isUserNew === true) {
     welcomeModal()
   }
 }
 // isTheUserNew()
 
-// functions for the modals
+// functions for each modal
 
 // Starting welcome modal 
 function welcomeModal() {
+
+  // get welcome modal element 
   let modal = document.querySelector('.modal-welcome');
   IsModalOpen = true 
+
+  // toggle the hidden class to unhide 
   modal.classList.toggle('hidden')
+
+  // get the modal's button 
   let modalBtn = $(modal).children().children('button')
   // when clicked, it will add cool effect and call the food function 
   $(modalBtn).on("click", function (e) {
     e.preventDefault()
+
+    // adds slide effect then hides completely
     $(modal).addClass('slide-out')
     setTimeout(() => {
       $(modal).addClass('hidden');
@@ -486,9 +509,8 @@ function welcomeModal() {
   })
 }
 
+// Call on start 
 foodModal()
-
-
 
 
 // the Food modal function will get info from the user 
@@ -498,39 +520,52 @@ function foodModal() {
   let modal = document.querySelector('.modal-food')
   IsModalOpen = true 
 
-  // toggle the hidden class to hide it 
+  // toggle the hidden class to unhide 
   modal.classList.toggle('hidden')
 
   // get the modal's button 
   let modalBtn = $(modal).children().children('button')
 
-  // when clicked will call the drink function with slide effect 
+  // when clicked prevent default 
   $(modalBtn).on("click", function (e) {
-    // e.preventDefault()
+    e.preventDefault()
+
+    // adds slide effect then hides completely
     $(modal).addClass('slide-out')
     setTimeout(() => {
       $(modal).addClass('hidden');
       IsModalOpen = false
+
+      // call drink function since it's user's first time 
       drinkModal()
     }, 750)
   })
 }
-// window.localStorage.clear()
 
 // the drink function will store the user's favorite drinks 
 function drinkModal() {
+
+  // get food drinks element 
   let modal = document.querySelector('.modal-drink');
   IsModalOpen = true 
+
+  // toggle the hidden class to unhide
   modal.classList.toggle('hidden')
 
+  // get the modal's button 
   let modalBtn = $(modal).children().children('button')
+
+  // when clicked prevent default 
   $(modalBtn).on("click", function (e) {
     e.preventDefault()
-    // adds cool animation and called the the blur function 
+
+    // adds slide effect then hides completely
     $(modal).addClass('slide-out')
     setTimeout(() => {
       $(modal).addClass('hidden');
       IsModalOpen = false
+
+      // calls blurbackground to check if modal is open 
       blurBackgroundIf()
     }, 750)
   })
@@ -557,6 +592,8 @@ function blurBackgroundIf() {
     setTimeout(() => {
       $('#navbar').css('transform', "translateY(0px)")
     }, 500)
+
+    // blur contents on page, and make body flow auto to scroll 
     containerDiv.removeClass('blur')
     headerEl.removeClass('blur')
     document.body.style.overflow = 'auto'
