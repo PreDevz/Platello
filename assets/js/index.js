@@ -280,19 +280,68 @@ function getSpoonApi() {
 }
 
 
-
+// --------------------------------------------------------------------------------------------------------
 //  Drink api fetch
-// function getDrink(baseIngredient) {
-//     fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + baseIngredient)
-//     .then(response => {
-//         return response.text()
-//     })
-//     .then((data) => {
-//     console.log(data ? JSON.parse(data) : {})
-//     })               
-// }
 
-// getDrink("gin")
+
+// 3) randomize 3 cocktails based on Selection
+// 4) allow user to select one of three
+// 5) allow user to favorite 1 Daily 
+// 6) repeat randomizer for following day 
+
+
+// fetching info from the API based on base ingredient.
+// Our website consists of 6 base ingredients users can select from: Gin, Rum, Tequila, Vodka, Whisky, and Wine
+function getDrink(baseIngredient) {
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + baseIngredient)
+    .then(response => {
+        return response.json()
+    })
+    .then((data) => {
+    console.log(data)
+    // console.log(data ? JSON.parse(data) : {})
+
+// three randomized drinks the user will get based on base ingredient choices
+    let id = data.drinks["1"].idDrink
+    console.log(id);
+
+    let id2 = data.drinks["2"].idDrink
+    console.log(id2)
+    
+    let id3 = data.drinks["3"].idDrink
+    console.log(id3)
+
+  // after we fetched all the drinks from the previous fetch requestUrl, we are now fetching more details
+  // of the cocktails based on their cocktail IDs from the api. This fetch provides us with all the other ingredients needed
+  // as well as instructions and an image of the cocktail
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id)
+    .then(response => {
+      return response.json()
+    })
+    .then((idData) => {
+      console.log(idData)
+    })
+
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id2)
+    .then(response => {
+      return response.json()
+    })
+    .then((idData2) => {
+      console.log(idData2)
+    })
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id3)
+    .then(response => {
+      return response.json()
+    })
+    .then((idData3) => {
+      console.log(idData3)
+    })
+    
+
+    })
+}
+
+getDrink("gin")
 // getDrink("tequila")
 // getDrink("vodka")
 // getDrink("wine")
@@ -300,15 +349,18 @@ function getSpoonApi() {
 // getDrink("whiskey")
 // getDrink("")
 
+// for (let i = 0; i < data.length; i++) {
+  
+// const selectCocktail1 = document.getElementById("confirm-drink-1");
+// const selectCocktail2 = document.getElementById("confirm-drink-2");
+// const selectCocktail3 = document.getElementById("confirm-drink-3");
 
 
+// function createDrinkRecipe(newDrink) {
 
 
+// }
 
-        
-    
+// function createDrinkIngredients(newDrink) {
 
-// 3) radnomize 3 cocktails based on Selection
-// 4) allow user to select one of three
-// 5) allow user to favorite 1 Daily 
-// 6) repeat randomizer for following day 
+// }
