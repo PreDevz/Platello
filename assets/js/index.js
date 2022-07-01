@@ -27,6 +27,7 @@ let theme = 'dark';
 // Modals 
 let IsModalOpen = false
 // storing the user's meals they have selected 
+// let storedUserMeals = ['Chinese', 'Indian', 'Japanese', 'Korean', 'Middle Eastern', 'Thai', 'Vietnamese', 'American', 'Cajun', 'Mexican', 'Southern', 'British', 'French', 'German', 'Greek', 'Irish', 'Italian', 'Nordic', 'Eastern European', 'African', 'Caribbean', 'Jewish', 'Latin American', 'Mediterranean']
 let storedUserMeals = []
 
 // Check if there is something in localstorage 
@@ -78,22 +79,27 @@ function restoreStorage() {
   let userSelectedMeals = JSON.parse(localStorage.getItem('UserPreferredMeal'))
 
   // check is the user's selected meals have been stored
-  // if nothing has been stored, just return 
-  if (userSelectedMeals === null) {
-    console.log('no user pref') 
-    return
-  } else {
-    storedUserMeals = userSelectedMeals
-    console.log('the user pref is stored' + storedUserMeals)
-  }
-
-  console.log(userSelectedMeals)
+  // if meals is null, just return 
   
+  // if (userSelectedMeals === null) {
+  //   console.log('no user pref')
+  //   return
+  // } else {
+  //   storedUserMeals = userSelectedMeals
+
+  //   for (i = 0; i < storedUserMeals.length; i++) {
+  //     var el = $('option').get(i)
+  //     let removeProp = $(el).removeProp('selected')
+  //     if (storedUserMeals.includes($(el).val())) {
+  //       $(el).prop('selected', true);
+  //     }
+  //   }
+  // }
 }
 
 restoreStorage()
 
-localStorage.clear()
+// localStorage.clear()
 
 // Once button is clicked, toggle theme function will change theme 
 function toggleTheme(e) {
@@ -208,20 +214,25 @@ document.addEventListener('DOMContentLoaded', function () {
   let cuisines = ['.asian-cuisines', '.north-america', '.europe-cuisines', '.more-option']
 
   // loop through each cuisine's options to initialize  
+
   for (i = 0; i < cuisines.length; i++) {
     var el = document.querySelectorAll(cuisines[i]);
     let init = $(el).formSelect();
     let inst = M.FormSelect.getInstance(init);
 
-    // Get all the users selections 
-    let allSelected = inst.getSelectedValues();
-
-    // for each option in each select element, push to stored variable 
-    $(allSelected).each((sel) => {
-      storedUserMeals.push(allSelected[sel])
+    $('#foodSave').on('click', () => {
+      let allSelected = inst.getSelectedValues();
+      console.log(allSelected[0])
+      for (i = 0; i < allSelected.length; i++) {
+        storedUserMeals.push(allSelected[i])
+      }
+      console.log(storedUserMeals)
     });
-  }
-  console.log(storedUserMeals)
+    }
+
+
+
+  // console.log(storedUserMeals)
 });
 
 // testing variable 
@@ -259,6 +270,7 @@ foodModal()
 // the Food modal function will get info from the user 
 function foodModal() {
 
+// console.log(inst)
   // get food modal element 
   let modal = document.querySelector('.modal-food')
   IsModalOpen = true 
@@ -271,7 +283,10 @@ function foodModal() {
 
   // when clicked will call the drink function with slide effect 
   $(modalBtn).on("click", function (e) {
-    localStorage.setItem('UserPreferredMeal', JSON.stringify(storedUserMeals))
+
+    // save to localstorage 
+    // localStorage.setItem('UserPreferredMeal', JSON.stringify(storedUserMeals))
+    // console.log(storedUserMeals)
     e.preventDefault()
     $(modal).addClass('slide-out')
     setTimeout(() => {
