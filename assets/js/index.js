@@ -30,6 +30,8 @@ let IsModalOpen = false
 // Check if there is something in localstorage 
 function restoreStorage() {
 
+  // Changing Theme 
+
   let themes = localStorage.getItem('theme');
 
   // Gets the theme in the localstorage 
@@ -49,7 +51,7 @@ function restoreStorage() {
     footer.css('color', 'var(--lght-clr)')
     preLogo.css('color', 'var(--logo-clr)')
   } else {
-    
+
     // if there is a theme and if it's light, change all elements to light 
     if (themes === 'light') {
       body.classList.toggle('light-background')
@@ -174,6 +176,7 @@ const nav = document.getElementById('nav');
 //   $('.modal-Intro').modal({ backdrop: 'static', keyboard: false })
 // })
 
+
 // Modal Functionality
 
 // storing the user's meals they have selected 
@@ -236,6 +239,7 @@ foodModal()
 
 // the Food modal function will get info from the user 
 function foodModal() {
+
   // get food modal element 
   let modal = document.querySelector('.modal-food')
   IsModalOpen = true 
@@ -281,15 +285,21 @@ function drinkModal() {
 
 // Function that will blur the background if a modal is active 
 function blurBackgroundIf() {
+
+  // check if the a modal is open 
   if (IsModalOpen === true) {
+    // if true, remove navbar, add blur to container and header section 
     $('#navbar').css('display', 'none')
     containerDiv.addClass('blur')
     headerEl.addClass('blur')
     document.body.style.overflow = 'hidden'
   } else {
 
+    // if false, make navbar flex, remove blur on elements 
+    // slide down the navbar 
     $('#navbar').css('display', 'flex')
     $('#navbar').addClass('slide-down')
+
     // after animation is done, then it will officially change the nav style to 0 on the y axis 
     setTimeout(() => {
       $('#navbar').css('transform', "translateY(0px)")
@@ -300,4 +310,5 @@ function blurBackgroundIf() {
   }
 }
 
+// Call on start 
 blurBackgroundIf()
