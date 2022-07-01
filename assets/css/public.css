@@ -118,10 +118,6 @@ img {
 	font-family: 'Cormorant Garamond', serif;
 }
 
-/* .logo-pre {
-	color: var(--logo-clr);
-} */
-
 ul {
 	display: flex;
 	flex-direction: row;
