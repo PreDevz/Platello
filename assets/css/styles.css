@@ -5,7 +5,7 @@ header {
 	gap: 2rem;
 	align-items: center;
 	text-align: center;
-	padding: 3rem 2rem 0.5rem 2rem;
+	padding: 3rem 0 0.5rem 0;
 }
 header h1 {
 	font-size: 6rem;
@@ -37,6 +37,7 @@ main {
 	height: 100%;
 	width: 100%;
 	justify-content: center;
+	align-items: center;
 }
 
 body {
@@ -295,10 +296,10 @@ body .container .box h5 {
 	justify-content: center;
 }
 /* drinks container scroll bar  */
-#drinks .card-container {
+/* #drinks .card-container {
 	overflow-y: scroll;
 	max-height: 500px;
-}
+} */
 #drinks .card-container::-webkit-scrollbar {
 	width: 5px;
 }
@@ -313,18 +314,17 @@ body .container .box h5 {
 	min-height: 50%;
 	max-height: 215px;
 }
-.dashboard .card p {
+.card p {
 	color: black;
+}
+.card a {
+	color: rgb(3, 0, 163);
 }
 .card-container .card {
 	min-width: 280px;
 	max-width: 280px;
-	/* max-height: 300px; */
 	background-color: rgba(246, 247, 249, 0.943);
 	margin: 1rem;
-}
-.card a {
-	color: rgb(3, 0, 163);
 }
 
 /* Favorite Section Styles  */
@@ -369,8 +369,13 @@ footer {
 	justify-content: center;
 }
 
+footer .logo {
+	font-size: 1.8rem;
+}
+
 footer a {
 	text-decoration: none;
+	font-size: 1.3rem;
 }
 
 footer ul {
@@ -405,6 +410,28 @@ footer .container {
 
 /* Hidden Section (Selected items)  */
 
+.recipe-summary {
+	font-size: 16px;
+}
+
+.recipe-summary a {
+	cursor: default;
+	pointer-events: none;
+	text-decoration: none;
+	color: black;
+}
+
+.confirm-food {
+	margin: 10px;
+	width: 100%;
+	cursor: pointer;
+	margin-left: 0px;
+	font-size: 16px;
+}
+
+.select-recipe {
+	color: black;
+}
 .user-selected .col {
 	padding: 1rem;
 }
@@ -423,13 +450,16 @@ footer .container {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: rgba(0, 0, 0, 0.479);
+	background-color: var(--drk-selected);
 	border-radius: 8px;
 	padding: 1.5rem;
 }
 .selected img {
 	max-width: 490px;
 	max-height: 310px;
+}
+.selected > p {
+	font-size: 1.5rem;
 }
 .sects {
 	display: flex;
@@ -461,37 +491,204 @@ footer .container {
 
 /* Few media queries  */
 
+/* tablets  */
 @media screen and (max-width: 772px) {
+	/* tablet navbar  */
+	#navbar {
+		height: 8vh;
+	}
+
+	#navbar .logo {
+		font-size: 1.8rem;
+	}
+
+	#date {
+		font-size: 1.5rem;
+		margin-top: 7px;
+	}
+
+	#themeBtn {
+		font-size: 2.2rem;
+	}
+
+	header h1 {
+		font-size: 4rem;
+	}
+
+	#subTitle {
+		font-size: 1.6rem;
+	}
+
+	/* tablet user selection  */
+	.user-selected .box .row .selected h5 {
+		font-size: 2.3rem;
+	}
+
+	.selected > p {
+		font-size: 1.5rem;
+	}
+
+	.sects span {
+		font-size: 2.2rem;
+	}
+
+	.sects ul {
+		font-size: 1.9rem;
+	}
+
+	.sects ol {
+		font-size: 1.9rem;
+	}
+
+	/* tablet favorite section  */
 	h5 {
 		justify-content: center;
 	}
+
 	.card-container {
 		justify-content: space-evenly;
 	}
 
+	/* footer section  */
 	footer {
 		flex-wrap: wrap;
 	}
 
+	footer .logo {
+		font-size: 2rem;
+	}
+
+	footer a {
+		font-size: 1.7rem;
+	}
+
 	footer .container {
-		margin-bottom: 20px;
+		margin-bottom: 3rem;
 	}
 }
+
+/* phones  */
 @media screen and (max-width: 500px) {
-	header {
-		padding: 1.5rem 1rem 0.2rem 1rem;
+	/* mobile navbar  */
+	#navbar {
+		align-items: center;
+		justify-content: space-evenly;
+		padding: 0 0.6rem;
+		height: 10vh;
+		gap: 1.3rem;
 	}
-	h1 {
+
+	#navbar .logo {
+		font-size: 1.5rem;
+	}
+
+	#themeBtn {
+		font-size: 1.5rem;
+	}
+
+	#date {
+		font-size: 1.2rem;
+		flex-wrap: wrap;
+		line-height: 5rem;
+	}
+
+	#sun {
+		padding: 0;
+		font-size: 1.2rem;
+	}
+
+	/* mobile title  */
+	header {
+		padding: 2rem 1rem 0.2rem 1rem;
+	}
+
+	header h1 {
 		font-size: 3rem;
 	}
+
+	#subTitle {
+		font-size: 1.3rem;
+	}
+
+	/* mobile main section  */
+	main {
+		width: 100vw;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.box {
+		max-width: 330px;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.dashboard .col {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
 	.card-container {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		padding: 0;
+	}
+
+	/* user selection box  */
+	#user-selected {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	#user-selected h5 {
+		font-size: 1.8rem;
+	}
+
+	#user-selected .box .row .selected h5 {
+		font-size: 1.5rem;
+	}
+
+	#user-selected span {
+		font-size: 1.3rem;
+	}
+
+	.selected > p {
+		font-size: 1rem;
+	}
+
+	.sects ul {
+		font-size: 1.3rem;
+	}
+
+	.sects ol {
+		font-size: 1.3rem;
+	}
+
+	/* favorite section  */
+	h2 {
+		font-size: 2.5rem;
+	}
+
+	.user-fav {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	/* increase footer text  */
+	footer .logo {
+		font-size: 1.4rem;
+	}
+
+	footer a {
+		font-size: 1.2rem;
 	}
 }
-/* animations  */
 
+/* animations  */
 @keyframes title {
 	0% {
 		font-size: 90%;

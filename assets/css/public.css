@@ -11,6 +11,9 @@
 	/* light Box  */
 	--box-lght-clr: rgba(184, 184, 184, 0.775);
 	--box-lght-brder-clr: rgb(110, 110, 110);
+	/* selected boxes */
+	--drk-selected: rgba(0, 0, 0, 0.479);
+	--lght-selected: rgba(255, 255, 255, 0.7);
 
 	/* background images  */
 	--bg-dark: url('../images/backgrounds/wallpaperflare.com_wallpaper.png');
@@ -27,11 +30,15 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
 /* basic resetting  */
 html {
 	min-height: 100%;
+	width: 100vw;
+	overflow-x: hidden;
+	justify-content: center;
 }
 body {
 	background-image: var(--bg-dark);
@@ -114,10 +121,6 @@ img {
 	font-size: 150%;
 	font-family: 'Cormorant Garamond', serif;
 }
-
-/* .logo-pre {
-	color: var(--logo-clr);
-} */
 
 ul {
 	display: flex;
