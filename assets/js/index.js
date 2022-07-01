@@ -73,33 +73,9 @@ function restoreStorage() {
       theme = 'light'
     } else return
   }
-
-  // Checks User's Preferrences Food/drinks
-
-  let userSelectedMeals = JSON.parse(localStorage.getItem('UserPreferredMeal'))
-
-  // check is the user's selected meals have been stored
-  // if meals is null, just return 
-  
-  // if (userSelectedMeals === null) {
-  //   console.log('no user pref')
-  //   return
-  // } else {
-  //   storedUserMeals = userSelectedMeals
-
-  //   for (i = 0; i < storedUserMeals.length; i++) {
-  //     var el = $('option').get(i)
-  //     let removeProp = $(el).removeProp('selected')
-  //     if (storedUserMeals.includes($(el).val())) {
-  //       $(el).prop('selected', true);
-  //     }
-  //   }
-  // }
 }
 
 restoreStorage()
-
-// localStorage.clear()
 
 // Once button is clicked, toggle theme function will change theme 
 function toggleTheme(e) {
@@ -207,6 +183,13 @@ const nav = document.getElementById('nav');
 
 // Modal Functionality
 
+// check if there is a users meal preference
+function restoreMealsData() {
+  let storedMeals = JSON.parse(localStorage.getItem('UserPreferredMeal'))
+  console.log(storedMeals)
+}
+restoreMealsData()
+
 // WHEN the DOM is fully loaded excute Materialize Elements
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -222,18 +205,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     $('#foodSave').on('click', () => {
       let allSelected = inst.getSelectedValues();
-      console.log(allSelected[0])
+      // console.log(allSelected[0])
       for (i = 0; i < allSelected.length; i++) {
         storedUserMeals.push(allSelected[i])
       }
-      console.log(storedUserMeals)
+      // console.log(storedUserMeals)
+      setTimeout(() => {
+        saveUserMealPref()
+      }, 200);
     });
     }
-
-
-
   // console.log(storedUserMeals)
 });
+
+// seperate function to store the users referrences 
+function saveUserMealPref() {
+    // save to localstorage 
+    localStorage.setItem('UserPreferredMeal', JSON.stringify(storedUserMeals))
+}
 
 // testing variable 
 let isUserNew = true
@@ -267,10 +256,12 @@ function welcomeModal() {
 
 foodModal()
 
+
+
+
 // the Food modal function will get info from the user 
 function foodModal() {
 
-// console.log(inst)
   // get food modal element 
   let modal = document.querySelector('.modal-food')
   IsModalOpen = true 
@@ -283,20 +274,16 @@ function foodModal() {
 
   // when clicked will call the drink function with slide effect 
   $(modalBtn).on("click", function (e) {
-
-    // save to localstorage 
-    // localStorage.setItem('UserPreferredMeal', JSON.stringify(storedUserMeals))
-    // console.log(storedUserMeals)
-    e.preventDefault()
+    // e.preventDefault()
     $(modal).addClass('slide-out')
     setTimeout(() => {
       $(modal).addClass('hidden');
       IsModalOpen = false
       drinkModal()
     }, 750)
-
   })
 }
+// window.localStorage.clear()
 
 // the drink function will store the user's favorite drinks 
 function drinkModal() {
