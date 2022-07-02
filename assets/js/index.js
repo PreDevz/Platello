@@ -7,6 +7,8 @@ dateEl.text(todayMoment.format("dddd, MMM DD, YYYY"));
 const toggleThemeBtn = $('#themeBtn')
 // Get all DOM elements to change with theme 
 let navEl = $('nav')
+let headerEl = $('header')
+let containerDiv = $('.container')
 let preLogo = $('.logo-pre')
 let spanEl = $('span')
 let sub = $('#subTitle')
@@ -126,7 +128,7 @@ function toggleTheme(e) {
   // WHEN user clicks toggle theme button 
   // if the theme is dark switch to light 
   if (theme === 'dark') {
-
+    
     // change nav and all element's text styles 
     navEl.css('background-color', 'var(--box-lght-clr)')
     for (i = 0; i < Els.length; i++) {
@@ -194,9 +196,7 @@ toggleThemeBtn.on('click', toggleTheme)
 Spoonacular API
 For every request to Spoonacular, the first query parameter has to be the API key
 Example url: 'https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3'
-
 Use the following query parameters
-
 sort=random - makes the foods returned random
 instructionsRequired=true - recipes must have instructions
 addRecipeInformation=true - if set to true, you get more information about the recipe returned
