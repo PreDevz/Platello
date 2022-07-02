@@ -430,12 +430,18 @@ let isUserNew = false
 let IsModalOpen = false
 let storedUserMeals = []
 let mealsState = []
+let storedUserExclude = []
+let excludeState
 
 // check if there is a users meal preference
 function restoreMealsData() {
 
   // get the stored meals the user prefers 
   let storedMeals = JSON.parse(localStorage.getItem('UserPreferredMeal'))
+
+  // get the stored exludes 
+  let storedExcludes = JSON.parse(localStorage.getItem('UserExcludes'))
+  console.log(storedExcludes)
 
   // if nothing is stored, then change new user variable to true 
   if (storedMeals === null) {
@@ -444,6 +450,13 @@ function restoreMealsData() {
   }
   else {
    storedUserMeals = storedMeals
+  }
+
+  // check the exludes to add to the dom 
+  if (storedExcludes === null) {
+    return 
+  } else {
+    $('#textareaRemove').text(storedExcludes)
   }
 }
 
@@ -474,7 +487,6 @@ document.addEventListener('DOMContentLoaded', function () {
       for (i = 0; i < allSelected.length; i++) {
          mealsState.push(allSelected[i])
         }
-      // console.log(mealsState)
       
       // add to storage
       setTimeout(() => {
@@ -486,17 +498,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // localStorage.clear()
-
-// seperate function to store the users referrences 
-function saveUserMealPref() {
-  
-    // save to localstorage
-  console.log(mealsState)
-  storedUserMeals = mealsState
-  localStorage.setItem('UserPreferredMeal', JSON.stringify(storedUserMeals))
-
-  console.log(storedUserMeals)
-}
 
 // Function to check if the user is new 
 function isTheUserNew() {
@@ -551,6 +552,11 @@ function foodModal() {
   // when clicked prevent default 
   $(modalBtn).on("click", function (e) {
 
+    // Get textarea value
+    let exclude = itemsToExclude()
+    // get the value empty or Not
+      saveUserMealPref()
+
     // adds slide effect then hides completely
     $(modal).addClass('slide-out')
     setTimeout(() => {
@@ -562,6 +568,29 @@ function foodModal() {
     }, 750)
   })
 }
+
+foodModal()
+itemsToExclude()
+function itemsToExclude() {
+  let excludeState = $('#textareaRemove').val().split(',')
+  storedUserExclude = excludeState
+
+  // return value back to food modal
+  return storedUserExclude
+}
+
+// seperate function to store the users referrences 
+function saveUserMealPref() {
+
+  // save user's input to exclude 
+  localStorage.setItem('UserExcludes', JSON.stringify(storedUserExclude))
+
+  // save user's selected cuisines 
+  storedUserMeals = mealsState
+  localStorage.setItem('UserPreferredMeal', JSON.stringify(storedUserMeals))
+}
+
+// Drinks 
 
 // the drink function will store the user's favorite drinks 
 function drinkModal() {
