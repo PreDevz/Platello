@@ -24,6 +24,7 @@ let Els = [spanEl, sub, divEl, liEl, dateEl]
 Els.push(headerEls)
 Els.push(iconsEl)
 let body = document.querySelector('body');
+let modalTitles = $('.modalText')
 // Togglers 
 let theme = 'dark';
 
@@ -55,6 +56,9 @@ function restoreStorage() {
     footer.css('color', 'var(--lght-clr)')
     preLogo.css('color', 'var(--logo-clr)')
 
+    // modal title
+    modalTitles.css('color', 'var(--lght-clr)')
+
     // if there is something in local storage
     // check what color the user pick for the theme
   } else {
@@ -80,6 +84,10 @@ function restoreStorage() {
       footer.css('background-color', 'var(--lght-clr)')
       footer.css('color', 'var(--drk-clr)')
       preLogo.css('color', 'var(--logo-clr)')
+
+      // modal title
+      modalTitles.css('color', 'var(--lght-clr)')
+
       theme = 'light'
     } else {
       // if there is something in local storage
@@ -102,6 +110,9 @@ function restoreStorage() {
       footer.css('background-color', 'var(--drk-clr)')
       footer.css('color', 'var(--lght-clr)')
       preLogo.css('color', 'var(--logo-clr)')
+
+      // modal title
+       modalTitles.css('color', 'var(--lght-clr)')
     }
   }
 }
@@ -136,6 +147,10 @@ function toggleTheme(e) {
     footer.css('background-color', 'var(--lght-clr)')
     footer.css('color', 'var(--drk-clr)')
     preLogo.css('color', 'var(--logo-clr)')
+
+    // modal title
+    modalTitles.css('color', 'var(--lght-clr)')
+    
     theme = 'light'
 
     // set the current theme value in localstorage 
@@ -163,6 +178,10 @@ function toggleTheme(e) {
     footer.css('background-color', 'var(--drk-clr)')
     footer.css('color', 'var(--lght-clr)')
     preLogo.css('color', 'var(--logo-clr)')
+
+    // modal title
+    modalTitles.css('color', 'var(--lght-clr)')
+    
     theme = 'dark'
 
     // set the current theme value in localstorage 
