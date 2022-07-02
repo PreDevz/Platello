@@ -425,7 +425,8 @@ function getSpoonApi() {
 
 // Modal Functionality
 
-let isUserNew = true
+// Modal variables 
+let isUserNew = false
 let IsModalOpen = false
 let storedUserMeals = []
 let mealsState = []
@@ -439,6 +440,7 @@ function restoreMealsData() {
   // if nothing is stored, then change new user variable to true 
   if (storedMeals === null) {
     isUserNew = true
+    isTheUserNew()
   }
   else {
    storedUserMeals = storedMeals
@@ -502,9 +504,9 @@ function isTheUserNew() {
   // if the user is new, call welcome function 
   if (isUserNew === true) {
     welcomeModal()
+    isUserNew = false
   }
 }
-// isTheUserNew()
 
 // functions for each modal
 
@@ -532,10 +534,6 @@ function welcomeModal() {
     }, 750)
   })
 }
-
-// Call on start 
-foodModal()
-
 
 // the Food modal function will get info from the user 
 function foodModal() {
