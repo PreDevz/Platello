@@ -27,12 +27,6 @@ let body = document.querySelector('body');
 // Togglers 
 let theme = 'dark';
 
-// Modals 
-let IsModalOpen = false
-// storing the user's meals they have selected 
-// let storedUserMeals = ['Chinese', 'Indian', 'Japanese', 'Korean', 'Middle Eastern', 'Thai', 'Vietnamese', 'American', 'Cajun', 'Mexican', 'Southern', 'British', 'French', 'German', 'Greek', 'Irish', 'Italian', 'Nordic', 'Eastern European', 'African', 'Caribbean', 'Jewish', 'Latin American', 'Mediterranean']
-let storedUserMeals = []
-
 // Check if there is something in localstorage 
 function restoreStorage() {
 
@@ -412,8 +406,10 @@ function getSpoonApi() {
 
 // Modal Functionality
 
-// testing variable 
 let isUserNew = true
+let IsModalOpen = false
+let storedUserMeals = []
+let mealsState = []
 
 // check if there is a users meal preference
 function restoreMealsData() {
@@ -425,7 +421,9 @@ function restoreMealsData() {
   if (storedMeals === null) {
     isUserNew = true
   }
-  console.log(storedMeals)
+  else {
+   storedUserMeals = storedMeals
+  }
 }
 
 // Call on start 
@@ -451,25 +449,32 @@ document.addEventListener('DOMContentLoaded', function () {
       // get the values 
       let allSelected = inst.getSelectedValues();
 
-      // loop to push each value into variable for localstorage 
+      // loop to push each value into variable for localstorage
       for (i = 0; i < allSelected.length; i++) {
-        storedUserMeals.push(allSelected[i])
-      }
+         mealsState.push(allSelected[i])
+        }
+      // console.log(mealsState)
       
       // add to storage
       setTimeout(() => {
         saveUserMealPref()
-      }, 200);
+      }, 100);
 
     });
     }
 });
 
+// localStorage.clear()
+
 // seperate function to store the users referrences 
 function saveUserMealPref() {
+  
+    // save to localstorage
+  console.log(mealsState)
+  storedUserMeals = mealsState
+  localStorage.setItem('UserPreferredMeal', JSON.stringify(storedUserMeals))
 
-    // save to localstorage 
-    localStorage.setItem('UserPreferredMeal', JSON.stringify(storedUserMeals))
+  console.log(storedUserMeals)
 }
 
 // Function to check if the user is new 
@@ -528,7 +533,6 @@ function foodModal() {
 
   // when clicked prevent default 
   $(modalBtn).on("click", function (e) {
-    e.preventDefault()
 
     // adds slide effect then hides completely
     $(modal).addClass('slide-out')
@@ -557,7 +561,6 @@ function drinkModal() {
 
   // when clicked prevent default 
   $(modalBtn).on("click", function (e) {
-    e.preventDefault()
 
     // adds slide effect then hides completely
     $(modal).addClass('slide-out')
@@ -570,6 +573,8 @@ function drinkModal() {
     }, 750)
   })
 }
+
+// localStorage.clear()
 
 // Function that will blur the background if a modal is active 
 function blurBackgroundIf() {
