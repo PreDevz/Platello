@@ -132,49 +132,31 @@ body .container .box h5 {
 }
 
 /* remove from fav list styles */
-.delete-fav {
-	position: absolute;
-	top: -23px;
-	right: -23px;
+
+.delete-fav-btn-container {
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: rgb(211, 79, 79);
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	border: 1px solid pink;
-	z-index: 2;
+	padding: 0.5rem;
+	margin: 1rem 0;
 }
 
-.delete-fav:hover {
-	background-color: rgb(221, 33, 33);
-	border: 1.4px solid white;
+.delete-fav-btn {
+	padding: 1rem;
+	background-color: rgb(224, 102, 102);
+	color: white;
+	border: 2px solid rgb(255, 60, 92);
+	border-radius: 25px;
+	font-size: 1rem;
+	transition: all 200ms ease-in;
+}
+
+.delete-fav-btn:hover {
+	background-color: red;
+	border: 2px solid rgb(255, 94, 0);
 	cursor: pointer;
 }
-
-.delete-fav p {
-	font-size: 1.8rem;
-	color: #fff;
-	transform: translateY(-2px);
-}
-
-/* .user-fav .card-container .card::after {
-	position: absolute;
-	text-align: center;
-	justify-content: center;
-	padding: 6.5px;
-
-	content: 'X';
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	border: 1px solid rgb(254, 254, 254);
-	background-color: rgba(255, 0, 0, 0.819);
-	top: -10px;
-	right: -10px;
-	z-index: 2;
-} */
 
 /* footer section  */
 
