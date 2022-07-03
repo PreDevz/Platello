@@ -63,7 +63,6 @@ body {
 	height: auto;
 	overflow-y: auto;
 	color: black;
-	align-self: flex-end;
 }
 .input-field {
 	background-color: rgba(255, 255, 255, 0.712);
@@ -95,7 +94,7 @@ body {
 }
 
 .dropdown-trigger {
-	text-align: center;
+	text-align: start;
 }
 
 .container-modal-btn {
@@ -688,30 +687,39 @@ footer .container {
 	}
 }
 
-/* animations  */
-@keyframes title {
-	0% {
-		font-size: 90%;
+@media screen and (max-width: 798px) {
+	.modal-Intro {
+		min-width: 200px;
+		max-height: 80vh;
+		overflow-y: auto;
 	}
-	25% {
-		font-size: 90%;
-	}
-	50% {
-		font-size: 85%;
-	}
-	75% {
-		font-size: 60%;
-	}
-	100% {
-		font-size: 20%;
+
+	.modal-drink {
+		min-width: 200px;
+		overflow: auto;
 	}
 }
 
+@media screen and (max-width: 590px) {
+	#date {
+		font-size: 20px;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	#date {
+		font-size: 15px;
+	}
+}
+
+/* animations  */
+
+/* class to toggle with that has animations  */
 .slide-out {
 	animation: slideLeft 1000ms;
 }
 .slide-down {
-	animation: slideDown 500ms;
+	animation: slideDown 875ms;
 }
 
 @keyframes slideLeft {
@@ -735,27 +743,20 @@ footer .container {
 	}
 }
 
-@media screen and (max-width: 798px) {
-	.modal-Intro {
-		min-width: 200px;
-		max-height: 80vh;
-		overflow-y: auto;
+@keyframes title {
+	0% {
+		font-size: 90%;
 	}
-
-	.modal-drink {
-		min-width: 200px;
-		overflow: auto;
+	25% {
+		font-size: 90%;
 	}
-}
-
-@media screen and (max-width: 590px) {
-	#date {
-		font-size: 20px;
+	50% {
+		font-size: 85%;
 	}
-}
-
-@media screen and (max-width: 400px) {
-	#date {
-		font-size: 15px;
+	75% {
+		font-size: 60%;
+	}
+	100% {
+		font-size: 20%;
 	}
 }

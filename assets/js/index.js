@@ -439,7 +439,7 @@ function restoreMealsData() {
 
   // get the stored exludes 
   let storedExcludes = JSON.parse(localStorage.getItem('UserExcludes'))
-  console.log(storedExcludes)
+  // console.log(storedExcludes)
 
   // if nothing is stored, then change new user variable to true 
   if (storedMeals === null) {
@@ -495,6 +495,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// testing function 
 // localStorage.clear()
 
 // Function to check if the user is new 
@@ -523,7 +524,6 @@ function welcomeModal() {
   let modalBtn = $(modal).children().children('button')
   // when clicked, it will add cool effect and call the food function 
   $(modalBtn).on("click", function (e) {
-    e.preventDefault()
 
     // adds slide effect then hides completely
     $(modal).addClass('slide-out')
@@ -567,8 +567,7 @@ function foodModal() {
   })
 }
 
-foodModal()
-itemsToExclude()
+// function to get excluded items 
 function itemsToExclude() {
   let excludeState = $('#textareaRemove').val().split(',')
   storedUserExclude = excludeState
@@ -576,6 +575,7 @@ function itemsToExclude() {
   // return value back to food modal
   return storedUserExclude
 }
+itemsToExclude()
 
 // seperate function to store the users referrences 
 function saveUserMealPref() {
@@ -618,8 +618,6 @@ function drinkModal() {
   })
 }
 
-// localStorage.clear()
-
 // Function that will blur the background if a modal is active 
 function blurBackgroundIf() {
 
@@ -629,7 +627,8 @@ function blurBackgroundIf() {
     $('#navbar').css('display', 'none')
     containerDiv.addClass('blur')
     headerEl.addClass('blur')
-    document.body.style.overflow = 'hidden'
+    // body.style.overflow = 'hidden'
+    $('html').css('overflow', 'hidden')
   } else {
 
     // if false, make navbar flex, remove blur on elements 
@@ -640,12 +639,13 @@ function blurBackgroundIf() {
     // after animation is done, then it will officially change the nav style to 0 on the y axis 
     setTimeout(() => {
       $('#navbar').css('transform', "translateY(0px)")
-    }, 500)
+    }, 875)
 
     // blur contents on page, and make body flow auto to scroll 
     containerDiv.removeClass('blur')
     headerEl.removeClass('blur')
-    document.body.style.overflow = 'auto'
+    // document.body.style.overflow = 'auto'
+    $('html').css('overflow-y', 'auto')
   }
 }
 
