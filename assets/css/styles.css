@@ -61,7 +61,7 @@ body .container .box h5 {
 	display: flex;
 	gap: 1rem;
 	justify-content: center;
-	margin: 2rem 0;
+	margin: 0.5rem 0 2rem 0;
 }
 
 .container .user-fav h2 {
@@ -72,6 +72,17 @@ body .container .box h5 {
 .dashboard .col {
 	padding: 0.8rem 0;
 }
+
+.change-pref-icon {
+	padding: 1rem 0 0 1rem;
+	font-size: 2.7rem;
+}
+
+.change-pref-icon:hover {
+	cursor: pointer;
+	color: var(--logo-clr) !important;
+}
+
 .card-container {
 	display: flex;
 	flex-wrap: wrap;
