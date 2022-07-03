@@ -11,6 +11,7 @@ header h1 {
 	font-size: 6rem;
 	letter-spacing: 3.5px;
 	transition: all 800ms ease;
+	margin-bottom: -30px;
 }
 header h1:hover {
 	color: var(--logo-clr) !important;
@@ -33,6 +34,10 @@ header p {
 	padding: 25px;
 }
 
+#platello-logo {
+	width: 50%;
+	/* filter: brightness(10) invert(1); */
+}
 main {
 	height: 100%;
 	width: 100%;
