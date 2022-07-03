@@ -138,6 +138,37 @@ form .labelRemove {
 	color: #111;
 }
 
+.drink-container {
+	position: relative;
+	width: 100%;
+	padding: 24px;
+	margin: 30px auto;
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.drink-container .input-box-wrapper {
+	position: relative;
+}
+
+.input-box-wrapper .drink-box {
+	position: relative;
+	display: flex;
+	align-items: center;
+	border: 3px solid black;
+	padding: 15px 10px;
+	border-radius: 5px;
+	background-color: rgba(46, 42, 42, 0.6);
+}
+
+.input-box-wrapper .drink-box span {
+	font-size: 1.5rem;
+}
+
+#user-drink-values {
+	font-size: 1.3rem;
+}
+
 /* The Modal  */
 
 .modal-Intro {
