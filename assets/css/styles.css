@@ -13,7 +13,7 @@ header h1 {
 	transition: all 800ms ease;
 }
 header h1:hover {
-	color: var(--logo-clr);
+	color: var(--logo-clr) !important;
 }
 header p {
 	font-family: 'Cormorant Garamond', serif;
@@ -205,7 +205,7 @@ footer li a {
 }
 
 footer li a:hover {
-	color: var(--logo-clr);
+	color: var(--logo-clr) !important;
 }
 
 footer h3 {
