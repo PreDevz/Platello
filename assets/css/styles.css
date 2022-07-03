@@ -472,19 +472,6 @@ footer .container {
 		align-items: center;
 	}
 
-	.delete-fav {
-		top: -19px;
-		right: -19px;
-		width: 40px;
-		height: 40px;
-	}
-
-	.delete-fav p {
-		font-size: 1.8rem;
-		color: #fff;
-		transform: translateY(-2px);
-	}
-
 	/* increase footer text  */
 	footer .logo {
 		font-size: 1.4rem;
