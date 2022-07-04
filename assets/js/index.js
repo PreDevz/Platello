@@ -254,16 +254,25 @@ function getFoodPreferences() {
   return modifiedMeals
 }
 
+//Retrieves user stored food exclusions from localStorage
 function getFoodExclusions() {
   let exclusions = JSON.parse(localStorage.getItem('UserExcludes'));
   console.log(exclusions);
 
-  if (exclusions != null) {
+  let modifiedExclusions = [];
 
-  } else {
-    localStorage.removeItem("UserExcludes")
-    document.location.reload(true)
-  }
+  //Iterates through saved exclusions and modifies them into workable strings for use in requestUrl
+  if (exclusions != null) {
+    for (i = 0; i < exclusions.length; i++) {
+      let modifiedExclusion = exclusions[i].toLowerCase().split(" ").join("+") + "%2C"
+      modifiedExclusions.push(modifiedExclusion)
+    }
+  } 
+
+  modifiedExclusions = modifiedExclusions.join("")
+  console.log(modifiedExclusions)
+
+  return modifiedExclusions
 }
 
 //requestUrl variables
@@ -279,9 +288,11 @@ const foodTypes = "type=main+course&";
 
 let cuisines = getFoodPreferences();
 console.log(cuisines)
+let exclusions = getFoodExclusions();
+console.log(exclusions)
 //testButton.addEventListener("click", getSpoonApi);
 
-let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?" + apiKey + sort + "cuisine=" + cuisines + "&" + numOfRecipes + instructionsRequired + addRecipeInfo + maxReadyTime + fillIngredients + foodTypes;
+let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?" + apiKey + sort + "cuisine=" + cuisines + "&excludeIngredients=" + exclusions + "&" + numOfRecipes + instructionsRequired + addRecipeInfo + maxReadyTime + fillIngredients + foodTypes;
 
 function getSpoonApi() {
   console.log(cuisines)
@@ -725,6 +736,6 @@ function checkState() {
 checkState()
 
 //If the user already has saved preferences, it'll load recipes
-if (localStorage.UserPreferredMeal != null) {
-  getSpoonApi()
-}
+// if (localStorage.UserPreferredMeal != null) {
+//   getSpoonApi()
+// }
