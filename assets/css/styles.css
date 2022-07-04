@@ -119,7 +119,7 @@ body {
 	padding: 0.2rem;
 	font-size: 2rem;
 	color: white;
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: var(--modal-bg-text);
 	border-radius: 8px;
 }
 
@@ -141,10 +141,9 @@ form .labelRemove {
 .drink-container {
 	position: relative;
 	width: 100%;
-	padding: 24px;
-	margin: 30px auto;
+	padding: 1rem;
+	margin: 1.5rem auto;
 	border-radius: 10px;
-	background-color: rgba(0, 0, 0, 0.6);
 }
 
 .drink-container .input-box-wrapper {
@@ -152,21 +151,23 @@ form .labelRemove {
 }
 
 .input-box-wrapper .drink-box {
-	position: relative;
 	display: flex;
 	align-items: center;
-	border: 3px solid black;
-	padding: 15px 10px;
-	border-radius: 5px;
-	background-color: rgba(46, 42, 42, 0.6);
+	padding: 1rem;
+	background-color: rgba(255, 255, 255, 0.712);
 }
 
 .input-box-wrapper .drink-box span {
-	font-size: 1.5rem;
+	font-size: 1.2rem;
+	color: black !important;
+	font-family: sans-serif;
+	margin-left: 0.5rem;
 }
 
 #user-drink-values {
-	font-size: 1.3rem;
+	background-color: var(--modal-bg-text);
+	font-size: 1.5rem;
+	margin-top: 1rem;
 }
 
 /* The Modal  */
@@ -207,10 +208,8 @@ form .labelRemove {
 .modal-drink {
 	z-index: 4;
 }
-/*  .modalIntro.open .content {
-	transform: scale(1);
-}*/
 
+/* each modal content  */
 .modalText {
 	color: white;
 	font-size: 4rem;
@@ -224,7 +223,7 @@ form .labelRemove {
 	font-size: 1.8rem;
 	font-weight: bolder;
 	text-align: center;
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: var(--modal-bg-text);
 }
 
 /* This is the next button styles  */

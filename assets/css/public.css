@@ -23,6 +23,9 @@
 	--lght-clr: rgb(255, 255, 255);
 	/* logo blue color  */
 	--logo-clr: rgb(0, 115, 255);
+
+	/* modal text expain background color  */
+	--modal-bg-text: rgba(0, 0, 0, 0.6);
 }
 
 /* reset browser padding/margin  */

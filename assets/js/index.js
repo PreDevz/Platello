@@ -588,8 +588,9 @@ function saveUserMealPref() {
   localStorage.setItem('UserPreferredMeal', JSON.stringify(storedUserMeals))
 }
 
-// Drinks 
+// Drinks
 
+drinkModal()
 // the drink function will store the user's favorite drinks 
 function drinkModal() {
 
