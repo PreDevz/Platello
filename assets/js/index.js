@@ -293,7 +293,19 @@ function getSpoonApi() {
 
 // fetching info from the API based on base ingredient.
 // Our website consists of 6 base ingredients users can select from: Gin, Rum, Tequila, Vodka, Whisky, and Wine
-function getDrink(baseIngredient) {
+
+let drinksArray = ["rum", "gin", "vodka", "tequila", "wine", "whisky"]
+
+
+function getDrink() {
+
+  let randomBase = Math.floor(Math.random() * drinksArray.length);
+  console.log(randomBase);
+
+
+  let baseIngredient = drinksArray[randomBase]
+  console.log(baseIngredient);
+
     fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + baseIngredient)
     .then(response => {
         return response.json()
@@ -312,16 +324,21 @@ function getDrink(baseIngredient) {
     for (i = 0; i < drinkCard.length; i++) {
       // console.log("id = " + i);
 
+
+    
     let drinkCardImage = drinkCard 
 
       // Adds drink image to card
-      const drinkImage = data.drinks[i + 1].strDrinkThumb
+      
+      let randomNum = Math.floor(Math.random() * data.drinks.length);
+      const drinkImage = data.drinks[randomNum].strDrinkThumb
       const currentDrinkImg = document.getElementsByClassName("drink-image");
       currentDrinkImg[i].src = drinkImage;
-      // console.log("id + 1 = " + i)
+      console.log(randomNum);
 
       // Adds drink title to card
-      const drinkTitle = data.drinks[i + 1].strDrink
+      
+      const drinkTitle = data.drinks[randomNum].strDrink
       const currentDrinkTitle = document.getElementsByClassName("drink-card-title");
       currentDrinkTitle[i].textContent = drinkTitle;
 
@@ -329,7 +346,7 @@ function getDrink(baseIngredient) {
     
 
       // // three randomized drinks the user will get based on base ingredient choices
-      let drinkId = data.drinks[i + 1].idDrink
+      let drinkId = data.drinks[i].idDrink
       // console.log(drinkId);
 
       // let id2 = data.drinks["2"].idDrink
@@ -346,12 +363,12 @@ function getDrink(baseIngredient) {
         return response.json()
       })
       .then((idData) => {
-        console.log(idData)
+        // console.log(idData)
 
         let cardIngredients = document.getElementsByClassName("card-ingredients");
         for(j = 0; j <= 2; j++) {
-          console.log(j)
-          console.log(cardIngredients[j])
+          // console.log(j)
+          // console.log(cardIngredients[j])
 
           // Loop through all 15 possible ingredients per cocktail in the API
           
@@ -401,10 +418,11 @@ function getDrink(baseIngredient) {
 
   }
 
+getDrink()
   
 
 
-getDrink("gin")
+// getDrink("gin")
 // getDrink("tequila")
 // getDrink("vodka")
 // getDrink("wine")
