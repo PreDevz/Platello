@@ -245,18 +245,11 @@ function getFoodPreferences() {
   if (meals != null) {
     for (i = 0; i < meals.length; i++) {
       let modifiedMeal = meals[i].toLowerCase().split(" ").join("+") + "%2C"
-      console.log(modifiedMeal)
-
       modifiedMeals.push(modifiedMeal)
     }
-  } else {
-    //if user somehow doesn't have any stored preferences in localStorage, will clear UserPreferredMeal and refresh page
-    localStorage.removeItem("UserPreferredMeal")
-    document.location.reload(true)
-  }
+  } 
 
   modifiedMeals = modifiedMeals.join("")
-  console.log(modifiedMeals)
 
   return modifiedMeals
 }
@@ -274,6 +267,7 @@ function getFoodExclusions() {
 }
 
 //requestUrl variables
+//Modify these however you like for testing purposes
 const apiKey = "apiKey=da1414212d52482cbe9aaf669cae5da3&";
 const sort = "sort=random&";
 const numOfRecipes = "number=3&";
@@ -281,12 +275,13 @@ const instructionsRequired = "instructionsRequired=true&";
 const addRecipeInfo = "addRecipeInformation=true&";
 const maxReadyTime = "maxReadyTime=60&";
 const fillIngredients = "fillIngredients=true&";
-const foodTypes = "type=main+course%2Cbreakfast&";
+const foodTypes = "type=main+course&";
 
 let cuisines = getFoodPreferences();
+console.log(cuisines)
 //testButton.addEventListener("click", getSpoonApi);
 
-let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?" + apiKey + sort + numOfRecipes + instructionsRequired + addRecipeInfo + maxReadyTime + fillIngredients + foodTypes + cuisines + "&";
+let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?" + apiKey + sort + "cuisine=" + cuisines + "&" + numOfRecipes + instructionsRequired + addRecipeInfo + maxReadyTime + fillIngredients + foodTypes;
 
 function getSpoonApi() {
   console.log(cuisines)
@@ -639,6 +634,10 @@ function drinkModal() {
       // calls blurbackground to check if modal is open 
       blurBackgroundIf()
     }, 750)
+
+    setTimeout(() => {
+      document.location.reload(true)
+    }, 750)
   })
 }
 
@@ -724,3 +723,8 @@ function checkState() {
 }
 
 checkState()
+
+//If the user already has saved preferences, it'll load recipes
+if (localStorage.UserPreferredMeal != null) {
+  getSpoonApi()
+}
