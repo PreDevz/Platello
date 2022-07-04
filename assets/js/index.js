@@ -234,32 +234,62 @@ cuisine=american+indian+asian+
 commas in URLs are written as '%2C'
 */
 
-const testButton = document.querySelector("#test-button");
-testButton.addEventListener("click", () => {
+//Retrieves user stored food preferences from localStorage
+function getFoodPreferences() {
+  let meals = JSON.parse(localStorage.getItem('UserPreferredMeal'));
+  console.log(meals);
 
-  //when screen is in light mode
-  logo.classList.remove('platello-logo');
-  logo.classList.add('light-logo');
+  let modifiedMeals = [];
 
-  //when screen is in dark mode
-  logo.classList.remove('light-logo');
-  logo.classList.add('platello-logo');
-});
+  //Iterates through saved preferences and modifies them into workable strings for use in requestUrl
+  if (meals != null) {
+    for (i = 0; i < meals.length; i++) {
+      let modifiedMeal = meals[i].toLowerCase().split(" ").join("+") + "%2C"
+      console.log(modifiedMeal)
 
-//testButton.addEventListener("click", getSpoonApi);
+      modifiedMeals.push(modifiedMeal)
+    }
+  } else {
+    //if user somehow doesn't have any stored preferences in localStorage, will clear UserPreferredMeal and refresh page
+    localStorage.removeItem("UserPreferredMeal")
+    document.location.reload(true)
+  }
 
-let userPreferences = {
-  asianFood: "",
-  americanFood: "",
-  europeanFood: "",
-  otherFood: "",
-  exclusions: "",
+  modifiedMeals = modifiedMeals.join("")
+  console.log(modifiedMeals)
+
+  return modifiedMeals
 }
 
+function getFoodExclusions() {
+  let exclusions = JSON.parse(localStorage.getItem('UserExcludes'));
+  console.log(exclusions);
 
-let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3&sort=random&number=3&instructionsRequired=true&addRecipeInformation=true&maxReadyTime=60&fillIngredients=true&type=main+course&cuisine=middle+eastern%2Camerican%2C"
+  if (exclusions != null) {
+
+  } else {
+    localStorage.removeItem("UserExcludes")
+    document.location.reload(true)
+  }
+}
+
+//requestUrl variables
+const apiKey = "apiKey=da1414212d52482cbe9aaf669cae5da3&";
+const sort = "sort=random&";
+const numOfRecipes = "number=3&";
+const instructionsRequired = "instructionsRequired=true&";
+const addRecipeInfo = "addRecipeInformation=true&";
+const maxReadyTime = "maxReadyTime=60&";
+const fillIngredients = "fillIngredients=true&";
+const foodTypes = "type=main+course%2Cbreakfast&";
+
+let cuisines = getFoodPreferences();
+//testButton.addEventListener("click", getSpoonApi);
+
+let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?" + apiKey + sort + numOfRecipes + instructionsRequired + addRecipeInfo + maxReadyTime + fillIngredients + foodTypes + cuisines + "&";
 
 function getSpoonApi() {
+  console.log(cuisines)
 
   fetch(requestUrl)
     .then(function(response) {
