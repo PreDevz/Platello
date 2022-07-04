@@ -1,11 +1,11 @@
-// Get Today's Date 
+// Get Today's Date
 let todayMoment = moment();
 
 let dateEl = $("#date")
 dateEl.text(todayMoment.format("dddd, MMM DD, YYYY"));
-// Toggle theme button 
+// Toggle theme button
 const toggleThemeBtn = $('#themeBtn')
-// Get all DOM elements to change with theme 
+// Get all DOM elements to change with theme
 let navEl = $('nav')
 let headerEl = $('header')
 let containerDiv = $('.container')
@@ -26,9 +26,15 @@ Els.push(iconsEl)
 let body = document.querySelector('body');
 let modalTitles = $('.modalText')
 // Togglers 
-let theme = 'dark';
 
 // Check if there is something in localstorage 
+const logo = document.querySelector("#platello-logo")
+// the current theme
+let theme = 'dark';
+
+const nav = document.getElementById('nav')
+
+// Check if there is something in localstorage
 function restoreStorage() {
 
   // Changing Theme 
@@ -39,11 +45,16 @@ function restoreStorage() {
   // if there is no theme, by default give the dark theme 
   if (themes === null) {
     navEl.css('background-color', 'var(--box-drk-clr)')
+    
+    //Changes logo color
+    logo.classList.remove('light-logo');
+    logo.classList.add('platello-logo');
+
     for (i = 0; i < Els.length; i++) {
       Els[i].css('color', 'var(--lght-clr)')
     }
 
-    // change boxes styles 
+    // change boxes styles
     for (i = 0; i < box.length; i++) {
       let eachBox = $(box[i])
       eachBox.css('background-color', "'var(--box-drk-clr)'")
@@ -51,7 +62,7 @@ function restoreStorage() {
     }
     CardXIcon.css('color', 'black')
 
-    // change footer styles 
+    // change footer styles
     footer.css('background-color', 'var(--drk-clr)')
     footer.css('color', 'var(--lght-clr)')
     preLogo.css('color', 'var(--logo-clr)')
@@ -66,21 +77,26 @@ function restoreStorage() {
     // if there is a theme and if it's light, change all elements to light 
     if (themes === 'light') {
       body.classList.toggle('light-background')
-      // change nav and all element's text styles 
+
+      //Changes logo color
+      logo.classList.remove('platello-logo');
+      logo.classList.add('light-logo');
+      
+      // change nav and all element's text styles
       navEl.css('background-color', 'var(--box-lght-clr)')
       for (i = 0; i < Els.length; i++) {
         Els[i].css('color', 'var(--drk-clr)')
       }
 
-      // change boxes styles 
+      // change boxes styles
       for (i = 0; i < box.length; i++) {
         let eachBox = $(box[i])
         eachBox.css('background-color', 'var(--box-lght-clr)')
         eachBox.css('border', '1px solid var(--box-lght-brder-clr)')
       }
-      selectedBox.css('background-color', 'var(--lght-selected)') 
+      selectedBox.css('background-color', 'var(--lght-selected)')
 
-      // change footer styles 
+      // change footer styles
       footer.css('background-color', 'var(--lght-clr)')
       footer.css('color', 'var(--drk-clr)')
       preLogo.css('color', 'var(--logo-clr)')
@@ -91,14 +107,18 @@ function restoreStorage() {
       theme = 'light'
     } else {
       // if there is something in local storage
-      // and the user left off on dark mode 
+      // and the user left off on dark mode
 
-      // change nav and all element's text styles 
+      //Changes logo color
+      logo.classList.remove('light-logo');
+      logo.classList.add('platello-logo');
+
+      // change nav and all element's text styles
       navEl.css('background-color', 'var(--box-drk-clr)')
       for (i = 0; i < Els.length; i++) {
         Els[i].css('color', 'var(--lght-clr)')
       }
-      // change boxes styles 
+      // change boxes styles
       for (i = 0; i < box.length; i++) {
         let eachBox = $(box[i])
         eachBox.css('background-color', "'var(--box-drk-clr)'")
@@ -106,7 +126,7 @@ function restoreStorage() {
       }
       CardXIcon.css('color', 'black')
 
-      // change footer styles 
+      // change footer styles
       footer.css('background-color', 'var(--drk-clr)')
       footer.css('color', 'var(--lght-clr)')
       preLogo.css('color', 'var(--logo-clr)')
@@ -120,30 +140,34 @@ function restoreStorage() {
 restoreStorage()
 // localStorage.clear()
 
-// Once button is clicked, toggle theme function will change theme 
+// Once button is clicked, toggle theme function will change theme
 function toggleTheme(e) {
   e.preventDefault()
   body.classList.toggle('light-background')
 
-  // WHEN user clicks toggle theme button 
-  // if the theme is dark switch to light 
+  // WHEN user clicks toggle theme button
+  // if the theme is dark switch to light
   if (theme === 'dark') {
-    
-    // change nav and all element's text styles 
+
+    //Changes logo color
+    logo.classList.remove('platello-logo');
+    logo.classList.add('light-logo');
+
+    // change nav and all element's text styles
     navEl.css('background-color', 'var(--box-lght-clr)')
     for (i = 0; i < Els.length; i++) {
       Els[i].css('color', 'var(--drk-clr)')
     }
 
-    // change boxes styles 
+    // change boxes styles
     for (i = 0; i < box.length; i++) {
       let eachBox = $(box[i])
       eachBox.css('background-color', 'var(--box-lght-clr)')
       eachBox.css('border', '1px solid var(--box-lght-brder-clr)')
     }
-    selectedBox.css('background-color', 'var(--lght-selected)') 
+    selectedBox.css('background-color', 'var(--lght-selected)')
 
-    // change footer styles 
+    // change footer styles
     footer.css('background-color', 'var(--lght-clr)')
     footer.css('color', 'var(--drk-clr)')
     preLogo.css('color', 'var(--logo-clr)')
@@ -153,28 +177,32 @@ function toggleTheme(e) {
     
     theme = 'light'
 
-    // set the current theme value in localstorage 
+    // set the current theme value in localstorage
     localStorage.setItem('theme', theme)
     // if the theme is light switch to dark
   } else {
 
-    // change nav and all element's text styles 
+    //Changes logo color
+    logo.classList.remove('light-logo');
+    logo.classList.add('platello-logo');
+
+    // change nav and all element's text styles
     navEl.css('background-color', 'var(--box-drk-clr)')
     headerEls.css('color', 'var(--lght-clr)')
     for (i = 0; i < Els.length; i++) {
       Els[i].css('color', 'var(--lght-clr)')
     }
 
-    // change boxes styles 
+    // change boxes styles
     for (i = 0; i < box.length; i++) {
       let eachBox = $(box[i])
       eachBox.css('background-color', 'var(--box-drk-clr)')
       eachBox.css('border', '1px solid var(--box-drk-brder-clr)')
     }
-    selectedBox.css('background-color', 'var(--drk-selected)') 
+    selectedBox.css('background-color', 'var(--drk-selected)')
     CardXIcon.css('color', 'black')
 
-    // change footer styles 
+    // change footer styles
     footer.css('background-color', 'var(--drk-clr)')
     footer.css('color', 'var(--lght-clr)')
     preLogo.css('color', 'var(--logo-clr)')
@@ -184,7 +212,7 @@ function toggleTheme(e) {
     
     theme = 'dark'
 
-    // set the current theme value in localstorage 
+    // set the current theme value in localstorage
     localStorage.setItem('theme', theme)
   }
 }
@@ -206,6 +234,16 @@ cuisine=american+indian+asian+
 */
 
 const testButton = document.querySelector("#test-button");
+testButton.addEventListener("click", () => {
+
+  //when screen is in light mode
+  logo.classList.remove('platello-logo');
+  logo.classList.add('light-logo');
+
+  //when screen is in dark mode
+  logo.classList.remove('light-logo');
+  logo.classList.add('platello-logo');
+});
 
 //testButton.addEventListener("click", getSpoonApi);
 
@@ -255,8 +293,8 @@ function getSpoonApi() {
       //Variables for generating full recipes below
       const selectRecipeButton1 = document.getElementById("confirm-food-1");
       const selectRecipeButton2 = document.getElementById("confirm-food-2");
-      const selectRecipeButton3 = document.getElementById("confirm-food-3"); 
-      
+      const selectRecipeButton3 = document.getElementById("confirm-food-3");
+
       const selectedTitle = document.querySelector(".selected-food-title");
       const selectedImg = document.querySelector(".selected-food-img");
       const selectedServings = document.querySelector("#selected-food-servings");
@@ -269,7 +307,7 @@ function getSpoonApi() {
 
         //Changes title
         selectedTitle.innerHTML = ApiData[recipeNum].title;
-        
+
         //Changes food img
         selectedImg.src = ApiData[recipeNum].image;
 
@@ -300,7 +338,7 @@ function getSpoonApi() {
       //Generates recipe steps at bottom of page
       function createRecipeSteps(recipeNum) {
         selectedStepList.replaceChildren();
-        
+
         for (let i = 0; i < ApiData[recipeNum].analyzedInstructions[0].steps.length; i++) {
 
           let selectedSteps = ApiData[recipeNum].analyzedInstructions[0].steps[i].step;
@@ -321,7 +359,7 @@ function getSpoonApi() {
         createRecipeSteps(0)
 
         createRecipeIngredients(0);
-        
+
       });
 
       //JS for 'View recipe' button in food card 2
@@ -365,60 +403,6 @@ function getSpoonApi() {
 //     })
 // }
 
-// getDrink("gin")
-// getDrink("tequila")
-// getDrink("vodka")
-// getDrink("wine")
-// getDrink("rum")
-// getDrink("whiskey")
-// getDrink("")
-
-
-
-
-
-
-//         getDrink("gin")
-//         getDrink("tequila")
-//         getDrink("vodka")
-//         getDrink("wine")
-//         getDrink("rum")
-//         getDrink("whiskey")
-//         getDrink("")
-        
-    
-
-// 3) radnomize 3 cocktails based on Selection
-// 4) allow user to select one of three
-// 5) allow user to favorite 1 Daily
-// 6) repeat randomizer for following day
-
-
-
-/* Removing the class 'open' from the modal and the class 'blur' from the container. */
-// $('.close').on('click', function () {
-//     $('.modal').removeClass('open');
-//     $('.container').removeClass('blur');
-// });
-
-
-
-/* once the document loads, it will check if the user has visited this page before, if not it will show the modal.
-   also make the modal not close when a user clicks outside of the box. when the user clicks the next button it
-   will go to the next modal.
-   */
-// $(document).ready(function () {
-//   /* Checking to see if the modal has been shown before. If it has not, it will show the modal. If it
-//   has, it will not show the modal. */
-//   if (localStorage.getItem('.modal-Intro') !== 'true') {
-//     $('.modal-Intro').modal('show')
-//     localStorage.setItem('modal-Intro', 'true')
-//   }
-
-//   /* Creating a modal that will not close when the user clicks outside of the modal or presses the escape
-//   key. */
-//   $('.modal-Intro').modal({ backdrop: 'static', keyboard: false })
-// })
 
 
 // Modal Functionality
