@@ -1,3 +1,14 @@
+/* the default scroll bar  */
+::-webkit-scrollbar {
+	width: 5px;
+}
+::-webkit-scrollbar-track {
+	background-color: rgb(43, 43, 43);
+}
+::-webkit-scrollbar-thumb {
+	background-color: var(--logo-clr);
+}
+
 header {
 	display: flex;
 	flex-direction: column;
@@ -5,7 +16,7 @@ header {
 	gap: 2rem;
 	align-items: center;
 	text-align: center;
-	padding: 3rem 0 0.5rem 0;
+	padding: 3rem 0 0 0;
 }
 header h1 {
 	font-size: 6rem;
@@ -181,16 +192,14 @@ form .labelRemove {
 	display: flex;
 	position: absolute;
 	height: auto;
-	/* z-index: 5; */
 	flex-direction: column;
-	top: 150px;
-	padding: 2.5rem 1.5rem;
+	justify-self: center;
+	top: 2%;
+	padding: 2.3rem 1.3rem;
 	gap: 0.5rem;
 	text-align: center;
-	min-width: 750px;
+	min-width: 700px;
 	max-width: 80%;
-	/* justify-content: center; */
-	/* align-items: center; */
 	border-radius: 20px;
 	border: 8px solid rgb(5, 3, 0);
 	box-shadow: inset 1px 1px 8px rgb(0, 0, 0);
@@ -199,6 +208,17 @@ form .labelRemove {
 	filter: blur(0px);
 	box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
 		rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+
+/* The Modal scroll bar  */
+.modal-Intro::-webkit-scrollbar {
+	width: 3px;
+}
+.modal-Intro::-webkit-scrollbar-track {
+	background-color: rgb(255, 225, 143);
+}
+.modal-Intro::-webkit-scrollbar-thumb {
+	background-color: rgb(88, 32, 0);
 }
 
 /* each modal  */
@@ -316,7 +336,7 @@ body .container .box h5 {
 
 .container .user-fav h2 {
 	margin: 3rem 0;
-	margin-top: 6rem;
+	margin-top: 5rem;
 	text-align: center;
 }
 .dashboard .col {
@@ -328,11 +348,7 @@ body .container .box h5 {
 	padding: 0.5rem;
 	justify-content: center;
 }
-/* drinks container scroll bar  */
-/* #drinks .card-container {
-	overflow-y: scroll;
-	max-height: 500px;
-} */
+
 #drinks .card-container::-webkit-scrollbar {
 	width: 5px;
 }
@@ -344,6 +360,7 @@ body .container .box h5 {
 }
 /* drinks cards and imgs  */
 .card-container .card .activator {
+	width: 100%;
 	min-height: 50%;
 	max-height: 215px;
 }
@@ -354,7 +371,7 @@ body .container .box h5 {
 	color: rgb(3, 0, 163);
 }
 .card-container .card {
-	min-width: 280px;
+	width: 80% !important;
 	max-width: 280px;
 	background-color: rgba(246, 247, 249, 0.943);
 	margin: 1rem;
@@ -364,17 +381,16 @@ body .container .box h5 {
 .user-fav {
 	padding-bottom: 5rem;
 }
+
 .user-fav .card-container {
 	display: flex;
 	flex-direction: row;
 }
-.user-fav .card {
-	min-width: 280px;
-	max-width: 280px;
-}
+
 .user-fav .card-container .card {
 	position: relative;
 }
+
 .user-fav .card-container .card::after {
 	position: absolute;
 	text-align: center;
@@ -391,6 +407,7 @@ body .container .box h5 {
 	right: -10px;
 	z-index: 2;
 }
+
 /* footer section  */
 
 footer {
@@ -488,7 +505,7 @@ footer .container {
 	padding: 1.5rem;
 }
 .selected img {
-	max-width: 490px;
+	max-width: 450px;
 	max-height: 310px;
 }
 .selected > p {
@@ -580,6 +597,7 @@ footer .container {
 
 	.card-container {
 		justify-content: space-evenly;
+		padding: 0;
 	}
 
 	/* footer section  */
@@ -602,6 +620,23 @@ footer .container {
 
 /* phones  */
 @media screen and (max-width: 500px) {
+	/* modals  */
+	.modal-Intro {
+		top: 1%;
+	}
+
+	.modalText {
+		font-size: 3rem;
+	}
+
+	.modalP {
+		font-size: 1.5rem;
+	}
+
+	.explainRemove {
+		font-size: 1.5rem;
+	}
+
 	/* mobile navbar  */
 	#navbar {
 		align-items: center;
@@ -651,9 +686,9 @@ footer .container {
 	}
 
 	.box {
-		max-width: 330px;
 		justify-content: center;
 		align-items: center;
+		width: 80%;
 	}
 
 	.dashboard .col {
@@ -667,6 +702,10 @@ footer .container {
 		justify-content: center;
 		align-items: center;
 		padding: 0;
+	}
+
+	.card {
+		width: 100% !important;
 	}
 
 	/* user selection box  */
@@ -743,6 +782,65 @@ footer .container {
 @media screen and (max-width: 400px) {
 	#date {
 		font-size: 15px;
+	}
+}
+
+/* galaxy version  */
+
+@media screen and (max-width: 280px) {
+	/* modals  */
+	.modalText {
+		font-size: 2rem;
+	}
+
+	.modalP {
+		font-size: 1rem;
+	}
+
+	.input .select-dropdown .dropdown-trigger {
+		font-size: 0.8rem;
+	}
+
+	.input-field label {
+		font-size: 1rem;
+	}
+
+	/* navbar style Galaxy version  */
+
+	#navbar .logo {
+		font-size: 1rem;
+	}
+
+	#date {
+		font-size: 1rem;
+	}
+
+	/* header section  */
+
+	header h1 {
+		font-size: 2.1rem;
+	}
+
+	#subTitle {
+		font-size: 1.1rem;
+	}
+
+	/* user selected section  */
+
+	.user-selected .box .col {
+		padding: 0.5rem;
+	}
+
+	.selected {
+		padding: 0.4rem;
+	}
+
+	.selected ul li {
+		font-size: 1rem;
+	}
+
+	.selected ol li {
+		font-size: 1rem;
 	}
 }
 
