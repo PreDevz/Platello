@@ -16,6 +16,7 @@ header h1 {
 header h1:hover {
 	color: var(--logo-clr) !important;
 }
+
 header p {
 	font-family: 'Cormorant Garamond', serif;
 	color: var(--lght-clr);
@@ -35,9 +36,20 @@ header p {
 }
 
 #platello-logo {
-	width: 50%;
-	/* filter: brightness(10) invert(1); */
+	width: 500px;
 }
+
+.platello-logo {
+	filter: brightness(10) invert(1); 
+	transition: 400ms;
+}
+
+
+.light-logo {
+	filter: brightness(0) invert(0);
+	transition: 400ms;
+}
+
 main {
 	height: 100%;
 	width: 100%;
