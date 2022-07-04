@@ -153,13 +153,17 @@ form .labelRemove {
 .input-box-wrapper .drink-box {
 	display: flex;
 	align-items: center;
-	padding: 1rem;
+	padding: 0.4rem;
 	background-color: rgba(255, 255, 255, 0.712);
+}
+
+.input-box-wrapper .drink-box:hover {
+	background-color: rgba(255, 255, 255, 0.822);
 }
 
 .input-box-wrapper .drink-box span {
 	font-size: 1.2rem;
-	color: black !important;
+	color: rgb(0, 0, 0) !important;
 	font-family: sans-serif;
 	margin-left: 0.5rem;
 }
