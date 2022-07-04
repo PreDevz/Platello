@@ -11,10 +11,12 @@ header h1 {
 	font-size: 6rem;
 	letter-spacing: 3.5px;
 	transition: all 800ms ease;
+	margin-bottom: -30px;
 }
 header h1:hover {
-	color: var(--logo-clr);
+	color: var(--logo-clr) !important;
 }
+
 header p {
 	font-family: 'Cormorant Garamond', serif;
 	color: var(--lght-clr);
@@ -31,6 +33,21 @@ header p {
 
 #sun {
 	padding: 25px;
+}
+
+#platello-logo {
+	width: 500px;
+}
+
+.platello-logo {
+	filter: brightness(10) invert(1); 
+	transition: 400ms;
+}
+
+
+.light-logo {
+	filter: brightness(0) invert(0);
+	transition: 400ms;
 }
 
 main {
@@ -170,7 +187,7 @@ footer li a {
 }
 
 footer li a:hover {
-	color: var(--logo-clr);
+	color: var(--logo-clr) !important;
 }
 
 footer h3 {
