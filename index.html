@@ -34,10 +34,222 @@
 		</nav>
 
 		<header>
-			<h1>Platello</h1>
+			<h1>
+				<img
+					src="./assets/images/logo/platello-logo.png"
+					id="platello-logo"
+					alt="Platello logo"
+				/>
+			</h1>
 			<p id="subTitle">Cheers to a new dish! 🥂</p>
 			<button id="test-button">Test Button</button>
 		</header>
+
+		<div class="modal-container">
+			<!-- welcome modal  -->
+
+			<div class="modal-Intro modal-welcome hidden">
+				<h2 class="modalText">Welcome to Platello!</h2>
+				<p class="modalP">
+					New foods and drinks are just a couple clicks away! <br />
+					Everyday you will be shown 3 new meals, and 3 new drinks. Be sure to
+					Favorite what you like so we can save it for you later!
+				</p>
+				<div class="container-modal-btn">
+					<button class="next">Next</button>
+				</div>
+			</div>
+
+			<!-- food modal  -->
+
+			<div class="modal-Intro modal-food hidden">
+				<h2 class="modalText">Customize Desired Cuisines</h2>
+				<p class="modalP">
+					Click to remove/add on the cuisines for what you want to be presented.
+				</p>
+				<div class="container-choices">
+					<div class="row">
+						<div class="col s12 m6">
+							<div class="input-field">
+								<select class="asian-cuisines" multiple>
+									<option data-dish="chinese+" selected>Chinese</option>
+									<option data-dish="indian+" selected>Indian</option>
+									<option data-dish="japanese+" selected>Japanese</option>
+									<option data-dish="korean+" selected>Korean</option>
+									<option data-dish="thai+" selected>Thai</option>
+									<option data-dish="vietnamese+" selected>Vietnamese</option>
+									<option data-dish="middle+eastern+" selected>
+										Middle Eastern
+									</option>
+								</select>
+								<label>Asian</label>
+							</div>
+						</div>
+						<div class="col s12 m6">
+							<div class="input-field">
+								<select class="europe-cuisines" multiple>
+									<option data-dish="british+" selected>British</option>
+									<option data-dish="french+" selected>French</option>
+									<option data-dish="german+" selected>German</option>
+									<option data-dish="greek+" selected>Greek</option>
+									<option data-dish="irish+" selected>Irish</option>
+									<option data-dish="italian+" selected>Italian</option>
+									<option data-dish="nordic+" selected>Nordic</option>
+									<option class="ee" data-dish="eastern+european+" selected>
+										Eastern European
+									</option>
+								</select>
+								<label>European</label>
+							</div>
+						</div>
+						<div class="col s12 m6">
+							<div class="input-field">
+								<select class="north-america" multiple>
+									<option data-dish="american+" selected>American</option>
+									<option data-dish="cajun+" selected>Cajun</option>
+									<option data-dish="mexican+" selected>Mexican</option>
+									<option data-dish="southern+" selected>Southern</option>
+								</select>
+								<label>North America</label>
+							</div>
+						</div>
+						<div class="col s12 m6">
+							<div class="input-field">
+								<select class="more-option" multiple>
+									<option data-dish="african+" selected>African</option>
+									<option data-dish="caribbean+" selected>Caribbean</option>
+									<option data-dish="jewish+" selected>Jewish</option>
+									<option data-dish="" selected>Latin American</option>
+									<option data-dish="mediterranean" selected>
+										Mediterranean
+									</option>
+								</select>
+								<label>More Options</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- form to remove user's dislikes on meals  -->
+				<form class="col s12" id="formRemove">
+					<label class="explainRemove"
+						>List all the items you don't want in your meal, seperate each item
+						with a comma. "<strong>,</strong>"
+					</label>
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea
+								id="textareaRemove"
+								class="materialize-textarea"
+								placeholder="eggs, peanuts, milk"
+							></textarea>
+						</div>
+					</div>
+				</form>
+				<div class="container-modal-btn">
+					<button id="foodSave" class="next">Save</button>
+				</div>
+			</div>
+
+			<!-- drinks modal  -->
+
+			<div class="modal-Intro modal-drink hidden">
+				<h2 class="modalText">Drinks</h2>
+				<p class="modalP">
+					Pick a base ingredient for your drink, <br />
+					unselect the ones that don't suit your taste
+				</p>
+				<div class="drink-container">
+					<div class="row input-box-wrapper">
+						<div class="col s12 m6 l6">
+							<div class="drink-box">
+								<label for="gin">
+									<input
+										type="checkbox"
+										value="gin"
+										class="checkbox"
+										id="gin"
+									/>
+									<span>Gin</span>
+								</label>
+							</div>
+						</div>
+						<div class="col s12 m6 l6">
+							<div class="drink-box">
+								<label for="rum">
+									<input
+										type="checkbox"
+										value="rum"
+										class="checkbox"
+										id="rum"
+									/>
+									<span>Rum</span>
+								</label>
+							</div>
+						</div>
+						<div class="col s12 m6 l6">
+							<div class="drink-box">
+								<label for="tequila">
+									<input
+										type="checkbox"
+										value="tequila"
+										class="checkbox"
+										id="tequila"
+									/>
+									<span>Tequila</span>
+								</label>
+							</div>
+						</div>
+						<div class="col s12 m6 l6">
+							<div class="drink-box">
+								<label for="vodka">
+									<input
+										type="checkbox"
+										value="vodka"
+										class="checkbox"
+										id="vodka"
+									/>
+									<span>Vodka</span>
+								</label>
+							</div>
+						</div>
+						<div class="col s12 m6 l6">
+							<div class="drink-box">
+								<label for="whisky">
+									<input
+										type="checkbox"
+										value="whisky"
+										class="checkbox"
+										id="whisky"
+									/>
+									<span>Whisky</span>
+								</label>
+							</div>
+						</div>
+						<div class="col s12 m6 l6">
+							<div class="drink-box">
+								<label for="wine">
+									<input
+										type="checkbox"
+										value="wine"
+										class="checkbox"
+										id="wine"
+									/>
+									<span>Wine</span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="user-drink-choices">
+						<p id="user-drink-values">You have selected:</p>
+					</div>
+				</div>
+				<div class="container-modal-btn">
+					<button class="next">Next</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Full Main Section  -->
 
 		<main>
 			<div class="container">
@@ -425,8 +637,8 @@
 				<div class="logo"><span class="logo-pre">Pre</span>Devz</div>
 				<ul>
 					<li>
-						<a target="_blank" href="https://github.com/TDGNate"
-							>Christian McIlvenny</a
+						<a target="_blank" href="https://www.instagram.com/imnzte/"
+							>Christian Nate McIlvenny</a
 						>
 					</li>
 					<li>
