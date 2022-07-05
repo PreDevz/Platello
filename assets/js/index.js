@@ -224,13 +224,6 @@ toggleThemeBtn.on('click', toggleTheme)
 Spoonacular API
 For every request to Spoonacular, the first query parameter has to be the API key
 Example url: 'https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3'
-Use the following query parameters
-sort=random - makes the foods returned random
-instructionsRequired=true - recipes must have instructions
-addRecipeInformation=true - if set to true, you get more information about the recipe returned
-maxReadyTime=30 - the maximum time in minutes it should take to prepare and cook a recipe
-excludeIngredients - A comma-separated list of ingredients that the recipes must not contain
-cuisine=american+indian+asian+
 commas in URLs are written as '%2C'
 */
 
@@ -753,8 +746,3 @@ function checkState() {
 }
 
 checkState()
-
-//If the user already has saved preferences, it'll load recipes
-// if (localStorage.UserPreferredMeal != null) {
-//   getSpoonApi()
-// }
