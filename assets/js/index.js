@@ -57,8 +57,8 @@ function restoreStorage() {
     // change boxes styles
     for (i = 0; i < box.length; i++) {
       let eachBox = $(box[i])
-      eachBox.css('background-color', "'var(--box-drk-clr)'")
-      eachBox.css('border', 'var(--box-drk-brder-clr)')
+      eachBox.css('background-color', 'var(--box-drk-clr)')
+      eachBox.css('border', 'solid 2px var(--box-drk-brder-clr)')
     }
     CardXIcon.css('color', 'black')
 
@@ -92,7 +92,7 @@ function restoreStorage() {
       for (i = 0; i < box.length; i++) {
         let eachBox = $(box[i])
         eachBox.css('background-color', 'var(--box-lght-clr)')
-        eachBox.css('border', '1px solid var(--box-lght-brder-clr)')
+        eachBox.css('border', '2px solid var(--box-lght-brder-clr)')
       }
       selectedBox.css('background-color', 'var(--lght-selected)')
 
@@ -122,7 +122,7 @@ function restoreStorage() {
       for (i = 0; i < box.length; i++) {
         let eachBox = $(box[i])
         eachBox.css('background-color', "'var(--box-drk-clr)'")
-        eachBox.css('border', 'var(--box-drk-brder-clr)')
+        eachBox.css('border', 'solid 2px var(--box-drk-brder-clr)')
       }
       CardXIcon.css('color', 'black')
 
@@ -163,7 +163,7 @@ function toggleTheme(e) {
     for (i = 0; i < box.length; i++) {
       let eachBox = $(box[i])
       eachBox.css('background-color', 'var(--box-lght-clr)')
-      eachBox.css('border', '1px solid var(--box-lght-brder-clr)')
+      eachBox.css('border', '2px solid var(--box-lght-brder-clr)')
     }
     selectedBox.css('background-color', 'var(--lght-selected)')
 
@@ -197,7 +197,7 @@ function toggleTheme(e) {
     for (i = 0; i < box.length; i++) {
       let eachBox = $(box[i])
       eachBox.css('background-color', 'var(--box-drk-clr)')
-      eachBox.css('border', '1px solid var(--box-drk-brder-clr)')
+      eachBox.css('border', 'solid 2px var(--box-drk-brder-clr)')
     }
     selectedBox.css('background-color', 'var(--drk-selected)')
     CardXIcon.css('color', 'black')
@@ -408,12 +408,12 @@ function getSpoonApi() {
 // Modal Functionality
 
 // Modal variables 
-let isUserNew = false
-let IsModalOpen = false
-let storedUserMeals = []
-let mealsState = []
-let storedUserExclude = []
-let excludeState
+let isUserNew = false;
+let IsModalOpen = false;
+let excludeState;
+let mealsState = [];
+let storedUserMeals = [];
+let storedUserExclude = [];
 
 // check if there is a users meal preference
 function restoreMealsData() {
@@ -423,7 +423,6 @@ function restoreMealsData() {
 
   // get the stored exludes 
   let storedExcludes = JSON.parse(localStorage.getItem('UserExcludes'))
-  // console.log(storedExcludes)
 
   // if nothing is stored, then change new user variable to true 
   if (storedMeals === null) {
@@ -478,9 +477,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     }
 });
-
-// testing function 
-// localStorage.clear()
 
 // Function to check if the user is new 
 function isTheUserNew() {
@@ -553,13 +549,14 @@ function foodModal() {
 
 // function to get excluded items 
 function itemsToExclude() {
+
+  // getting the user's value, then converting into array after every comma 
   let excludeState = $('#textareaRemove').val().split(',')
   storedUserExclude = excludeState
 
   // return value back to food modal
   return storedUserExclude
 }
-itemsToExclude()
 
 // seperate function to store the users referrences 
 function saveUserMealPref() {
@@ -572,9 +569,8 @@ function saveUserMealPref() {
   localStorage.setItem('UserPreferredMeal', JSON.stringify(storedUserMeals))
 }
 
-// Drinks 
+// Drinks
 
-// the drink function will store the user's favorite drinks 
 function drinkModal() {
 
   // get food drinks element 
@@ -602,21 +598,65 @@ function drinkModal() {
   })
 }
 
+// global drink variables 
+var userDrinks = document.getElementById('user-drink-values');
+var checkboxes = document.querySelectorAll('.checkbox');
+var text = 'You have selected: ';
+var drinksArray = [];
+
+// This checks if the checkboxes are checked or not and add/remove from the array
+function checkDrinksState() {
+
+  /* Creating a loop that will run through all the checkboxes and add an event listener to each one. */
+  for (var checkbox of checkboxes) {
+    checkbox.addEventListener('click', function () {
+
+      /* Checking if the checkbox is checked. */
+      if (this.checked == true) {
+        
+        /* Pushing the value of the input field into the drinksArray. */
+        drinksArray.push(this.value);
+        
+        /* Joining the array with a / in between each element. */
+        userDrinks.textContent = text + drinksArray.join(', ');
+      } else {
+        
+        /* Using the filter() method creates a new array with all elements that pass,
+        filtering out the value of the checks that was clicked. */
+        drinksArray = drinksArray.filter(e => e !== this.value);
+        
+        /* Joining the array with a / in between each element. */
+        userDrinks.innerHTML = text + drinksArray.join(', ');
+      }
+
+      /* Storing the drinksArray in local storage. */
+      localStorage.setItem('drinksArray', JSON.stringify(drinksArray));
+      var storedDrinks = JSON.parse(localStorage.getItem('drinksArray'));
+    })
+  }
+}
+
+// call on start 
+checkDrinksState()
+
 // Function that will blur the background if a modal is active 
 function blurBackgroundIf() {
 
   // check if the a modal is open 
   if (IsModalOpen === true) {
-    // if true, remove navbar, add blur to container and header section 
+
+    // if true, remove navbar, add blur to container and header section
     $('#navbar').css('display', 'none')
     containerDiv.addClass('blur')
     headerEl.addClass('blur')
-    // body.style.overflow = 'hidden'
+
+    // make html overflow hidden for no scroll 
     $('html').css('overflow', 'hidden')
   } else {
 
-    // if false, make navbar flex, remove blur on elements 
+    // if false, make navbar flex, remove blur on elements
     // slide down the navbar 
+    
     $('#navbar').css('display', 'flex')
     $('#navbar').addClass('slide-down')
 
@@ -628,7 +668,8 @@ function blurBackgroundIf() {
     // blur contents on page, and make body flow auto to scroll 
     containerDiv.removeClass('blur')
     headerEl.removeClass('blur')
-    // document.body.style.overflow = 'auto'
+
+    // make html overflow hidden for no scroll 
     $('html').css('overflow-y', 'auto')
   }
 }

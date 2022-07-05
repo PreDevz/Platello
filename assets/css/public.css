@@ -6,11 +6,11 @@
 /* Root to store all variables  */
 :root {
 	/* Dark Box  */
-	--box-drk-clr: rgba(37, 37, 37, 0.737);
-	--box-drk-brder-clr: (solid 2px black);
+	--box-drk-clr: rgba(37, 37, 37, 0.737) !important;
+	--box-drk-brder-clr: rgb(97, 97, 97) !important;
 	/* light Box  */
-	--box-lght-clr: rgba(184, 184, 184, 0.775);
-	--box-lght-brder-clr: rgb(110, 110, 110);
+	--box-lght-clr: rgba(184, 184, 184, 0.775) !important;
+	--box-lght-brder-clr: rgb(110, 110, 110) !important;
 	/* selected boxes */
 	--drk-selected: rgba(0, 0, 0, 0.479);
 	--lght-selected: rgba(255, 255, 255, 0.7);
@@ -23,6 +23,9 @@
 	--lght-clr: rgb(255, 255, 255);
 	/* logo blue color  */
 	--logo-clr: rgb(0, 115, 255);
+
+	/* modal text expain background color  */
+	--modal-bg-text: rgba(0, 0, 0, 0.6);
 }
 
 /* reset browser padding/margin  */
@@ -118,7 +121,7 @@ img {
 }
 .logo {
 	font-weight: bold;
-	font-size: 150%;
+	font-size: 1.8rem;
 	font-family: 'Cormorant Garamond', serif;
 }
 
@@ -142,21 +145,20 @@ ul {
 	background-color: transparent;
 }
 .material-icons {
-	font-size: 2rem;
+	font-size: 2.3rem;
 	height: 100%;
 }
 
 /* dasboard boxes  */
 .box {
 	background-color: var(--box-drk-clr);
-	border: solid 2px black;
+	border: solid 2px var(--box-drk-brder-clr);
 	border-radius: 8px;
-	/* max-height: 365px; */
 	min-height: 400px;
-	/* min-width: 150px; */
+	width: auto;
 	max-width: 100%;
 	color: var(--lght-clr);
-	padding: 0.8rem;
+	padding: 0.4rem;
 	transition: all 200ms ease-out;
 }
 .box h5 {
