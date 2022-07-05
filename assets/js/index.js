@@ -365,6 +365,8 @@ function generateFoodInfo() {
   const selectedStepList = document.querySelector("#selected-food-steps");
   const selectedIngredientList = document.querySelector(".ingr");
 
+  const userSelectedArea = document.querySelector("#user-selected")
+
   //Generates generic recipe info at bottom of page
   function createRecipeInfo(recipeNum) {
 
@@ -417,6 +419,8 @@ function generateFoodInfo() {
   selectRecipeButton1.addEventListener("click", () => {
     console.log("Recipe 1 has been printed");
 
+    userSelectedArea.style.display = 'flex'
+
     createRecipeInfo(0);
 
     createRecipeSteps(0)
@@ -429,6 +433,8 @@ function generateFoodInfo() {
   selectRecipeButton2.addEventListener("click", () => {
     console.log("Recipe 2 has been printed");
 
+    userSelectedArea.style.display = 'flex'
+
     createRecipeInfo(1);
 
     createRecipeSteps(1)
@@ -440,6 +446,8 @@ function generateFoodInfo() {
   //JS for 'View recipe' button in food card 3
   selectRecipeButton3.addEventListener("click", () => {
     console.log("Recipe 3 has been printed");
+
+    userSelectedArea.style.display = 'flex'
 
     createRecipeInfo(2);
 
