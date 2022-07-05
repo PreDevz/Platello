@@ -348,7 +348,7 @@ body .container .box h5 {
 	display: flex;
 	gap: 1rem;
 	justify-content: center;
-	margin: 2rem 0;
+	margin: 0.5rem 0 2rem 0;
 }
 
 .container .user-fav h2 {
@@ -359,6 +359,17 @@ body .container .box h5 {
 .dashboard .col {
 	padding: 0.8rem 0;
 }
+
+.change-pref-icon {
+	padding: 1rem 0 0 1rem;
+	font-size: 2.7rem;
+}
+
+.change-pref-icon:hover {
+	cursor: pointer;
+	color: var(--logo-clr) !important;
+}
+
 .card-container {
 	display: flex;
 	flex-wrap: wrap;
@@ -585,6 +596,10 @@ footer .container {
 	display: none;
 }
 
+.pushModalDown {
+	margin-top: 85%;
+}
+
 /* Few media queries  */
 
 /* tablets  */
@@ -667,6 +682,10 @@ footer .container {
 	footer .container {
 		margin-bottom: 3rem;
 	}
+
+	.pushModalDown {
+		margin-top: 220%;
+	}
 }
 
 /* phones  */
@@ -709,6 +728,7 @@ footer .container {
 		font-size: 1.2rem;
 		flex-wrap: wrap;
 		line-height: 5rem;
+		margin-top: -0.4rem;
 	}
 
 	#sun {
@@ -751,6 +771,12 @@ footer .container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+
+	#changeFoodPreference,
+	#changeDrinkPreference {
+		padding: 0.3rem 0;
+		font-size: 2.3rem;
 	}
 
 	.card-container {
@@ -842,7 +868,6 @@ footer .container {
 }
 
 /* galaxy version  */
-
 @media screen and (max-width: 280px) {
 	/* modals  */
 	.modalText {
@@ -869,6 +894,7 @@ footer .container {
 
 	#date {
 		font-size: 1rem;
+		margin-top: -0.3rem;
 	}
 
 	/* header section  */
@@ -879,6 +905,22 @@ footer .container {
 
 	#subTitle {
 		font-size: 1.1rem;
+	}
+
+	/* drink/food section  */
+	#changeFoodPreference,
+	#changeDrinkPreference {
+		padding: 0.4rem 0;
+	}
+
+	#foods h5,
+	#drinks h5 {
+		font-size: 2rem;
+	}
+
+	#foods i,
+	#drinks i {
+		font-size: 1.8rem;
 	}
 
 	/* user selected section  */
@@ -896,6 +938,15 @@ footer .container {
 	}
 
 	.selected ol li {
+		font-size: 1rem;
+	}
+
+	.pushModalDown {
+		margin-top: 320%;
+	}
+
+	.delete-fav-btn {
+		padding: 0.4rem;
 		font-size: 1rem;
 	}
 }
