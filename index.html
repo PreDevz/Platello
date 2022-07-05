@@ -159,66 +159,88 @@
 					unselect the ones that don't suit your taste
 				</p>
 				<div class="drink-container">
-					<div class="input-box-wrapper">
-						<div class="drink-box">
-							<label for="gin">
-								<input type="checkbox" value="gin" class="checkbox" id="gin" />
-								<span>Gin</span>
-							</label>
+					<div class="row input-box-wrapper">
+						<div class="col s12 m6 l6">
+							<div class="drink-box">
+								<label for="gin">
+									<input
+										type="checkbox"
+										value="gin"
+										class="checkbox"
+										id="gin"
+									/>
+									<span>Gin</span>
+								</label>
+							</div>
 						</div>
-						<div class="drink-box">
-							<label for="rum">
-								<input type="checkbox" value="rum" class="checkbox" id="rum" />
-								<span>Rum</span>
-							</label>
+						<div class="col s12 m6 l6">
+							<div class="drink-box">
+								<label for="rum">
+									<input
+										type="checkbox"
+										value="rum"
+										class="checkbox"
+										id="rum"
+									/>
+									<span>Rum</span>
+								</label>
+							</div>
 						</div>
-						<div class="drink-box">
-							<label for="tequila">
-								<input
-									type="checkbox"
-									value="tequila"
-									class="checkbox"
-									id="tequila"
-								/>
-								<span>Tequila</span>
-							</label>
+						<div class="col s12 m6 l6">
+							<div class="drink-box">
+								<label for="tequila">
+									<input
+										type="checkbox"
+										value="tequila"
+										class="checkbox"
+										id="tequila"
+									/>
+									<span>Tequila</span>
+								</label>
+							</div>
 						</div>
-						<div class="drink-box">
-							<label for="vodka">
-								<input
-									type="checkbox"
-									value="vodka"
-									class="checkbox"
-									id="vodka"
-								/>
-								<span>Vodka</span>
-							</label>
+						<div class="col s12 m6 l6">
+							<div class="drink-box">
+								<label for="vodka">
+									<input
+										type="checkbox"
+										value="vodka"
+										class="checkbox"
+										id="vodka"
+									/>
+									<span>Vodka</span>
+								</label>
+							</div>
 						</div>
-						<div class="drink-box">
-							<label for="whisky">
-								<input
-									type="checkbox"
-									value="whisky"
-									class="checkbox"
-									id="whisky"
-								/>
-								<span>Whisky</span>
-							</label>
+						<div class="col s12 m6 l6">
+							<div class="drink-box">
+								<label for="whisky">
+									<input
+										type="checkbox"
+										value="whisky"
+										class="checkbox"
+										id="whisky"
+									/>
+									<span>Whisky</span>
+								</label>
+							</div>
 						</div>
-						<div class="drink-box">
-							<label for="wine">
-								<input
-									type="checkbox"
-									value="wine"
-									class="checkbox"
-									id="wine"
-								/>
-								<span>Wine</span>
-							</label>
+						<div class="col s12 m6 l6">
+							<div class="drink-box">
+								<label for="wine">
+									<input
+										type="checkbox"
+										value="wine"
+										class="checkbox"
+										id="wine"
+									/>
+									<span>Wine</span>
+								</label>
+							</div>
 						</div>
 					</div>
 					<div class="user-drink-choices">
-						<p id="user-drink-values"></p>
+						<p id="user-drink-values">You have selected:</p>
 					</div>
 				</div>
 				<div class="container-modal-btn">
@@ -258,9 +280,11 @@
 										<div class="card-content">
 											<span
 												class="card-title activator grey-text text-darken-4 food-card-title"
-												>Card Title<i class="material-icons right"
-													>more_vert</i
-												></span
+											>
+												<div class="progress blue lighten-5">
+													<div class="indeterminate blue"></div>
+												</div>
+												<i class="material-icons right">more_vert</i></span
 											>
 											<p class="prep-time">Prep time:</p>
 										</div>
@@ -292,10 +316,12 @@
 										<div class="card-content">
 											<span
 												class="card-title activator grey-text text-darken-4 food-card-title"
-												>Card Title<i class="material-icons right"
-													>more_vert</i
-												></span
 											>
+												<div class="progress blue lighten-5">
+													<div class="indeterminate blue"></div>
+												</div>
+												<i class="material-icons right">more_vert</i>
+											</span>
 											<p class="prep-time">Prep time:</p>
 										</div>
 										<div class="card-reveal">
@@ -326,9 +352,11 @@
 										<div class="card-content">
 											<span
 												class="card-title activator grey-text text-darken-4 food-card-title"
-												>Card Title<i class="material-icons right"
-													>more_vert</i
-												></span
+											>
+												<div class="progress blue lighten-5">
+													<div class="indeterminate blue"></div>
+												</div>
+												<i class="material-icons right">more_vert</i></span
 											>
 											<p class="prep-time">Prep time:</p>
 										</div>
@@ -374,10 +402,13 @@
 											/>
 										</div>
 										<div class="card-content">
-											<span class="card-title activator grey-text text-darken-4"
-												>Card Title<i class="material-icons right"
-													>more_vert</i
-												></span
+											<span
+												class="card-title activator grey-text text-darken-4"
+											>
+												<div class="progress blue lighten-5">
+													<div class="indeterminate blue"></div>
+												</div>
+												<i class="material-icons right">more_vert</i></span
 											>
 											<p><a href="#">This is a link</a></p>
 										</div>
@@ -404,10 +435,13 @@
 											/>
 										</div>
 										<div class="card-content">
-											<span class="card-title activator grey-text text-darken-4"
-												>Card Title<i class="material-icons right"
-													>more_vert</i
-												></span
+											<span
+												class="card-title activator grey-text text-darken-4"
+											>
+												<div class="progress blue lighten-5">
+													<div class="indeterminate blue"></div>
+												</div>
+												<i class="material-icons right">more_vert</i></span
 											>
 											<p><a href="#">This is a link</a></p>
 										</div>
@@ -434,10 +468,13 @@
 											/>
 										</div>
 										<div class="card-content">
-											<span class="card-title activator grey-text text-darken-4"
-												>Card Title<i class="material-icons right"
-													>more_vert</i
-												></span
+											<span
+												class="card-title activator grey-text text-darken-4"
+											>
+												<div class="progress blue lighten-5">
+													<div class="indeterminate blue"></div>
+												</div>
+												<i class="material-icons right">more_vert</i></span
 											>
 											<p><a href="#">This is a link</a></p>
 										</div>
@@ -573,6 +610,9 @@
 										Here is some more information about this product that is
 										only revealed once clicked on.
 									</p>
+									<div class="delete-fav-btn-container">
+										<button class="delete-fav-btn">Delete Item</button>
+									</div>
 								</div>
 							</div>
 							<!-- 2 cards in favorites  -->
@@ -599,6 +639,9 @@
 										Here is some more information about this product that is
 										only revealed once clicked on.
 									</p>
+									<div class="delete-fav-btn-container">
+										<button class="delete-fav-btn">Delete Item</button>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -623,8 +666,8 @@
 				<div class="logo"><span class="logo-pre">Pre</span>Devz</div>
 				<ul>
 					<li>
-						<a target="_blank" href="https://github.com/TDGNate"
-							>Christian McIlvenny</a
+						<a target="_blank" href="https://www.instagram.com/imnzte/"
+							>Christian Nate McIlvenny</a
 						>
 					</li>
 					<li>
