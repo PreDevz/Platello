@@ -395,13 +395,17 @@ body .container .box h5 {
 }
 
 /* Favorite Section Styles  */
+
 .user-fav {
 	padding-bottom: 5rem;
 }
-
+.user-fav .box {
+	padding: 2.2rem 1rem;
+}
 .user-fav .card-container {
 	display: flex;
 	flex-direction: row;
+	gap: 1rem;
 }
 
 .user-fav .card-container .card {
@@ -413,16 +417,41 @@ body .container .box h5 {
 	text-align: center;
 	justify-content: center;
 	padding: 6.5px;
+}
+/* remove from fav list styles */
 
-	content: 'X';
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	border: 1px solid rgb(254, 254, 254);
-	background-color: rgba(255, 0, 0, 0.819);
-	top: -10px;
-	right: -10px;
-	z-index: 2;
+.delete-fav-btn-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.5rem;
+	margin: 1rem 0;
+}
+
+.delete-fav-btn {
+	padding: 1rem;
+	background-color: rgb(224, 102, 102);
+	color: white;
+	border: 2px solid rgb(255, 60, 92);
+	border-radius: 25px;
+	font-size: 1rem;
+	transition: all 200ms ease-in;
+}
+
+.delete-fav-btn:hover {
+	background-color: red;
+	border: 2px solid rgb(255, 94, 0);
+	cursor: pointer;
+}
+
+.delete-fav-btn:focus {
+	background-color: rgb(224, 102, 102);
+	border: 2px solid rgb(255, 94, 0);
+}
+
+.delete-fav-btn:active {
+	background-color: red;
 }
 
 /* footer section  */
