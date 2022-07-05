@@ -224,32 +224,69 @@ toggleThemeBtn.on('click', toggleTheme)
 Spoonacular API
 For every request to Spoonacular, the first query parameter has to be the API key
 Example url: 'https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3'
-Use the following query parameters
-sort=random - makes the foods returned random
-instructionsRequired=true - recipes must have instructions
-addRecipeInformation=true - if set to true, you get more information about the recipe returned
-maxReadyTime=30 - the maximum time in minutes it should take to prepare and cook a recipe
-excludeIngredients - A comma-separated list of ingredients that the recipes must not contain
-cuisine=american+indian+asian+
+commas in URLs are written as '%2C'
 */
 
-const testButton = document.querySelector("#test-button");
-testButton.addEventListener("click", () => {
+//Retrieves user stored food preferences from localStorage
+function getFoodPreferences() {
+  let meals = JSON.parse(localStorage.getItem('UserPreferredMeal'));
+  console.log("Your cuisines are: ");
+  console.log(meals)
 
-  //when screen is in light mode
-  logo.classList.remove('platello-logo');
-  logo.classList.add('light-logo');
+  let modifiedMeals = [];
 
-  //when screen is in dark mode
-  logo.classList.remove('light-logo');
-  logo.classList.add('platello-logo');
-});
+  //Iterates through saved preferences and modifies them into workable strings for use in requestUrl
+  if (meals != null) {
+    for (i = 0; i < meals.length; i++) {
+      let modifiedMeal = meals[i].toLowerCase().split(" ").join("+") + "%2C"
+      modifiedMeals.push(modifiedMeal)
+    }
+  } 
 
-//testButton.addEventListener("click", getSpoonApi);
+  modifiedMeals = modifiedMeals.join("")
 
-let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3&sort=random&number=3&instructionsRequired=true&addRecipeInformation=true&maxReadyTime=60&fillIngredients=true&type=main+course"
+  return modifiedMeals
+}
+
+//Retrieves user stored food exclusions from localStorage
+function getFoodExclusions() {
+  let exclusions = JSON.parse(localStorage.getItem('UserExcludes'));
+  console.log("Your exclusions are: ");
+  console.log(exclusions)
+
+  let modifiedExclusions = [];
+
+  //Iterates through saved exclusions and modifies them into workable strings for use in requestUrl
+  if (exclusions != null) {
+    for (i = 0; i < exclusions.length; i++) {
+      let modifiedExclusion = exclusions[i].toLowerCase().split(" ").join("+") + "%2C"
+      modifiedExclusions.push(modifiedExclusion)
+    }
+  } 
+
+  modifiedExclusions = modifiedExclusions.join("")
+
+  return modifiedExclusions
+}
+
+//requestUrl variables
+//Modify these however you like for testing purposes
+const apiKey = "apiKey=da1414212d52482cbe9aaf669cae5da3&";
+const sort = "sort=random&";
+const numOfRecipes = "number=3&";
+const instructionsRequired = "instructionsRequired=true&";
+const addRecipeInfo = "addRecipeInformation=true&";
+const maxReadyTime = "maxReadyTime=60&";
+const fillIngredients = "fillIngredients=true&";
+const foodTypes = "type=main+course&";
+
+let foodData;
 
 function getSpoonApi() {
+  let cuisines = getFoodPreferences();
+  let exclusions = getFoodExclusions();
+
+  let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?" + apiKey + sort + "cuisine=" + cuisines + "&excludeIngredients=" + exclusions + "&" + numOfRecipes + instructionsRequired + addRecipeInfo + maxReadyTime + fillIngredients + foodTypes;
 
   fetch(requestUrl)
     .then(function(response) {
@@ -258,136 +295,172 @@ function getSpoonApi() {
 
     .then(function(data) {
       const ApiData = data.results;
-      //Returns all API info we are receiving
       console.log(ApiData);
 
-      //Generates top three cards with recipes
-      for (let i = 0; i < ApiData.length; i++) {
+      storeFoodData(ApiData)
 
-        let cardTitle = ApiData[i].title;
-        let prepTime = ApiData[i].readyInMinutes;
-        let cardSummary = ApiData[i].summary;
-        let cardImage = ApiData[i].image;
+      setTimeout(() => {
+        document.location.reload(true)
+      }, 1000)
 
-        //Card section
-
-        //Changes card images
-        const currentCardImg = document.getElementsByClassName("food-card-img");
-        currentCardImg[i].src = cardImage;
-
-        //Changes card title
-        const currentCardTitle = document.getElementsByClassName("food-card-title");
-        currentCardTitle[i].textContent = "";
-        currentCardTitle[i].textContent = cardTitle;
-
-        //Change prep time
-        const currentPrepTime = document.getElementsByClassName("prep-time");
-        currentPrepTime[i].textContent = prepTime + " minutes";
-
-        //Change inside card summary
-        const currentCardSummary = document.getElementsByClassName("recipe-summary");
-        currentCardSummary[i].innerHTML = "";
-        currentCardSummary[i].innerHTML = cardSummary;
-      }
-
-      //Variables for generating full recipes below
-      const selectRecipeButton1 = document.getElementById("confirm-food-1");
-      const selectRecipeButton2 = document.getElementById("confirm-food-2");
-      const selectRecipeButton3 = document.getElementById("confirm-food-3");
-
-      const selectedTitle = document.querySelector(".selected-food-title");
-      const selectedImg = document.querySelector(".selected-food-img");
-      const selectedServings = document.querySelector("#selected-food-servings");
-      const selectedPrepTime = document.querySelector("#selected-food-prep-time");
-      const selectedStepList = document.querySelector("#selected-food-steps");
-      const selectedIngredientList = document.querySelector(".ingr");
-
-      //Generates generic recipe info at bottom of page
-      function createRecipeInfo(recipeNum) {
-
-        //Changes title
-        selectedTitle.innerHTML = ApiData[recipeNum].title;
-
-        //Changes food img
-        selectedImg.src = ApiData[recipeNum].image;
-
-        //Changes amount of servings
-        selectedServings.innerHTML = "Servings: " + ApiData[recipeNum].servings;
-
-        //Changes cook time
-        selectedPrepTime.innerHTML = "Cook Time: " + ApiData[recipeNum].readyInMinutes + " minutes";
-
-        //Changes ingredients
-        selectedIngredientList.replaceChildren();
-      }
-
-      //Generates ingredients list at bottom of page
-      function createRecipeIngredients(recipeNum) {
-        for (let i = 0; i < ApiData[recipeNum].analyzedInstructions[0].steps.length; i++) {
-
-          let selectedIngredients = ApiData[recipeNum].extendedIngredients[i].original;
-
-          let ingredient = document.createElement("li");
-          ingredient.textContent = "";
-          ingredient.textContent = selectedIngredients;
-
-          selectedIngredientList.append(ingredient);
-        }
-      }
-
-      //Generates recipe steps at bottom of page
-      function createRecipeSteps(recipeNum) {
-        selectedStepList.replaceChildren();
-
-        for (let i = 0; i < ApiData[recipeNum].analyzedInstructions[0].steps.length; i++) {
-
-          let selectedSteps = ApiData[recipeNum].analyzedInstructions[0].steps[i].step;
-
-          const step = document.createElement("li");
-          step.textContent = selectedSteps;
-
-          selectedStepList.append(step);
-        }
-      }
-
-      //JS for 'View recipe' button in food card 1
-      selectRecipeButton1.addEventListener("click", () => {
-        console.log("Recipe 1 has been printed");
-
-        createRecipeInfo(0);
-
-        createRecipeSteps(0)
-
-        createRecipeIngredients(0);
-
-      });
-
-      //JS for 'View recipe' button in food card 2
-      selectRecipeButton2.addEventListener("click", () => {
-        console.log("Recipe 2 has been printed");
-
-        createRecipeInfo(1);
-
-        createRecipeSteps(1)
-
-        createRecipeIngredients(1);
-
-      });
-
-      //JS for 'View recipe' button in food card 3
-      selectRecipeButton3.addEventListener("click", () => {
-        console.log("Recipe 3 has been printed");
-
-        createRecipeInfo(2);
-
-        createRecipeSteps(2)
-
-        createRecipeIngredients(2);
-
-      });
-
+      //return ApiData
     })
+}
 
+function storeFoodData(data) {
+  //localStorage.removeItem('foodData')
+  
+  localStorage.setItem('foodData', JSON.stringify(data))
+}
+
+//Will retrieve data retrieved from api in local storage
+function retrieveFoodData() {
+  foodData = JSON.parse(localStorage.getItem('foodData'))
+}
+
+retrieveFoodData()
+
+//Will generate all cards and "selected" section below the page
+function generateFoodInfo() {
+  console.log("Food data:\n -------------")
+  console.log(foodData)
+  //Generates top three cards with recipes
+  for (let i = 0; i < foodData.length; i++) {
+
+    const cardTitle = foodData[i].title;
+    const prepTime = foodData[i].readyInMinutes;
+    const cardSummary = foodData[i].summary;
+    const cardImage = foodData[i].image;
+
+    //Card section
+
+    //Changes card images
+    const currentCardImg = document.getElementsByClassName("food-card-img");
+    currentCardImg[i].src = cardImage;
+
+    //Changes card title
+    const currentCardTitle = document.getElementsByClassName("food-card-title");
+    currentCardTitle[i].textContent = "";
+    currentCardTitle[i].textContent = cardTitle;
+
+    //Change prep time
+    const currentPrepTime = document.getElementsByClassName("prep-time");
+    currentPrepTime[i].textContent = prepTime + " minutes";
+
+    //Change inside card summary
+    const currentCardSummary = document.getElementsByClassName("recipe-summary");
+    currentCardSummary[i].innerHTML = "";
+    currentCardSummary[i].innerHTML = cardSummary;
+  }
+
+  //Variables for generating full recipes below
+  const selectRecipeButton1 = document.getElementById("confirm-food-1");
+  const selectRecipeButton2 = document.getElementById("confirm-food-2");
+  const selectRecipeButton3 = document.getElementById("confirm-food-3");
+
+  const selectedTitle = document.querySelector(".selected-food-title");
+  const selectedImg = document.querySelector(".selected-food-img");
+  const selectedServings = document.querySelector("#selected-food-servings");
+  const selectedPrepTime = document.querySelector("#selected-food-prep-time");
+  const selectedStepList = document.querySelector("#selected-food-steps");
+  const selectedIngredientList = document.querySelector(".ingr");
+
+  const userSelectedArea = document.querySelector("#user-selected")
+
+  //Generates generic recipe info at bottom of page
+  function createRecipeInfo(recipeNum) {
+
+    //Changes title
+    selectedTitle.innerHTML = foodData[recipeNum].title;
+
+    //Changes food img
+    selectedImg.src = foodData[recipeNum].image;
+
+    //Changes amount of servings
+    selectedServings.innerHTML = "Servings: " + foodData[recipeNum].servings;
+
+    //Changes cook time
+    selectedPrepTime.innerHTML = "Cook Time: " + foodData[recipeNum].readyInMinutes + " minutes";
+
+    //Changes ingredients
+    selectedIngredientList.replaceChildren();
+  }
+
+  //Generates ingredients list at bottom of page
+  function createRecipeIngredients(recipeNum) {
+    for (let i = 0; i < foodData[recipeNum].analyzedInstructions[0].steps.length; i++) {
+
+      let selectedIngredients = foodData[recipeNum].extendedIngredients[i].original;
+
+      let ingredient = document.createElement("li");
+      ingredient.textContent = "";
+      ingredient.textContent = selectedIngredients;
+
+      selectedIngredientList.append(ingredient);
+    }
+  }
+
+  //Generates recipe steps at bottom of page
+  function createRecipeSteps(recipeNum) {
+    selectedStepList.replaceChildren();
+
+    for (let i = 0; i < foodData[recipeNum].analyzedInstructions[0].steps.length; i++) {
+
+      let selectedSteps = foodData[recipeNum].analyzedInstructions[0].steps[i].step;
+
+      const step = document.createElement("li");
+      step.textContent = selectedSteps;
+
+      selectedStepList.append(step);
+    }
+  }
+
+  //JS for 'View recipe' button in food card 1
+  selectRecipeButton1.addEventListener("click", () => {
+    console.log("Recipe 1 has been printed");
+
+    userSelectedArea.style.display = 'flex'
+
+    createRecipeInfo(0);
+
+    createRecipeSteps(0)
+
+    createRecipeIngredients(0);
+
+  });
+
+  //JS for 'View recipe' button in food card 2
+  selectRecipeButton2.addEventListener("click", () => {
+    console.log("Recipe 2 has been printed");
+
+    userSelectedArea.style.display = 'flex'
+
+    createRecipeInfo(1);
+
+    createRecipeSteps(1)
+
+    createRecipeIngredients(1);
+
+  });
+
+  //JS for 'View recipe' button in food card 3
+  selectRecipeButton3.addEventListener("click", () => {
+    console.log("Recipe 3 has been printed");
+
+    userSelectedArea.style.display = 'flex'
+
+    createRecipeInfo(2);
+
+    createRecipeSteps(2)
+
+    createRecipeIngredients(2);
+
+  });
+
+}
+
+if (localStorage.foodData != null) {
+  generateFoodInfo()
 }
 
 
@@ -598,6 +671,9 @@ function drinkModal() {
       // calls blurbackground to check if modal is open 
       blurBackgroundIf()
     }, 750)
+
+    getSpoonApi()
+
   })
 }
 
@@ -685,6 +761,8 @@ console.log($(changeFoodPrefIcon), $(changeDrinkPrefIcon))
 // function for changing user's pref
 function changePref(e) {
 
+  localStorage.removeItem('UserPreferredMeal')
+
   // get the data attr to compare
   let userPicked = e.target.dataset.changepref
 
@@ -704,10 +782,13 @@ function changePref(e) {
      // when clicked prevent default 
     $(modalBtn).on("click", function (e) {
 
+    localStorage.removeItem('UserExcludes')
+
     // Get textarea value
     let exclude = itemsToExclude()
     // get the value empty or Not
-      saveUserMealPref()
+
+    saveUserMealPref()
 
     // adds slide effect then hides completely
     $(modal).addClass('slide-out')
@@ -716,9 +797,12 @@ function changePref(e) {
       $(modal).removeClass('slide-out')
 
       // reload page since it's bugs out after change 
-      location.reload()
+      //location.reload()
       IsModalOpen = false
     }, 750)
+
+      getSpoonApi()
+
     })
   }
 

@@ -329,10 +329,10 @@ form .labelRemove {
 
 .dashboard {
 	display: flex;
-	flex-direction: column;
-	width: 100%;
-	gap: 1rem;
-	padding: 4rem 0;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    padding: 4rem 0 0 0;
 }
 
 .row > .col {
@@ -351,9 +351,13 @@ body .container .box h5 {
 	margin: 0.5rem 0 2rem 0;
 }
 
+.row {
+	margin-bottom: 0;
+}
+
 .container .user-fav h2 {
 	margin: 3rem 0;
-	margin-top: 5rem;
+	/* margin-top: 5rem; */
 	text-align: center;
 }
 .dashboard .col {
@@ -400,7 +404,7 @@ body .container .box h5 {
 }
 .card-container .card {
 	width: 80% !important;
-	max-width: 280px;
+	max-width: 320px;
 	background-color: rgba(246, 247, 249, 0.943);
 	margin: 1rem;
 }
@@ -518,7 +522,7 @@ footer .container {
 /* Hidden Section (Selected items)  */
 
 .recipe-summary {
-	font-size: 16px;
+	font-size: 18px;
 }
 
 .recipe-summary a {
@@ -533,12 +537,18 @@ footer .container {
 	width: 100%;
 	cursor: pointer;
 	margin-left: 0px;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 .select-recipe {
 	color: black;
 }
+
+#user-selected {
+	display: none;
+	margin-top: 4rem;
+}
+
 .user-selected .col {
 	padding: 1rem;
 }
@@ -792,7 +802,6 @@ footer .container {
 
 	/* user selection box  */
 	#user-selected {
-		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
@@ -949,6 +958,11 @@ footer .container {
 		padding: 0.4rem;
 		font-size: 1rem;
 	}
+}
+
+@media only screen and (max-width: 700px) {}
+	.container {
+    width: 85%;
 }
 
 /* animations  */
