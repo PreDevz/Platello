@@ -598,6 +598,43 @@ function drinkModal() {
   })
 }
 
+// Function that will blur the background if a modal is active 
+function blurBackgroundIf() {
+
+  // check if the a modal is open 
+  if (IsModalOpen === true) {
+
+    // if true, remove navbar, add blur to container and header section
+    $('#navbar').css('display', 'none')
+    containerDiv.addClass('blur')
+    headerEl.addClass('blur')
+
+    // make html overflow hidden for no scroll 
+    $('html').css('overflow', 'hidden')
+  } else {
+
+    // if false, make navbar flex, remove blur on elements
+    // slide down the navbar 
+    $('#navbar').css('display', 'flex')
+    $('#navbar').addClass('slide-down')
+
+    // after animation is done, then it will officially change the nav style to 0 on the y axis 
+    setTimeout(() => {
+      $('#navbar').css('transform', "translateY(0px)")
+    }, 875)
+
+    // blur contents on page, and make body flow auto to scroll 
+    containerDiv.removeClass('blur')
+    headerEl.removeClass('blur')
+
+    // make html overflow hidden for no scroll 
+    $('html').css('overflow-y', 'auto')
+  }
+}
+
+// Call on start 
+blurBackgroundIf()
+
 // global drink variables 
 var userDrinks = document.getElementById('user-drink-values');
 var checkboxes = document.querySelectorAll('.checkbox');
@@ -638,90 +675,3 @@ function checkDrinksState() {
 
 // call on start 
 checkDrinksState()
-
-// Function that will blur the background if a modal is active 
-function blurBackgroundIf() {
-
-  // check if the a modal is open 
-  if (IsModalOpen === true) {
-
-    // if true, remove navbar, add blur to container and header section
-    $('#navbar').css('display', 'none')
-    containerDiv.addClass('blur')
-    headerEl.addClass('blur')
-
-    // make html overflow hidden for no scroll 
-    $('html').css('overflow', 'hidden')
-  } else {
-
-    // if false, make navbar flex, remove blur on elements
-    // slide down the navbar 
-    
-    $('#navbar').css('display', 'flex')
-    $('#navbar').addClass('slide-down')
-
-    // after animation is done, then it will officially change the nav style to 0 on the y axis 
-    setTimeout(() => {
-      $('#navbar').css('transform', "translateY(0px)")
-    }, 875)
-
-    // blur contents on page, and make body flow auto to scroll 
-    containerDiv.removeClass('blur')
-    headerEl.removeClass('blur')
-
-    // make html overflow hidden for no scroll 
-    $('html').css('overflow-y', 'auto')
-  }
-}
-
-// Call on start 
-blurBackgroundIf()
-
-// global drink variables 
-var userDrinks = document.getElementById('user-drink-values');
-var text = 'You have selected: ';
-var drinksArray = [];
-var checkboxes = document.querySelectorAll('.checkbox');
-
-// This checks if the checkboxes are checked or not and add/remove from the array
-function checkState() {
-  /* Creating a loop that will run through all the checkboxes and add an event listener to each one. */
-  for (var checkbox of checkboxes) {
-    checkbox.addEventListener('click', function () {
-      /* Checking if the checkbox is checked. */
-      if (this.checked == true) {
-        console.log(this.value);
-        console.log('this is checked');
-        
-        /* Pushing the value of the input field into the drinksArray. */
-        drinksArray.push(this.value);
-        
-        /* Joining the array with a / in between each element. */
-        userDrinks.textContent = text + drinksArray.join(' / ');
-
-        console.log(drinksArray)
-      } else {
-        console.log(this.value);
-        console.log('this is unchecked');
-        
-        /* Using the filter() method creates a new array with all elements that pass,
-        filtering out the value of the checks that was clicked. */
-        drinksArray = drinksArray.filter(e => e !== this.value);
-        
-        /* Joining the array with a / in between each element. */
-        userDrinks.innerHTML = text + drinksArray.join(' / ');
-        
-
-
-        console.log(drinksArray);
-      }
-
-      /* Storing the drinksArray in local storage. */
-      localStorage.setItem('drinksArray', JSON.stringify(drinksArray));
-      var storedDrinks = JSON.parse(localStorage.getItem('drinksArray'));
-
-    })
-  }
-}
-
-checkState()
