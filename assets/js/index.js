@@ -57,8 +57,8 @@ function restoreStorage() {
     // change boxes styles
     for (i = 0; i < box.length; i++) {
       let eachBox = $(box[i])
-      eachBox.css('background-color', "'var(--box-drk-clr)'")
-      eachBox.css('border', 'var(--box-drk-brder-clr)')
+      eachBox.css('background-color', 'var(--box-drk-clr)')
+      eachBox.css('border', 'solid 2px var(--box-drk-brder-clr)')
     }
     CardXIcon.css('color', 'black')
 
@@ -92,7 +92,7 @@ function restoreStorage() {
       for (i = 0; i < box.length; i++) {
         let eachBox = $(box[i])
         eachBox.css('background-color', 'var(--box-lght-clr)')
-        eachBox.css('border', '1px solid var(--box-lght-brder-clr)')
+        eachBox.css('border', '2px solid var(--box-lght-brder-clr)')
       }
       selectedBox.css('background-color', 'var(--lght-selected)')
 
@@ -122,7 +122,7 @@ function restoreStorage() {
       for (i = 0; i < box.length; i++) {
         let eachBox = $(box[i])
         eachBox.css('background-color', "'var(--box-drk-clr)'")
-        eachBox.css('border', 'var(--box-drk-brder-clr)')
+        eachBox.css('border', 'solid 2px var(--box-drk-brder-clr)')
       }
       CardXIcon.css('color', 'black')
 
@@ -163,7 +163,7 @@ function toggleTheme(e) {
     for (i = 0; i < box.length; i++) {
       let eachBox = $(box[i])
       eachBox.css('background-color', 'var(--box-lght-clr)')
-      eachBox.css('border', '1px solid var(--box-lght-brder-clr)')
+      eachBox.css('border', '2px solid var(--box-lght-brder-clr)')
     }
     selectedBox.css('background-color', 'var(--lght-selected)')
 
@@ -197,7 +197,7 @@ function toggleTheme(e) {
     for (i = 0; i < box.length; i++) {
       let eachBox = $(box[i])
       eachBox.css('background-color', 'var(--box-drk-clr)')
-      eachBox.css('border', '1px solid var(--box-drk-brder-clr)')
+      eachBox.css('border', 'solid 2px var(--box-drk-brder-clr)')
     }
     selectedBox.css('background-color', 'var(--drk-selected)')
     CardXIcon.css('color', 'black')
@@ -280,14 +280,14 @@ const maxReadyTime = "maxReadyTime=60&";
 const fillIngredients = "fillIngredients=true&";
 const foodTypes = "type=main+course&";
 
-let cuisines = getFoodPreferences();
-let exclusions = getFoodExclusions();
-
-let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?" + apiKey + sort + "cuisine=" + cuisines + "&excludeIngredients=" + exclusions + "&" + numOfRecipes + instructionsRequired + addRecipeInfo + maxReadyTime + fillIngredients + foodTypes;
-
 let foodData;
 
 function getSpoonApi() {
+  let cuisines = getFoodPreferences();
+  let exclusions = getFoodExclusions();
+
+  let requestUrl = "https://api.spoonacular.com/recipes/complexSearch?" + apiKey + sort + "cuisine=" + cuisines + "&excludeIngredients=" + exclusions + "&" + numOfRecipes + instructionsRequired + addRecipeInfo + maxReadyTime + fillIngredients + foodTypes;
+
   fetch(requestUrl)
     .then(function(response) {
       return response.json();
@@ -297,14 +297,20 @@ function getSpoonApi() {
       const ApiData = data.results;
       console.log(ApiData);
 
-      localStorage.setItem('foodData', JSON.stringify(ApiData))
+      storeFoodData(ApiData)
 
       setTimeout(() => {
         document.location.reload(true)
-      }, 750)
+      }, 1000)
 
-      return ApiData
+      //return ApiData
     })
+}
+
+function storeFoodData(data) {
+  //localStorage.removeItem('foodData')
+  
+  localStorage.setItem('foodData', JSON.stringify(data))
 }
 
 //Will retrieve data retrieved from api in local storage
@@ -467,12 +473,12 @@ if (localStorage.foodData != null) {
 // Modal Functionality
 
 // Modal variables 
-let isUserNew = false
-let IsModalOpen = false
-let storedUserMeals = []
-let mealsState = []
-let storedUserExclude = []
-let excludeState
+let isUserNew = false;
+let IsModalOpen = false;
+let excludeState;
+let mealsState = [];
+let storedUserMeals = [];
+let storedUserExclude = [];
 
 // check if there is a users meal preference
 function restoreMealsData() {
@@ -482,7 +488,6 @@ function restoreMealsData() {
 
   // get the stored exludes 
   let storedExcludes = JSON.parse(localStorage.getItem('UserExcludes'))
-  // console.log(storedExcludes)
 
   // if nothing is stored, then change new user variable to true 
   if (storedMeals === null) {
@@ -538,9 +543,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// testing function 
-// localStorage.clear()
-
 // Function to check if the user is new 
 function isTheUserNew() {
 
@@ -572,6 +574,7 @@ function welcomeModal() {
     $(modal).addClass('slide-out')
     setTimeout(() => {
       $(modal).addClass('hidden');
+      $(modal).removeClass('slide-out')
       foodModal()
     }, 750)
   })
@@ -585,7 +588,7 @@ function foodModal() {
   IsModalOpen = true 
 
   // toggle the hidden class to unhide 
-  modal.classList.toggle('hidden')
+  $(modal).removeClass('hidden');
 
   // get the modal's button 
   let modalBtn = $(modal).children().children('button')
@@ -602,6 +605,7 @@ function foodModal() {
     $(modal).addClass('slide-out')
     setTimeout(() => {
       $(modal).addClass('hidden');
+      $(modal).removeClass('slide-out')
       IsModalOpen = false
 
       // call drink function since it's user's first time 
@@ -612,13 +616,14 @@ function foodModal() {
 
 // function to get excluded items 
 function itemsToExclude() {
+
+  // getting the user's value, then converting into array after every comma 
   let excludeState = $('#textareaRemove').val().split(',')
   storedUserExclude = excludeState
 
   // return value back to food modal
   return storedUserExclude
 }
-itemsToExclude()
 
 // seperate function to store the users referrences 
 function saveUserMealPref() {
@@ -631,9 +636,8 @@ function saveUserMealPref() {
   localStorage.setItem('UserPreferredMeal', JSON.stringify(storedUserMeals))
 }
 
-// Drinks 
+// Drinks
 
-// the drink function will store the user's favorite drinks 
 function drinkModal() {
 
   // get food drinks element 
@@ -641,7 +645,7 @@ function drinkModal() {
   IsModalOpen = true 
 
   // toggle the hidden class to unhide
-  modal.classList.toggle('hidden')
+  $(modal).removeClass('hidden');
 
   // get the modal's button 
   let modalBtn = $(modal).children().children('button')
@@ -653,6 +657,7 @@ function drinkModal() {
     $(modal).addClass('slide-out')
     setTimeout(() => {
       $(modal).addClass('hidden');
+      $(modal).removeClass('slide-out')
       IsModalOpen = false
 
       // calls blurbackground to check if modal is open 
@@ -669,11 +674,175 @@ function blurBackgroundIf() {
 
   // check if the a modal is open 
   if (IsModalOpen === true) {
+
+    // if true, remove navbar, add blur to container and header section
+    $('#navbar').css('display', 'none')
+    containerDiv.addClass('blur')
+    headerEl.addClass('blur')
+
+    // make html overflow hidden for no scroll 
+    $('html').css('overflow', 'hidden')
+  } else {
+
+    // if false, make navbar flex, remove blur on elements
+    // slide down the navbar 
+    $('#navbar').css('display', 'flex')
+    $('#navbar').addClass('slide-down')
+
+    // after animation is done, then it will officially change the nav style to 0 on the y axis 
+    setTimeout(() => {
+      $('#navbar').css('transform', "translateY(0px)")
+    }, 875)
+
+    // blur contents on page, and make body flow auto to scroll 
+    containerDiv.removeClass('blur')
+    headerEl.removeClass('blur')
+
+    // make html overflow hidden for no scroll 
+    $('html').css('overflow-y', 'auto')
+  }
+}
+
+// Call on start 
+blurBackgroundIf()
+
+// global drink variables 
+var userDrinks = document.getElementById('user-drink-values');
+var checkboxes = document.querySelectorAll('.checkbox');
+var text = 'You have selected: ';
+var drinksArray = [];
+
+// This checks if the checkboxes are checked or not and add/remove from the array
+function checkDrinksState() {
+
+  /* Creating a loop that will run through all the checkboxes and add an event listener to each one. */
+  for (var checkbox of checkboxes) {
+    checkbox.addEventListener('click', function () {
+
+      /* Checking if the checkbox is checked. */
+      if (this.checked == true) {
+        
+        /* Pushing the value of the input field into the drinksArray. */
+        drinksArray.push(this.value);
+        
+        /* Joining the array with a / in between each element. */
+        userDrinks.textContent = text + drinksArray.join(', ');
+      } else {
+        
+        /* Using the filter() method creates a new array with all elements that pass,
+        filtering out the value of the checks that was clicked. */
+        drinksArray = drinksArray.filter(e => e !== this.value);
+        
+        /* Joining the array with a / in between each element. */
+        userDrinks.innerHTML = text + drinksArray.join(', ');
+      }
+
+      /* Storing the drinksArray in local storage. */
+      localStorage.setItem('drinksArray', JSON.stringify(drinksArray));
+      var storedDrinks = JSON.parse(localStorage.getItem('drinksArray'));
+    })
+  }
+}
+
+// Functions so user can change their Food/Drink preference 
+
+let changeFoodPrefIcon = $('#changeFoodPreference')
+let changeDrinkPrefIcon = $('#changeDrinkPreference')
+console.log($(changeFoodPrefIcon), $(changeDrinkPrefIcon))
+
+// function for changing user's pref
+function changePref(e) {
+
+  localStorage.removeItem('UserPreferredMeal')
+
+  // get the data attr to compare
+  let userPicked = e.target.dataset.changepref
+
+  // check which one they clicked and to open that modal
+  if (userPicked == 'cdFood') {
+
+   // repeat food modal 
+   let modal = document.querySelector('.modal-food')
+   IsModalOpen = true 
+
+    // toggle the hidden class to unhide 
+    $(modal).removeClass('hidden');
+
+   // get the modal's button 
+    let modalBtn = $(modal).children().children('button')
+    
+     // when clicked prevent default 
+    $(modalBtn).on("click", function (e) {
+
+    localStorage.removeItem('UserExcludes')
+
+    // Get textarea value
+    let exclude = itemsToExclude()
+    // get the value empty or Not
+
+    saveUserMealPref()
+
+    // adds slide effect then hides completely
+    $(modal).addClass('slide-out')
+    setTimeout(() => {
+      $(modal).addClass('hidden');
+      $(modal).removeClass('slide-out')
+
+      // reload page since it's bugs out after change 
+      //location.reload()
+      IsModalOpen = false
+    }, 750)
+
+      getSpoonApi()
+
+    })
+  }
+
+  // else if they clicked the drink cog 
+  else if (userPicked == 'cdDrink') {
+    // repeat food modal 
+    let modal = document.querySelector('.modal-drink')
+    IsModalOpen = true 
+
+    // toggle the hidden class to unhide 
+    $(modal).removeClass('hidden');
+    $(modal).addClass('pushModalDown')
+
+    // get the modal's button 
+    let modalBtn = $(modal).children().children('button')
+      
+    // when clicked prevent default 
+    $(modalBtn).on("click", function (e) {
+
+    // adds slide effect then hides completely
+    $(modal).addClass('slide-out')
+    setTimeout(() => {
+      $(modal).addClass('hidden');
+      $(modal).removeClass('slide-out')
+
+      location.reload()
+
+      IsModalOpen = false
+    }, 750)
+  })
+  }
+}
+
+// Listener for if they click for changing food pref 
+$(changeFoodPrefIcon).on('click', changePref)
+
+// Listener for if they click for changing drinks pref 
+$(changeDrinkPrefIcon).on('click', changePref)
+
+// Function that will blur the background if a modal is active 
+function blurBackgroundIf() {
+
+  // check if the a modal is open 
+  if (IsModalOpen === true) {
     // if true, remove navbar, add blur to container and header section 
     $('#navbar').css('display', 'none')
     containerDiv.addClass('blur')
     headerEl.addClass('blur')
-    // body.style.overflow = 'hidden'
     $('html').css('overflow', 'hidden')
   } else {
 
@@ -690,7 +859,6 @@ function blurBackgroundIf() {
     // blur contents on page, and make body flow auto to scroll 
     containerDiv.removeClass('blur')
     headerEl.removeClass('blur')
-    // document.body.style.overflow = 'auto'
     $('html').css('overflow-y', 'auto')
   }
 }
@@ -698,51 +866,7 @@ function blurBackgroundIf() {
 // Call on start 
 blurBackgroundIf()
 
-// global drink variables 
-var userDrinks = document.getElementById('user-drink-values');
-var text = 'You have selected: ';
-var drinksArray = [];
-var checkboxes = document.querySelectorAll('.checkbox');
-
-// This checks if the checkboxes are checked or not and add/remove from the array
-function checkState() {
-  /* Creating a loop that will run through all the checkboxes and add an event listener to each one. */
-  for (var checkbox of checkboxes) {
-    checkbox.addEventListener('click', function () {
-      /* Checking if the checkbox is checked. */
-      if (this.checked == true) {
-        console.log(this.value);
-        console.log('this is checked');
-        
-        /* Pushing the value of the input field into the drinksArray. */
-        drinksArray.push(this.value);
-        
-        /* Joining the array with a / in between each element. */
-        userDrinks.textContent = text + drinksArray.join(' / ');
-
-        console.log(drinksArray)
-      } else {
-        console.log(this.value);
-        console.log('this is unchecked');
-        
-        /* Using the filter() method creates a new array with all elements that pass,
-        filtering out the value of the checks that was clicked. */
-        drinksArray = drinksArray.filter(e => e !== this.value);
-        
-        /* Joining the array with a / in between each element. */
-        userDrinks.innerHTML = text + drinksArray.join(' / ');
-        
-
-
-        console.log(drinksArray);
-      }
-
-      /* Storing the drinksArray in local storage. */
-      localStorage.setItem('drinksArray', JSON.stringify(drinksArray));
-      var storedDrinks = JSON.parse(localStorage.getItem('drinksArray'));
-
-    })
-  }
+// scroll to top function 
+function scrollToTop() {
+  $(window).scrollTop(0);
 }
-
-checkState()
