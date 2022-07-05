@@ -513,6 +513,7 @@ function welcomeModal() {
     $(modal).addClass('slide-out')
     setTimeout(() => {
       $(modal).addClass('hidden');
+      $(modal).removeClass('slide-out')
       foodModal()
     }, 750)
   })
@@ -526,7 +527,7 @@ function foodModal() {
   IsModalOpen = true 
 
   // toggle the hidden class to unhide 
-  modal.classList.toggle('hidden')
+  $(modal).removeClass('hidden');
 
   // get the modal's button 
   let modalBtn = $(modal).children().children('button')
@@ -543,6 +544,7 @@ function foodModal() {
     $(modal).addClass('slide-out')
     setTimeout(() => {
       $(modal).addClass('hidden');
+      $(modal).removeClass('slide-out')
       IsModalOpen = false
 
       // call drink function since it's user's first time 
@@ -559,7 +561,6 @@ function itemsToExclude() {
   // return value back to food modal
   return storedUserExclude
 }
-itemsToExclude()
 
 // seperate function to store the users referrences 
 function saveUserMealPref() {
@@ -582,7 +583,7 @@ function drinkModal() {
   IsModalOpen = true 
 
   // toggle the hidden class to unhide
-  modal.classList.toggle('hidden')
+  $(modal).removeClass('hidden');
 
   // get the modal's button 
   let modalBtn = $(modal).children().children('button')
@@ -594,6 +595,7 @@ function drinkModal() {
     $(modal).addClass('slide-out')
     setTimeout(() => {
       $(modal).addClass('hidden');
+      $(modal).removeClass('slide-out')
       IsModalOpen = false
 
       // calls blurbackground to check if modal is open 
@@ -601,40 +603,6 @@ function drinkModal() {
     }, 750)
   })
 }
-
-// Function that will blur the background if a modal is active 
-function blurBackgroundIf() {
-
-  // check if the a modal is open 
-  if (IsModalOpen === true) {
-    // if true, remove navbar, add blur to container and header section 
-    $('#navbar').css('display', 'none')
-    containerDiv.addClass('blur')
-    headerEl.addClass('blur')
-    // body.style.overflow = 'hidden'
-    $('html').css('overflow', 'hidden')
-  } else {
-
-    // if false, make navbar flex, remove blur on elements 
-    // slide down the navbar 
-    $('#navbar').css('display', 'flex')
-    $('#navbar').addClass('slide-down')
-
-    // after animation is done, then it will officially change the nav style to 0 on the y axis 
-    setTimeout(() => {
-      $('#navbar').css('transform', "translateY(0px)")
-    }, 875)
-
-    // blur contents on page, and make body flow auto to scroll 
-    containerDiv.removeClass('blur')
-    headerEl.removeClass('blur')
-    // document.body.style.overflow = 'auto'
-    $('html').css('overflow-y', 'auto')
-  }
-}
-
-// Call on start 
-blurBackgroundIf()
 
 // global drink variables 
 var userDrinks = document.getElementById('user-drink-values');
@@ -684,3 +652,127 @@ function checkState() {
 }
 
 checkState()
+
+// Functions so user can change their Food/Drink preference 
+
+let changeFoodPrefIcon = $('#changeFoodPreference')
+let changeDrinkPrefIcon = $('#changeDrinkPreference')
+console.log($(changeFoodPrefIcon), $(changeDrinkPrefIcon))
+
+// function for changing user's pref
+function changePref(e) {
+
+  // get the data attr to compare
+  let userPicked = e.target.dataset.changepref
+
+  // check which one they clicked and to open that modal
+  if (userPicked == 'cdFood') {
+
+   // repeat food modal 
+   let modal = document.querySelector('.modal-food')
+   IsModalOpen = true 
+
+    // toggle the hidden class to unhide 
+    $(modal).removeClass('hidden');
+
+   // get the modal's button 
+    let modalBtn = $(modal).children().children('button')
+    
+     // when clicked prevent default 
+    $(modalBtn).on("click", function (e) {
+
+    // Get textarea value
+    let exclude = itemsToExclude()
+    // get the value empty or Not
+      saveUserMealPref()
+
+    // adds slide effect then hides completely
+    $(modal).addClass('slide-out')
+    setTimeout(() => {
+      $(modal).addClass('hidden');
+      $(modal).removeClass('slide-out')
+
+      location.reload()
+
+      IsModalOpen = false
+    }, 750)
+      
+    })
+    
+  }
+
+  // else if they clicked the drink cog 
+  else if (userPicked == 'cdDrink') {
+    // repeat food modal 
+    let modal = document.querySelector('.modal-drink')
+    IsModalOpen = true 
+
+    // toggle the hidden class to unhide 
+    $(modal).removeClass('hidden');
+    $(modal).addClass('pushModalDown')
+
+    // get the modal's button 
+    let modalBtn = $(modal).children().children('button')
+      
+    // when clicked prevent default 
+    $(modalBtn).on("click", function (e) {
+
+    // adds slide effect then hides completely
+    $(modal).addClass('slide-out')
+    setTimeout(() => {
+      $(modal).addClass('hidden');
+      $(modal).removeClass('slide-out')
+
+      location.reload()
+
+      IsModalOpen = false
+    }, 750)
+        
+  })
+  }
+
+}
+
+// Listener for if they click for changing food pref 
+$(changeFoodPrefIcon).on('click', changePref)
+
+// Listener for if they click for changing drinks pref 
+$(changeDrinkPrefIcon).on('click', changePref)
+
+// Function that will blur the background if a modal is active 
+function blurBackgroundIf() {
+
+  // check if the a modal is open 
+  if (IsModalOpen === true) {
+    // if true, remove navbar, add blur to container and header section 
+    $('#navbar').css('display', 'none')
+    containerDiv.addClass('blur')
+    headerEl.addClass('blur')
+    // body.style.overflow = 'hidden'
+    $('html').css('overflow', 'hidden')
+  } else {
+
+    // if false, make navbar flex, remove blur on elements 
+    // slide down the navbar 
+    $('#navbar').css('display', 'flex')
+    $('#navbar').addClass('slide-down')
+
+    // after animation is done, then it will officially change the nav style to 0 on the y axis 
+    setTimeout(() => {
+      $('#navbar').css('transform', "translateY(0px)")
+    }, 875)
+
+    // blur contents on page, and make body flow auto to scroll 
+    containerDiv.removeClass('blur')
+    headerEl.removeClass('blur')
+    // document.body.style.overflow = 'auto'
+    $('html').css('overflow-y', 'auto')
+  }
+}
+
+// Call on start 
+blurBackgroundIf()
+
+function scrollToTop() {
+  $(window).scrollTop(0);
+}

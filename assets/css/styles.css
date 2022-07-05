@@ -40,10 +40,9 @@ header p {
 }
 
 .platello-logo {
-	filter: brightness(10) invert(1); 
+	filter: brightness(10) invert(1);
 	transition: 400ms;
 }
-
 
 .light-logo {
 	filter: brightness(0) invert(0);
@@ -547,6 +546,10 @@ footer .container {
 	display: none;
 }
 
+.pushModalDown {
+	margin-top: 60%;
+}
+
 /* Few media queries  */
 
 /* tablets  */
@@ -622,6 +625,10 @@ footer .container {
 
 	footer .container {
 		margin-bottom: 3rem;
+	}
+
+	.pushModalDown {
+		margin-top: 1%;
 	}
 }
 
@@ -744,6 +751,10 @@ footer .container {
 	footer a {
 		font-size: 1.2rem;
 	}
+
+	.pushModalDown {
+		margin-top: 300%;
+	}
 }
 
 @media screen and (max-width: 798px) {
@@ -756,6 +767,12 @@ footer .container {
 	.modal-drink {
 		min-width: 200px;
 		overflow: auto;
+	}
+}
+
+@media screen and (max-width: 761px) {
+	.pushModalDown {
+		margin-top: 200%;
 	}
 }
 
