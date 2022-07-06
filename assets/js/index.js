@@ -726,7 +726,6 @@ checkDrinksState()
 
 let changeFoodPrefIcon = $('#changeFoodPreference')
 let changeDrinkPrefIcon = $('#changeDrinkPreference')
-console.log($(changeFoodPrefIcon), $(changeDrinkPrefIcon))
 
 // function for changing user's pref
 function changePref(e) {
@@ -810,8 +809,10 @@ $(changeDrinkPrefIcon).on('click', changePref)
 
 // Function that will blur the background if a modal is active
 
-console.log(IsModalOpen)
 function blurBackgroundIf() {
+
+  // scroll to the top of the page if modals is showing
+  $("html, body").animate({ scrollTop: 0 }, "fast")
 
   // check if the a modal is open 
   if (IsModalOpen === true) {
@@ -846,8 +847,3 @@ function blurBackgroundIf() {
 
 // Call on start 
 blurBackgroundIf()
-
-// scroll to top function 
-function scrollToTop() {
-  $(window).scrollTop(0);
-}
