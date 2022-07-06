@@ -44,11 +44,16 @@ html {
 	justify-content: center;
 }
 body {
+	font-family: 'Cormorant Garamond', serif;
 	background-image: var(--bg-dark);
 	background-size: 100% 100%;
-	background-position: center;
+	-o-background-size: 100% 100%;
+	-ms-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-attachment: scroll;
 	background-repeat: no-repeat;
-	font-family: 'Cormorant Garamond', serif;
+	background-position: center;
 }
 
 h1 {
