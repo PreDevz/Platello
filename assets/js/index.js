@@ -319,30 +319,43 @@ function getDrink() {
 // calls for and replaces the data from "drinkcard" in the index 
     let drinkCard = document.querySelectorAll(".drinkcard")
     console.log(drinkCard);
+
+    let randomNum = Math.floor(Math.random() * data.drinks.length);
+
+    let usedNumbers = [];
+
+    while (usedNumbers.length < 3) {
+      if (!usedNumbers.includes(randomNum)) {
+      usedNumbers.push(randomNum)
+    } else {
+      randomNum = Math.floor(Math.random() * data.drinks.length)
+    }}
     
     for (i = 0; i < drinkCard.length; i++) {
       // console.log("id = " + i);
 
+      // Adds drink image to card
+      let drinkCardImage = drinkCard 
 
-    // Adds drink image to card
-    let drinkCardImage = drinkCard 
+      //  randomizes 3 random cocktails based on base ingredient. changes titles and images of cocktails 
 
-  //  randomizes 3 random cocktails based on base ingredient. changes titles and images of cocktails 
-      let randomNum = Math.floor(Math.random() * data.drinks.length);
-      const drinkImage = data.drinks[randomNum].strDrinkThumb
-      const currentDrinkImg = document.getElementsByClassName("drink-image");
-      currentDrinkImg[i].src = drinkImage;
-      // console.log(randomNum);
+        const drinkImage = data.drinks[usedNumbers[i]].strDrinkThumb
+        const currentDrinkImg = document.getElementsByClassName("drink-image");
+        currentDrinkImg[i].src = drinkImage;
+        // console.log(randomNum);
 
-      // Adds drink title to card    
-      const drinkTitle = data.drinks[randomNum].strDrink
-      const currentDrinkTitle = document.getElementsByClassName("drink-card-title");
-      currentDrinkTitle[i].textContent = drinkTitle;
+        // Adds drink title to card    
+        const drinkTitle = data.drinks[usedNumbers[i]].strDrink
+        const currentDrinkTitle = document.getElementsByClassName("drink-card-title");
+        currentDrinkTitle[i].textContent = drinkTitle;
 
-      // Adds base ingredient needed below the title 
-      const drinkBase = data.drinks[randomNum].baseIngredient
-      const currentDrinkBase = document.getElementsByClassName("base-ingredient-needed");
-      currentDrinkBase[i].textContent = "Base Ingredient:   " + baseIngredient;
+        // Adds base ingredient needed below the title 
+        const drinkBase = data.drinks[usedNumbers[i]].baseIngredient
+        const currentDrinkBase = document.getElementsByClassName("base-ingredient-needed");
+        currentDrinkBase[i].textContent = "Base Ingredient:   " + baseIngredient;
+    }
+
+    
 
 
                     // adds cocktail to the selected section 
@@ -482,7 +495,7 @@ function getDrink() {
 
       
     }
-    })
+    )
 
   }
 
