@@ -144,8 +144,9 @@ body {
 
 .explainRemove {
 	width: auto;
-	padding: 0.2rem;
+	padding: 0.4rem;
 	font-size: 2rem;
+	font-weight: bold;
 	color: white;
 	background-color: var(--modal-bg-text);
 	border-radius: 8px;
@@ -199,6 +200,7 @@ form .labelRemove {
 #user-drink-values {
 	background-color: var(--modal-bg-text);
 	font-size: 1.5rem;
+	padding: 0.3rem;
 	margin-top: 1rem;
 }
 
@@ -329,10 +331,10 @@ form .labelRemove {
 
 .dashboard {
 	display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 1rem;
-    padding: 4rem 0 0 0;
+	flex-direction: column;
+	width: 100%;
+	gap: 1rem;
+	padding: 4rem 0 0 0;
 }
 
 .row > .col {
@@ -960,9 +962,10 @@ footer .container {
 	}
 }
 
-@media only screen and (max-width: 700px) {}
-	.container {
-    width: 85%;
+@media only screen and (max-width: 700px) {
+}
+.container {
+	width: 85%;
 }
 
 /* animations  */
