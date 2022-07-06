@@ -121,9 +121,7 @@ toggleThemeBtn.on('click', toggleTheme)
 Spoonacular API
 For every request to Spoonacular, the first query parameter has to be the API key
 Example url: 'https://api.spoonacular.com/recipes/complexSearch?apiKey=da1414212d52482cbe9aaf669cae5da3'
-
 Use the following query parameters
-
 sort=random - makes the foods returned random
 instructionsRequired=true - recipes must have instructions
 addRecipeInformation=true - if set to true, you get more information about the recipe returned
@@ -283,84 +281,123 @@ function getSpoonApi() {
 // --------------------------------------------------------------------------------------------------------
 //  Drink api fetch
 
-
-// 3) randomize 3 cocktails based on Selection
 // 4) allow user to select one of three
 // 5) allow user to favorite 1 Daily 
-// 6) repeat randomizer for following day 
 
 
-// fetching info from the API based on base ingredient.
-// Our website consists of 6 base ingredients users can select from: Gin, Rum, Tequila, Vodka, Whisky, and Wine
-function getDrink(baseIngredient) {
-    fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + baseIngredient)
+
+
+// ```````````````````````````generating cocktail```````````````````````````````````
+
+// drinksArray is generated based on the user selection of base ingredients (Gin, Rum, Tequila, Vodka, Whiskey, and Wine)
+let drinksArray = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
+
+
+
+
+// main function of fetching all data from the API and generating cocktails based on user choices
+function getDrink() {
+
+  // selecting one random base ingredient from the drinksArray 
+  let randomBase = Math.floor(Math.random() * drinksArray.length);
+  // console.log(randomBase);
+
+
+  // fetching info from the API based on base ingredient 
+  let baseIngredient = drinksArray[randomBase]
+  console.log(baseIngredient);
+
+  fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + baseIngredient)
     .then(response => {
-        return response.json()
+      return response.json()
     })
     .then((data) => {
-    console.log(data)
-    // console.log(data ? JSON.parse(data) : {})
+      // console.log(data)
+      // console.log(data ? JSON.parse(data) : {})
+      // console.log(baseIngredient);
 
-// three randomized drinks the user will get based on base ingredient choices
-    let id = data.drinks["1"].idDrink
-    console.log(id);
 
-    let id2 = data.drinks["2"].idDrink
-    console.log(id2)
-    
-    let id3 = data.drinks["3"].idDrink
-    console.log(id3)
+      // calls for and replaces the data from "drinkcard" in the index 
+      let drinkCard = document.querySelectorAll(".drinkcard")
+      console.log(drinkCard);
 
-  // after we fetched all the drinks from the previous fetch requestUrl, we are now fetching more details
-  // of the cocktails based on their cocktail IDs from the api. This fetch provides us with all the other ingredients needed
-  // as well as instructions and an image of the cocktail
-    fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id)
-    .then(response => {
-      return response.json()
-    })
-    .then((idData) => {
-      console.log(idData)
-    })
+      let randomNum = Math.floor(Math.random() * data.drinks.length);
 
-    fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id2)
-    .then(response => {
-      return response.json()
-    })
-    .then((idData2) => {
-      console.log(idData2)
-    })
-    fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id3)
-    .then(response => {
-      return response.json()
-    })
-    .then((idData3) => {
-      console.log(idData3)
-    })
-    
+      let usedNumbers = [];
 
+      while (usedNumbers.length < 3) {
+        if (!usedNumbers.includes(randomNum)) {
+          usedNumbers.push(randomNum)
+        } else {
+          randomNum = Math.floor(Math.random() * data.drinks.length)
+        }
+      }
+
+      for (i = 0; i < drinkCard.length; i++) {
+        // console.log("id = " + i);
+
+        // Adds drink image to card
+        let drinkCardImage = drinkCard
+
+        // changes titles and images of cocktails 
+
+        const drinkImage = data.drinks[usedNumbers[i]].strDrinkThumb
+        const currentDrinkImg = document.getElementsByClassName("drink-image");
+        currentDrinkImg[i].src = drinkImage;
+        // console.log(randomNum);
+
+        // Adds drink title to card    
+        const drinkTitle = data.drinks[usedNumbers[i]].strDrink
+        const currentDrinkTitle = document.getElementsByClassName("drink-card-title");
+        currentDrinkTitle[i].textContent = drinkTitle;
+
+        // Adds base ingredient needed below the title 
+        const drinkBase = data.drinks[usedNumbers[i]].baseIngredient
+        const currentDrinkBase = document.getElementsByClassName("base-ingredient-needed");
+        currentDrinkBase[i].textContent = "Base Ingredient:   " + baseIngredient;
+
+
+
+        let drinkId = data.drinks[usedNumbers[i]].idDrink
+        console.log(drinkId);
+
+        // after we fetched all the drinks from the previous fetch requestUrl, we are now fetching more details
+        // of the cocktails based on their cocktail IDs from the api. This fetch provides us with all the other ingredients needed
+        // as well as instructions and an image of the cocktail
+        fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId)
+          .then(response => {
+            return response.json()
+          })
+          .then((idData) => {
+            console.log(idData.drinks);
+
+            
+            let cardInstructions1 = document.getElementById("#1");
+            let cardInstructions2 = document.getElementById("#2");
+            let cardInstructions3 = document.getElementById("#3");
+            
+              // console.log(j);
+              // console.log(cardIngredients[j])
+
+              // Get each ingredient
+              // console.log(idData.drinks[0].strIngredient1)
+
+              let maxIngredient = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+              for (k = 1; k <= 15; k++) {
+                const drinkIngredient = idData.drinks[0]["strIngredient" + k]
+                console.log(drinkIngredient);
+                // console.log(cardIngredients);
+
+                let li = document.createElement("li")
+                li.textContent = drinkIngredient
+                cardInstructions1.appendChild(li)
+                console.log(cardInstructions1);
+
+
+              }           
+          })
+      }
     })
 }
 
-getDrink("gin")
-// getDrink("tequila")
-// getDrink("vodka")
-// getDrink("wine")
-// getDrink("rum")
-// getDrink("whiskey")
-// getDrink("")
-
-// for (let i = 0; i < data.length; i++) {
-  
-// const selectCocktail1 = document.getElementById("confirm-drink-1");
-// const selectCocktail2 = document.getElementById("confirm-drink-2");
-// const selectCocktail3 = document.getElementById("confirm-drink-3");
-
-
-// function createDrinkRecipe(newDrink) {
-
-
-// }
-
-// function createDrinkIngredients(newDrink) {
-
-// }
+getDrink()
