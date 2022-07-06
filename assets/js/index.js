@@ -709,7 +709,7 @@ function checkDrinksState() {
         drinksArray = drinksArray.filter(e => e !== this.value);
         
         /* Joining the array with a / in between each element. */
-        userDrinks.innerHTML = text + drinksArray.join(', ');
+        userDrinks.textContent = text + drinksArray.join(', ');
       }
 
       /* Storing the drinksArray in local storage. */
