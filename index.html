@@ -174,7 +174,7 @@
 													>more_vert</i
 												></span
 											>
-											<p><a href="#">This is a link</a></p>
+											<p class="base-ingredient-needed">Base Ingredient Needed:</p>
 										</div>
 										<div class="card-reveal">
 											<span class="card-title grey-text text-darken-4"
@@ -183,9 +183,13 @@
 												></span
 											>
 											<p class="card-ingredients">
-												Here is some more information about this product that is
-												only revealed once clicked on.
 											</p>
+
+											<a class="select-drink" href="#user-selected"
+												><button id="confirm-drink-1" class="confirm-drink">
+													View Instructions
+												</button></a>
+												
 										</div>
 									</div>
 									<!-- card 2  -->
@@ -204,7 +208,7 @@
 													>more_vert</i
 												></span
 											>
-											<p><a href="#">This is a link</a></p>
+											<p class="base-ingredient-needed">Base Ingredient Needed:</p>
 										</div>
 										<div class="card-reveal">
 											<span class="card-title grey-text text-darken-4"
@@ -214,8 +218,12 @@
 											>
 											<p class="card-ingredients">
 											</p>
-				
-											
+
+											<a class="select-drink" href="#user-selected"
+												><button id="confirm-drink-2" class="confirm-drink">
+													View Instructions
+												</button></a>
+															
 										</div>
 									</div>
 									<!-- card 3  -->
@@ -235,7 +243,7 @@
 													>more_vert</i
 												></span
 											>
-											<p><a href="#">This is a link</a></p>
+											<p class="base-ingredient-needed">Base Ingredient Needed:</p>
 										</div>
 										<div class="card-reveal">
 											<span class="card-title grey-text text-darken-4"
@@ -244,9 +252,13 @@
 												></span
 											>
 											<p class="card-ingredients">
-												Here is some more information about this product that is
-												only revealed once clicked on.
 											</p>
+
+											<a class="select-drink" href="#user-selected"
+												><button id="confirm-drink-3" class="confirm-drink">
+													View Instructions
+												</button></a>
+
 										</div>
 									</div>
 								</div>
@@ -290,10 +302,14 @@
 									<img
 										src="https://www.kitchensanctuary.com/wp-content/uploads/2018/01/Crispy-Chilli-Beef-Noodles-recipe-square-FS.jpg"
 										alt=""
+										class="selected-drink-img"
 									/>
-									<h5>Beef Noodles</h5>
+									<h5 class="selected-drink-title">Beef Noodles</h5>
+									<p><span id="selected-drink-base"></span></p>
 									<div class="sects">
+
 										<span>Ingredients</span>
+										<n1 class="ingr"></n1>
 										<ul>
 											<li>Egg Noodles</li>
 											<li>Beef Stew Meat</li>
@@ -305,7 +321,8 @@
 										</ul>
 									</div>
 									<div class="sects">
-										<span>Recipe</span>
+										<span>Instructions</span>
+										<ol id="selected-drink-steps"></ol>
 										<ol>
 											<li>
 												To a pan over medium heat add beef, beef stock, celery,

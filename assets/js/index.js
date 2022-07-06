@@ -288,6 +288,9 @@ function getSpoonApi() {
 // 6) repeat randomizer for following day 
 
 
+
+// ```````````````````````````generating cocktail```````````````````````````````````
+
 // drinksArray is generated based on the user selection of base ingredients (Gin, Rum, Tequila, Vodka, Whiskey, and Wine)
 let drinksArray = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
 
@@ -296,7 +299,7 @@ function getDrink() {
 
   // selecting one random base ingredient from the drinksArray 
   let randomBase = Math.floor(Math.random() * drinksArray.length);
-  console.log(randomBase);
+  // console.log(randomBase);
   
 
 // fetching info from the API based on base ingredient 
@@ -308,9 +311,9 @@ function getDrink() {
         return response.json()
     })
     .then((data) => {
-    console.log(data)
+    // console.log(data)
     // console.log(data ? JSON.parse(data) : {})
-    // console.log(baseIngredient)
+    // console.log(baseIngredient);
 
 
 // calls for and replaces the data from "drinkcard" in the index 
@@ -329,18 +332,75 @@ function getDrink() {
       const drinkImage = data.drinks[randomNum].strDrinkThumb
       const currentDrinkImg = document.getElementsByClassName("drink-image");
       currentDrinkImg[i].src = drinkImage;
-      console.log(randomNum);
+      // console.log(randomNum);
 
       // Adds drink title to card    
       const drinkTitle = data.drinks[randomNum].strDrink
       const currentDrinkTitle = document.getElementsByClassName("drink-card-title");
       currentDrinkTitle[i].textContent = drinkTitle;
 
+      // Adds base ingredient needed below the title 
+      const drinkBase = data.drinks[randomNum].baseIngredient
+      const currentDrinkBase = document.getElementsByClassName("base-ingredient-needed");
+      currentDrinkBase[i].textContent = "Base Ingredient:   " + baseIngredient;
+
+
+                    // adds cocktail to the selected section 
+      // const selectCocktail1 = document.getElementById("confirm-drink-1");
+      // const selectCocktail2 = document.getElementById("confirm-drink-2");
+      // const selectCocktail3 = document.getElementById("confirm-drink-3");
+              
+      // const selectedCocktailTitle = document.querySelector(".selected-drink-title");
+      // const selectedCocktailImg = document.querySelector(".selected-drink-img")
+
+
+      // const drinkInstructions = data.drinks[i].strInstructions;
+      // const selectedDrinkRecipe = document.querySelector(".selected-drink-steps");
+      // selectedDrinkRecipe[i].textContent = drinkInstructions;
+      // console.log(selectedDrinkRecipe);
+
+
+      // selectCocktail1.addEventListener("click", () => {
+
+      //   selectedDrinkRecipe(0);
+
+      //   selectedCocktailTitle(0);
+
+      //   selectCocktail3(0);
+
+      // });
+
+      // selectCocktail2.addEventListener("click", () => {
+
+      //   selectedDrinkRecipe(1);
+
+      //   selectedCocktailTitle(1);
+
+      //   selectCocktail3(1);
+
+      // });
+
+      // selectCocktail3.addEventListener("click", () => {
+
+      //   selectedDrinkRecipe(2);
+
+      //   selectedCocktailTitle(2);
+
+      //   selectCocktail3(2);
+
+      // });
+
+
+
+    
+      
+
 
     
 // ````````````````````````````recipe and instructions ````````````````````````````
       
       let drinkId = data.drinks[i].idDrink
+      
       // console.log(drinkId);
 
       // after we fetched all the drinks from the previous fetch requestUrl, we are now fetching more details
@@ -351,7 +411,7 @@ function getDrink() {
         return response.json()
       })
       .then((idData) => {
-        // console.log(idData)
+        console.log(idData)
 
         let cardIngredients = document.getElementsByClassName("card-ingredients");
         for(j = 0; j <= 2; j++) {
@@ -370,16 +430,51 @@ function getDrink() {
                 const li = document.createElement("li");
                 li.innerText = drinkIngredient;
                 cardIngredients[j].appendChild(li);
-              }
-               // console.log(drinkIngredient);
+
+
+
+                // function removeDuplicates(drinkIngredient) {
+                //   let unique = {};
+                //  drinkIngredient.forEach(function(j){
+                //     if(!unique[j]) {
+                //       unique[j] = true;
+                //     }
+                //   });
+                //   return Object.keys(unique);
+                // }
+
+                // removeDuplicates(drinkIngredient); 
+
+
+              //   var repeatIngredients=drinkIngredient.split(',').filter(function(item,i,allItems){
+              //     return i==allItems.indexOf(item);
+              // }).join(',');
               
+              // $('#output').append(repeatIngredients);
+
+
+              }
+                           
             }
 
             
             // console.log("strIngredient" + k);
 
             // If there is an ingredient, add it to the list of ingredients on the card
-           
+
+
+;
+      
+
+      // selectedCocktailImg.src = currentDrinkImg[i].currentSrc;
+      // console.log(selectedCocktailImg);
+      // selectedCocktailTitle = currentDrinkTitle;
+
+      // console.log(currentDrinkImg);
+
+            
+
+            
           
         }
 
@@ -392,13 +487,13 @@ function getDrink() {
   }
 
 getDrink()
+
   
+// ````````````````````````````selecting cocktail```````````````````````````````
 
 // for (let i = 0; i < data.length; i++) {
   
-// const selectCocktail1 = document.getElementById("confirm-drink-1");
-// const selectCocktail2 = document.getElementById("confirm-drink-2");
-// const selectCocktail3 = document.getElementById("confirm-drink-3");
+
 
 
 // function createDrink {
@@ -410,3 +505,5 @@ getDrink()
 // if strIngredient = null
 // then don't include
 
+
+// ``````````````````````````````````favoriting cocktail````````````````````````````````````` 
