@@ -203,7 +203,7 @@ footer .container {
 	color: black;
 }
 
-.confirm-food {
+.confirm-food, .confirm-drink {
 	margin: 10px;
 	width: 100%;
 	cursor: pointer;
@@ -432,6 +432,7 @@ footer .container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+    margin-bottom: 4rem;
 	}
 	#user-selected h5 {
 		font-size: 1.8rem;
