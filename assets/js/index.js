@@ -300,12 +300,10 @@ let drinksArray = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
 // main function of fetching all data from the API and generating cocktails based on user choices
 function getDrink() {
 
-  // selecting one random base ingredient from the drinksArray 
+  //Selecting one random base ingredient from the drinksArray 
   let randomBase = Math.floor(Math.random() * drinksArray.length);
-  // console.log(randomBase);
 
-
-  // fetching info from the API based on base ingredient 
+  //Fetching info from the API based on base ingredient 
   let baseIngredient = drinksArray[randomBase]
   console.log(baseIngredient);
 
@@ -314,14 +312,10 @@ function getDrink() {
       return response.json()
     })
     .then((data) => {
-      // console.log(data)
-      // console.log(data ? JSON.parse(data) : {})
-      // console.log(baseIngredient);
+      console.log(data)
 
-
-      // calls for and replaces the data from "drinkcard" in the index 
+      //Calls for and replaces the data from "drinkcard" in the index 
       let drinkCard = document.querySelectorAll(".drinkcard")
-      console.log(drinkCard);
 
       let randomNum = Math.floor(Math.random() * data.drinks.length);
 
@@ -335,18 +329,12 @@ function getDrink() {
         }
       }
 
-      for (i = 0; i < drinkCard.length; i++) {
-        // console.log("id = " + i);
+      for (let i = 0; i < drinkCard.length; i++) {
 
-        // Adds drink image to card
-        let drinkCardImage = drinkCard
-
-        // changes titles and images of cocktails 
-
+        //Randomizes 3 random cocktails based on base ingredient. changes titles and images of cocktails 
         const drinkImage = data.drinks[usedNumbers[i]].strDrinkThumb
         const currentDrinkImg = document.getElementsByClassName("drink-image");
         currentDrinkImg[i].src = drinkImage;
-        // console.log(randomNum);
 
         // Adds drink title to card    
         const drinkTitle = data.drinks[usedNumbers[i]].strDrink
@@ -354,52 +342,37 @@ function getDrink() {
         currentDrinkTitle[i].textContent = drinkTitle;
 
         // Adds base ingredient needed below the title 
-        const drinkBase = data.drinks[usedNumbers[i]].baseIngredient
         const currentDrinkBase = document.getElementsByClassName("base-ingredient-needed");
         currentDrinkBase[i].textContent = "Base Ingredient:   " + baseIngredient;
 
+        //Id of specific drink, used to make another request to the API with further instructions
+        let drinkId = data.drinks[i].idDrink
 
-
-        let drinkId = data.drinks[usedNumbers[i]].idDrink
-        console.log(drinkId);
-
-        // after we fetched all the drinks from the previous fetch requestUrl, we are now fetching more details
-        // of the cocktails based on their cocktail IDs from the api. This fetch provides us with all the other ingredients needed
-        // as well as instructions and an image of the cocktail
         fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId)
           .then(response => {
             return response.json()
           })
+
           .then((idData) => {
-            console.log(idData.drinks);
+            console.log(idData)
 
-            
-            let cardInstructions1 = document.getElementById("#1");
-            let cardInstructions2 = document.getElementById("#2");
-            let cardInstructions3 = document.getElementById("#3");
-            
-              // console.log(j);
-              // console.log(cardIngredients[j])
+            //Adds ingredients to each individual drink card
+            let cardIngredients = document.getElementsByClassName("card-ingredients");
 
-              // Get each ingredient
-              // console.log(idData.drinks[0].strIngredient1)
-
-              let maxIngredient = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-              for (k = 1; k <= 15; k++) {
-                const drinkIngredient = idData.drinks[0]["strIngredient" + k]
-                console.log(drinkIngredient);
-                // console.log(cardIngredients);
-
-                let li = document.createElement("li")
+            for (j = 1; j < 16; j++) {
+              let drinkIngredient = idData.drinks[0]["strIngredient" + j]
+              if (drinkIngredient) {
+                const li = document.createElement("li")
                 li.textContent = drinkIngredient
-                cardInstructions1.appendChild(li)
-                console.log(cardInstructions1);
+                cardIngredients[i].append(li)
+              }
+            }
 
-
-              }           
-          })
+          }
+          )
       }
-    })
+    }
+    )
 }
 
 getDrink()
@@ -408,26 +381,4 @@ getDrink()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-    
-
-
-                    
+      
