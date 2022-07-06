@@ -323,45 +323,42 @@ function getDrink() {
     let drinkCard = document.querySelectorAll(".drinkcard")
     console.log(drinkCard);
 
-    
+    let randomNum = Math.floor(Math.random() * data.drinks.length);
+
+    let usedNumbers = [];
+
+    while (usedNumbers.length < 3) {
+      if (!usedNumbers.includes(randomNum)) {
+      usedNumbers.push(randomNum)
+    } else {
+      randomNum = Math.floor(Math.random() * data.drinks.length)
+    }}
     
     for (i = 0; i < drinkCard.length; i++) {
       // console.log("id = " + i);
 
+      // Adds drink image to card
+      let drinkCardImage = drinkCard 
 
-    // Adds drink image to card
-    let drinkCardImage = drinkCard 
+      //  randomizes 3 random cocktails based on base ingredient. changes titles and images of cocktails 
 
+        const drinkImage = data.drinks[usedNumbers[i]].strDrinkThumb
+        const currentDrinkImg = document.getElementsByClassName("drink-image");
+        currentDrinkImg[i].src = drinkImage;
+        // console.log(randomNum);
 
-//  randomizes 3 random cocktails based on base ingredient. 
-//  pushes an element into an array, then checks if the number is not included in the array,if it is not it pushes it into to the array   
-    let randomNum = Math.floor(Math.random() * data.drinks.length);
-    let usedNumbers = [];
+        // Adds drink title to card    
+        const drinkTitle = data.drinks[usedNumbers[i]].strDrink
+        const currentDrinkTitle = document.getElementsByClassName("drink-card-title");
+        currentDrinkTitle[i].textContent = drinkTitle;
+
+        // Adds base ingredient needed below the title 
+        const drinkBase = data.drinks[usedNumbers[i]].baseIngredient
+        const currentDrinkBase = document.getElementsByClassName("base-ingredient-needed");
+        currentDrinkBase[i].textContent = "Base Ingredient:   " + baseIngredient;
+    }
+
     
-    console.log(randomNum,usedNumbers);
-    
-
-    if (!usedNumbers.includes(randomNum)) {
-    usedNumbers.push(randomNum)
-    }    
-
-
-  // changes titles and images of cocktails 
-      const drinkImage = data.drinks[usedNumbers].strDrinkThumb
-      const currentDrinkImg = document.getElementsByClassName("drink-image");
-      currentDrinkImg[i].src = drinkImage;
-     
-      // console.log(randomNum);
-
-      // Adds drink title to card    
-      const drinkTitle = data.drinks[usedNumbers].strDrink
-      const currentDrinkTitle = document.getElementsByClassName("drink-card-title");
-      currentDrinkTitle[i].textContent = drinkTitle;
-
-      // Adds base ingredient needed below the title 
-      const drinkBase = data.drinks[usedNumbers].baseIngredient
-      const currentDrinkBase = document.getElementsByClassName("base-ingredient-needed");
-      currentDrinkBase[i].textContent = "Base Ingredient:   " + baseIngredient;
 
 
                     // adds cocktail to the selected section 
@@ -501,7 +498,7 @@ function getDrink() {
 
       
     }
-    })
+    )
 
   }
 
