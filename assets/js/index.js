@@ -371,16 +371,16 @@ function generateFoodInfo() {
   function createRecipeInfo(recipeNum) {
 
     //Changes title
-    selectedTitle.innerHTML = foodData[recipeNum].title;
+    selectedTitle.textContent = foodData[recipeNum].title;
 
     //Changes food img
     selectedImg.src = foodData[recipeNum].image;
 
     //Changes amount of servings
-    selectedServings.innerHTML = "Servings: " + foodData[recipeNum].servings;
+    selectedServings.textContent = "Servings: " + foodData[recipeNum].servings;
 
     //Changes cook time
-    selectedPrepTime.innerHTML = "Cook Time: " + foodData[recipeNum].readyInMinutes + " minutes";
+    selectedPrepTime.textContent = "Cook Time: " + foodData[recipeNum].readyInMinutes + " minutes";
 
     //Changes ingredients
     selectedIngredientList.replaceChildren();

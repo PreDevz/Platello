@@ -571,13 +571,17 @@ footer .container {
 	border-radius: 8px;
 	padding: 1.5rem;
 }
+
 .selected img {
 	max-width: 450px;
 	max-height: 310px;
+  margin-bottom: 1rem;
 }
+
 .selected > p {
 	font-size: 1.5rem;
 }
+
 .sects {
 	display: flex;
 	flex-direction: column;
@@ -601,6 +605,19 @@ footer .container {
 	margin: 0.3rem 0;
 }
 
+.save-icon-container {
+  width: 100%;
+}
+
+#selected-food-title {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+#selected-drink-title {
+  text-align: center;
+  margin: 1rem 0;
+}
 /* hidden is down hear is it can hide all the elements  */
 .hidden {
 	display: none;
