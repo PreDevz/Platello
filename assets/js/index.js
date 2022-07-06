@@ -285,7 +285,7 @@ function getSpoonApi() {
 
 // 4) allow user to select one of three
 // 5) allow user to favorite 1 Daily 
-// 6) repeat randomizer for following day 
+
 
 
 
@@ -293,6 +293,9 @@ function getSpoonApi() {
 
 // drinksArray is generated based on the user selection of base ingredients (Gin, Rum, Tequila, Vodka, Whiskey, and Wine)
 let drinksArray = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
+
+
+
 
 // main function of fetching all data from the API and generating cocktails based on user choices
 function getDrink() {
@@ -319,6 +322,8 @@ function getDrink() {
 // calls for and replaces the data from "drinkcard" in the index 
     let drinkCard = document.querySelectorAll(".drinkcard")
     console.log(drinkCard);
+
+    
     
     for (i = 0; i < drinkCard.length; i++) {
       // console.log("id = " + i);
@@ -327,20 +332,34 @@ function getDrink() {
     // Adds drink image to card
     let drinkCardImage = drinkCard 
 
-  //  randomizes 3 random cocktails based on base ingredient. changes titles and images of cocktails 
-      let randomNum = Math.floor(Math.random() * data.drinks.length);
-      const drinkImage = data.drinks[randomNum].strDrinkThumb
+
+//  randomizes 3 random cocktails based on base ingredient. 
+//  pushes an element into an array, then checks if the number is not included in the array,if it is not it pushes it into to the array   
+    let randomNum = Math.floor(Math.random() * data.drinks.length);
+    let usedNumbers = [];
+    
+    console.log(randomNum,usedNumbers);
+    
+
+    if (!usedNumbers.includes(randomNum)) {
+    usedNumbers.push(randomNum)
+    }    
+
+
+  // changes titles and images of cocktails 
+      const drinkImage = data.drinks[usedNumbers].strDrinkThumb
       const currentDrinkImg = document.getElementsByClassName("drink-image");
       currentDrinkImg[i].src = drinkImage;
+     
       // console.log(randomNum);
 
       // Adds drink title to card    
-      const drinkTitle = data.drinks[randomNum].strDrink
+      const drinkTitle = data.drinks[usedNumbers].strDrink
       const currentDrinkTitle = document.getElementsByClassName("drink-card-title");
       currentDrinkTitle[i].textContent = drinkTitle;
 
       // Adds base ingredient needed below the title 
-      const drinkBase = data.drinks[randomNum].baseIngredient
+      const drinkBase = data.drinks[usedNumbers].baseIngredient
       const currentDrinkBase = document.getElementsByClassName("base-ingredient-needed");
       currentDrinkBase[i].textContent = "Base Ingredient:   " + baseIngredient;
 
@@ -435,8 +454,8 @@ function getDrink() {
 
                 // function removeDuplicates(drinkIngredient) {
                 //   let unique = {};
-                //  drinkIngredient.forEach(function(j){
-                //     if(!unique[j]) {
+                //     drinkIngredient.forEach(function(j){
+                //       if(!unique[j]) {
                 //       unique[j] = true;
                 //     }
                 //   });
