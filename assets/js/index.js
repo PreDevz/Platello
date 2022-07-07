@@ -292,6 +292,7 @@ function getSpoonApi() {
 // ```````````````````````````generating cocktail```````````````````````````````````
 
 // drinksArray is generated based on the user selection of base ingredients (Gin, Rum, Tequila, Vodka, Whiskey, and Wine)
+//let drinksArray = JSON.parse(localStorage.getItem('drinksArray'))
 let drinksArray = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
 
 //Selecting one random base ingredient from the drinksArray 
@@ -310,29 +311,55 @@ function getDrink() {
     })
     .then((data) => {
       //Stores incoming drink data into localStorage
+      console.log("data retrieved")
       localStorage.setItem("drinkData", JSON.stringify(data.drinks))
 
-      generateDrinkCards()
+      generateRandomNums()
 
-    }
-    )
+      let usedNumbers = JSON.parse(localStorage.getItem('ranDrinkNums'))
+      console.log(usedNumbers)
+
+      for (i = 0; i <= 2; i++) {
+        let storedDrinkData = JSON.parse(localStorage.drinkData)
+        console.log(storedDrinkData)
+        console.log(storedDrinkData[usedNumbers[i]])
+
+        //Id of specific drink, used to make another request to the API with further instructions
+        let drinkId = storedDrinkData[usedNumbers[i]].idDrink
+
+        fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId)
+          .then(response => {
+            return response.json()
+          })
+
+          .then((idData) => {
+            console.log("drink id looked up")
+            
+            //let drinksId = JSON.stringify(idData)
+            localStorage.setItem("drinkIngredients" + i.toString(), JSON.stringify(idData))
+
+            // generateDrinkCards()
+    
+            // generateCardIngredients()
+
+          })
+      }
+
+      // generateDrinkCards()
+    
+      // generateCardIngredients()
+
+    })
 }
 
-//Each of these should be called within the getDrink() function and only be called if there is the appropriate data in localStorage
-
-//Will be used when user runs getDrink()
-function generateDrinkCards() {
+function generateRandomNums() {
+  //Generates 3 random numbers that will be used to determine what drinks are displayed
+  let usedNumbers = [];
 
   //Returns drink data from localStorage
   let storedDrinkData = JSON.parse(localStorage.drinkData)
-  console.log(storedDrinkData)
-  
-  //Calls for and replaces the data from "drinkcard" in the index 
-  let drinkCard = document.querySelectorAll(".drinkcard")
-  
-  let randomNum = Math.floor(Math.random() * storedDrinkData.length);
 
-  let usedNumbers = [];
+  let randomNum = Math.floor(Math.random() * storedDrinkData.length);
 
   while (usedNumbers.length < 3) {
     if (!usedNumbers.includes(randomNum)) {
@@ -341,70 +368,65 @@ function generateDrinkCards() {
       randomNum = Math.floor(Math.random() * storedDrinkData.length)
     }
   }
+  localStorage.setItem('ranDrinkNums', JSON.stringify(usedNumbers))
+}
 
-  for (let i = 0; i < drinkCard.length; i++) {
+//Will be used when user runs getDrink()
+function generateDrinkCards() {
+
+  let usedNumbers = JSON.parse(localStorage.getItem('ranDrinkNums'))
+  console.log(usedNumbers)
+
+  //Calls for and replaces the data from "drinkcard" in the index 
+  let drinkCard = document.querySelectorAll(".drinkcard")
+
+  let storedDrinkData = JSON.parse(localStorage.drinkData)
+
+  for (let j = 0; j < drinkCard.length; j++) {
 
     //Randomizes 3 random cocktails based on base ingredient. changes titles and images of cocktails 
-    const drinkImage = storedDrinkData[usedNumbers[i]].strDrinkThumb
+    let drinkImage = storedDrinkData[usedNumbers[j]].strDrinkThumb
     const currentDrinkImg = document.getElementsByClassName("drink-image");
-    currentDrinkImg[i].src = drinkImage;
+    currentDrinkImg[j].src = drinkImage;
 
     // Adds drink title to card    
-    const drinkTitle = storedDrinkData[usedNumbers[i]].strDrink
+    const drinkTitle = storedDrinkData[usedNumbers[j]].strDrink
     const currentDrinkTitle = document.getElementsByClassName("drink-card-title");
-    currentDrinkTitle[i].textContent = drinkTitle;
+    currentDrinkTitle[j].textContent = drinkTitle;
 
     // Adds base ingredient needed below the title 
     const currentDrinkBase = document.getElementsByClassName("base-ingredient-needed");
-    currentDrinkBase[i].textContent = "Base Ingredient:   " + baseIngredient;
+    currentDrinkBase[j].textContent = "Base Ingredient:   " + baseIngredient;
 
-    //Id of specific drink, used to make another request to the API with further instructions
-    let drinkId = storedDrinkData[usedNumbers[i]].idDrink
-
-    fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId)
-      .then(response => {
-        return response.json()
-      })
-
-      .then((idData) => {
-        localStorage.setItem("drinkIngredients" + i, JSON.stringify(idData))
-
-        let storedDrinkIngredients = JSON.parse(localStorage["drinkIngredients" + i])
-        console.log(storedDrinkIngredients)
-
-        //Adds ingredients to each individual drink card
-        let cardIngredients = document.getElementsByClassName("card-ingredients");
-        cardIngredients[i].replaceChildren()
-
-        for (j = 1; j < 16; j++) {
-          let drinkIngredient = storedDrinkIngredients.drinks[0]["strIngredient" + j]
-          if (drinkIngredient) {
-            const li = document.createElement("li")
-            li.textContent = drinkIngredient
-            cardIngredients[i].append(li)
-          }
-        }
-
-      }
-      )
   }
 }
 
-//This will be used when the user clicks on the button 'view recipe' button
-function createDrinkSteps() {
+function generateCardIngredients() {
+  for (i = 0; i < 3; i++) {
+    let storedDrinkIngredients = JSON.parse(localStorage["drinkIngredients" + i])
+    //let storedDrinkIngredients = localStorage["drinkIngredients" + i]
 
+    console.log(storedDrinkIngredients)
+
+    //Adds ingredients to each individual drink card
+    let cardIngredients = document.getElementsByClassName("card-ingredients");
+    cardIngredients[i].replaceChildren()
+
+    for (j = 1; j < 16; j++) {
+      let drinkIngredient = storedDrinkIngredients.drinks[0]["strIngredient" + j]
+      if (drinkIngredient) {
+        const li = document.createElement("li")
+        li.textContent = drinkIngredient
+        cardIngredients[i].append(li)
+      }
+    }
+  }
 }
 
-//This will be used when the user clicks on the button 'view recipe' button
-function createDrinkIngredients() {
-
-}
-
-if (localStorage.drinkData != null) {
-  generateDrinkCards()
-}
+// if (localStorage.drinkData != null) {
+//   generateDrinkCards()
+//   generateCardIngredients()
+// }
 
 //getDrink()
 
-
-      
