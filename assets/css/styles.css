@@ -480,6 +480,7 @@ footer {
 	min-height: 25vh;
 	padding: 3.5rem 0;
 	justify-content: center;
+	margin-top: 2rem;
 }
 
 footer .logo {
@@ -534,7 +535,8 @@ footer .container {
 	color: black;
 }
 
-.confirm-food {
+.confirm-food,
+.confirm-drink {
 	margin: 10px;
 	width: 100%;
 	cursor: pointer;
@@ -603,6 +605,19 @@ footer .container {
 	margin: 0.3rem 0;
 }
 
+.card-ingredients {
+	align-items: baseline;
+	display: flex;
+	flex-direction: column;
+	font-size: 18px;
+	height: auto;
+}
+
+.card-ingredients li {
+	color: black;
+	margin-left: 15px;
+	list-style-type: disc !important;
+}
 /* hidden is down hear is it can hide all the elements  */
 .hidden {
 	display: none;

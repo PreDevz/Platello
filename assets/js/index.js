@@ -18,9 +18,10 @@ let iconsEl = $('.material-icons')
 let headerEls = $(':header')
 let box = $('.box')
 let selectedBox = $('.selected')
+let selectDrinkPEl = $('#selectedSteps')
 let CardXIcon = $('.right')
 let footer = $('footer')
-let Els = [spanEl, sub, divEl, liEl, dateEl]
+let Els = [spanEl, sub, divEl, liEl, dateEl, selectDrinkPEl]
 Els.push(headerEls)
 Els.push(iconsEl)
 let body = document.querySelector('body');
@@ -300,6 +301,9 @@ function getSpoonApi() {
       storeFoodData(ApiData)
 
         // document.location.reload()
+        setTimeout(() => {
+          location.reload()
+        }, 750)
 
       //return ApiData
     })
@@ -317,6 +321,8 @@ function retrieveFoodData() {
 }
 
 retrieveFoodData()
+
+const userSelectedArea = document.querySelector("#user-selected")
 
 //Will generate all cards and "selected" section below the page
 function generateFoodInfo() {
@@ -363,7 +369,6 @@ function generateFoodInfo() {
   const selectedStepList = document.querySelector("#selected-food-steps");
   const selectedIngredientList = document.querySelector(".ingr");
 
-  const userSelectedArea = document.querySelector("#user-selected")
 
   //Generates generic recipe info at bottom of page
   function createRecipeInfo(recipeNum) {
@@ -463,17 +468,10 @@ if (localStorage.foodData != null) {
 
 
 
-//  Drink api fetch
-// function getDrink(baseIngredient) {
-//     fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + baseIngredient)
-//     .then(response => {
-//         return response.text()
-//     })
-//     .then((data) => {
-//     console.log(data ? JSON.parse(data) : {})
-//     })
-// }
+// ```````````````````````````generating cocktail```````````````````````````````````
 
+// drinksArray is generated based on the user selection of base ingredients (Gin, Rum, Tequila, Vodka, Whiskey, and Wine)
+let possibleBase = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
 
 
 // Modal Functionality
@@ -485,6 +483,230 @@ let excludeState;
 let mealsState = [];
 let storedUserMeals = [];
 let storedUserExclude = [];
+
+// main function of fetching all data from the API and generating cocktails based on user choices
+function getDrink() {
+
+  //Selecting one random base ingredient from the drinksArray 
+  let randomBase = Math.floor(Math.random() * possibleBase.length);
+
+  //Fetching info from the API based on base ingredient 
+  let baseIngredient = possibleBase[randomBase]
+  console.log(baseIngredient);
+
+  fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + baseIngredient)
+    .then(response => {
+      return response.json()
+    })
+    .then((data) => {
+      console.log(data)
+
+      //Calls for and replaces the data from "drinkcard" in the index 
+      let drinkCard = document.querySelectorAll(".drinkcard")
+
+      let randomNum = Math.floor(Math.random() * data.drinks.length);
+
+      let usedNumbers = [];
+
+      while (usedNumbers.length < 3) {
+        if (!usedNumbers.includes(randomNum)) {
+          usedNumbers.push(randomNum)
+        } else {
+          randomNum = Math.floor(Math.random() * data.drinks.length)
+        }
+      }
+
+      for (let i = 0; i < drinkCard.length; i++) {
+
+        //Randomizes 3 random cocktails based on base ingredient. changes titles and images of cocktails 
+        const drinkImage = data.drinks[usedNumbers[i]].strDrinkThumb
+        const currentDrinkImg = document.getElementsByClassName("drink-image");
+        currentDrinkImg[i].src = drinkImage;
+
+        // Adds drink title to card    
+        const drinkTitle = data.drinks[usedNumbers[i]].strDrink
+        const currentDrinkTitle = document.getElementsByClassName("drink-card-title");
+        currentDrinkTitle[i].textContent = drinkTitle;
+
+        // Adds base ingredient needed below the title 
+        const currentDrinkBase = document.getElementsByClassName("base-ingredient-needed");
+        currentDrinkBase[i].textContent = "Base Ingredient:   " + baseIngredient;
+
+        //Id of specific drink, used to make another request to the API with further instructions
+        let drinkId = data.drinks[i].idDrink
+
+        fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId)
+          .then(response => {
+            return response.json()
+          })
+
+          .then((idData) => {
+            console.log(idData)
+
+            //Adds ingredients to each individual drink card
+            let cardIngredients = document.getElementsByClassName("card-ingredients");
+            
+
+            const drinkInstructions = idData.drinks[0].strInstructions
+            let cardInstructions = document.getElementsByClassName("card-instructions");
+            cardInstructions[i].textContent = drinkInstructions;
+            console.log(cardInstructions);
+          
+
+
+
+            for (j = 1; j < 16; j++) {
+              let drinkIngredient = idData.drinks[0]["strIngredient" + j]
+              if (drinkIngredient) {
+                const li = document.createElement("li")
+                li.textContent = drinkIngredient
+                cardIngredients[i].append(li)
+              }
+            }
+
+          }
+          )
+      }
+    }
+  )
+}
+
+// first attempt to create a function to transfer the data from the drink cards to the user selection area 
+// leaving it on here just in case. not affecting the code. 
+let selectedDrink1 = document.getElementById("confirm-drink-1");
+let selectedDrink2 = document.getElementById("confirm-drink-2");
+let selectedDrink3 = document.getElementById("confirm-drink-3");
+
+const selectedDrinkTitle = document.querySelector(".selected-drink-title");
+const selectedDrinkImage = document.querySelector(".selected-drink-img");
+const selectedDrinkIngredients = document.querySelector(".drink-ingr");
+const selectedDrinkInstructions = document.querySelector("#selected-drink-steps");
+
+const userSelectedDrinkArea = document.querySelector("#user-selected")
+
+
+
+// once the user clicks on the first drink button 
+selectedDrink1.addEventListener("click", () => {
+
+  userSelectedArea.style.display = 'flex'
+
+  // calling for drinkcard1 in the html 
+  let card1 = document.getElementById("drinkCard1");
+  console.log(card1);
+  // finds the image from the card and then transfers it to the user selection screen 
+  var findCardImg1 = $(card1).find(".drink-image");
+  var CardImg1 = $(findCardImg1).attr("src");
+  let selectedCardImg = document.getElementById("drinkImageSelector");
+  $(selectedCardImg).attr("src", CardImg1)
+
+  // finds the title from the card and then transfers it to the user selection screen.   
+  var findTitle1 = $(card1).find("#drinkTitle1").text();
+  console.log(findTitle1);
+  let selectedCardTitle = document.getElementById("drinkTitleSelector");
+  $(selectedCardTitle).text(findTitle1)
+
+  // finds the Instructions from the card and then transfers it to the user selection screen.
+  var findInstructions1 = $(card1).find("#in1").text();
+  let selectedCardInstructions = document.getElementById("selectedSteps");
+  $(selectedCardInstructions).text(findInstructions1)
+
+  //finds ingredients from card and transfers it to the user selected area
+  const findIngUl = $("#1");
+  const findIngChildren = findIngUl.children()
+  console.log(findIngChildren);
+
+  let selectedChildren = $("#selectedDrinkIngredient");
+  selectedChildren.empty()
+
+  findIngChildren.each(function () {
+    let liText = $(this).text()
+
+    let liEl = $("<li>" + liText + "</li>")
+    selectedChildren.append(liEl)
+
+  });
+
+})
+
+// once the user clicks on the second drink button
+selectedDrink2.addEventListener("click", () => {
+
+  userSelectedArea.style.display = 'flex'
+
+  // finds the image from the card and then transfers it to the user selection screen
+  let card2 = document.getElementById("drinkCard2");
+  var findCardImg2 = $(card2).find(".drink-image");
+  var CardImg2 = $(findCardImg2).attr("src");
+  let selectedCardImg = document.getElementById("drinkImageSelector");
+  $(selectedCardImg).attr("src", CardImg2)
+
+  // finds the title from the card and then transfers it to the user selection screen.
+  var findTitle2 = $(card2).find("#drinkTitle2").text();
+  console.log(findTitle2);
+  let selectedCardTitle = document.getElementById("drinkTitleSelector");
+  $(selectedCardTitle).text(findTitle2)
+
+  var findInstructions2 = $(card2).find("#in2").text();
+  let selectedCardInstructions = document.getElementById("selectedSteps");
+  $(selectedCardInstructions).text(findInstructions2)
+
+  //finds ingredients from card and transfers it to the user selected area
+  const findIngUl = $("#2");
+  const findIngChildren = findIngUl.children()
+  console.log(findIngChildren);
+
+  let selectedChildren = $("#selectedDrinkIngredient");
+  selectedChildren.empty()
+
+  findIngChildren.each(function () {
+    let liText = $(this).text()
+
+    let liEl = $("<li>" + liText + "</li>")
+    selectedChildren.append(liEl)
+
+  });
+})
+
+// once the user clicks on the third drink button
+selectedDrink3.addEventListener("click", () => {
+
+  userSelectedArea.style.display = 'flex'
+
+  // finds the image from the card and then transfers it to the user selection screen
+  let card3 = document.getElementById("drinkCard3");
+  var findCardImg3 = $(card3).find(".drink-image");
+  var CardImg3 = $(findCardImg3).attr("src");
+  let selectedCardImg = document.getElementById("drinkImageSelector");
+  $(selectedCardImg).attr("src", CardImg3)
+
+  // finds the title from the card and then transfers it to the user selection screen.
+  var findTitle3 = $(card3).find("#drinkTitle3").text();
+  console.log(findTitle3);
+  let selectedCardTitle = document.getElementById("drinkTitleSelector");
+  $(selectedCardTitle).text(findTitle3)
+
+  var findInstructions3 = $(card3).find("#in3").text();
+  let selectedCardInstructions = document.getElementById("selectedSteps");
+  $(selectedCardInstructions).text(findInstructions3)
+
+  //finds ingredients from card and transfers it to the user selected area
+  const findIngUl = $("#3");
+  const findIngChildren = findIngUl.children()
+  console.log(findIngChildren);
+
+  let selectedChildren = $("#selectedDrinkIngredient");
+  selectedChildren.empty()
+
+  findIngChildren.each(function () {
+    let liText = $(this).text()
+
+    let liEl = $("<li>" + liText + "</li>")
+    selectedChildren.append(liEl)
+
+  });
+
+})
 
 // check if there is a users meal preference
 function restoreMealsData() {
@@ -672,14 +894,12 @@ function drinkModal() {
       headerEl.removeClass('blur')
       $('html').css('overflow-y', 'auto')
     }, 750)
-
     getSpoonApi()
-    setTimeout(() => {
-      location.reload()
-    }, 750)
 
   })
 }
+
+getDrink()
 
 // global drink variables 
 var userDrinks = document.getElementById('user-drink-values');
@@ -765,7 +985,7 @@ function changePref(e) {
       $(modal).removeClass('slide-out')
       IsModalOpen = false
       // reload page since it's bugs out after change 
-      location.reload()
+      getSpoonApi()
     }, 750)
     })
   }
@@ -847,3 +1067,8 @@ function blurBackgroundIf() {
 
 // Call on start 
 blurBackgroundIf()
+
+// scroll to top function 
+function scrollToTop() {
+  $(window).scrollTop(0);
+}
