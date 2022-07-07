@@ -298,9 +298,10 @@ function getSpoonApi() {
       console.log(ApiData);
 
       storeFoodData(ApiData)
-
-        // document.location.reload()
-
+      
+      setTimeout(() => {
+        location.reload()
+      }, 1000)
       //return ApiData
     })
 }
@@ -758,6 +759,8 @@ function changePref(e) {
 
     saveUserMealPref()
 
+    getSpoonApi()
+
     // adds slide effect then hides completely
     $(modal).addClass('slide-out')
     setTimeout(() => {
@@ -765,7 +768,7 @@ function changePref(e) {
       $(modal).removeClass('slide-out')
       IsModalOpen = false
       // reload page since it's bugs out after change 
-      location.reload()
+      //location.reload()
     }, 750)
     })
   }
