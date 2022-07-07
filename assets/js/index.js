@@ -280,14 +280,6 @@ function getSpoonApi() {
 }
 
 
-// --------------------------------------------------------------------------------------------------------
-//  Drink api fetch
-
-// 4) allow user to select one of three
-// 5) allow user to favorite 1 Daily 
-
-
-
 
 // ```````````````````````````generating cocktail```````````````````````````````````
 
@@ -375,67 +367,68 @@ function getDrink() {
     )
 }
 
-        let selectedDrink1 = document.getElementById("confirm-drink-1");
-        // console.log(selectedDrink1);
-        let selectedDrink2 = document.getElementById("confirm-drink-2");
-        let selectedDrink3 = document.getElementById("confirm-drink-3");
+// first attempt to create a function to transfer the data from the drink cards to the user selection area 
+// leaving it on here just in case. not affecting the code. 
+let selectedDrink1 = document.getElementById("confirm-drink-1");
+let selectedDrink2 = document.getElementById("confirm-drink-2");
+let selectedDrink3 = document.getElementById("confirm-drink-3");
 
-        const selectedDrinkTitle = document.querySelector(".selected-drink-title");
-        const selectedDrinkImage = document.querySelector(".selected-drink-img");
-        const selectedDrinkIngredients = document.querySelector(".drink-ingr");
-        const selectedDrinkInstructions = document.querySelector("#selected-drink-steps");
+const selectedDrinkTitle = document.querySelector(".selected-drink-title");
+const selectedDrinkImage = document.querySelector(".selected-drink-img");
+const selectedDrinkIngredients = document.querySelector(".drink-ingr");
+const selectedDrinkInstructions = document.querySelector("#selected-drink-steps");
 
-        const userSelectedDrinkArea = document.querySelector("#user-selected")
+const userSelectedDrinkArea = document.querySelector("#user-selected")
 
   
 
-
-
-
+// once the user clicks on the first drink button 
     selectedDrink1.addEventListener("click", () => {
 
+  // calling for drinkcard1 in the html 
     let card1 = document.getElementById("drinkCard1");
     console.log(card1);
-
+// finds the image from the card and then transfers it to the user selection screen 
     var findCardImg1 = $(card1).find(".drink-image");
     var CardImg1 = $(findCardImg1).attr("src");
     let selectedCardImg = document.getElementById("drinkImageSelector");
     $(selectedCardImg).attr("src",CardImg1)
 
-    
+  // finds the title from the card and then transfers it to the user selection screen.   
     var findTitle1 = $(card1).find("#drinkTitle1").text();
     console.log(findTitle1);
     let selectedCardTitle = document.getElementById("drinkTitleSelector");
     $(selectedCardTitle).text(findTitle1)
   })
 
-
+// once the user clicks on the second drink button
   selectedDrink2.addEventListener("click", () => {
     
-
+// finds the image from the card and then transfers it to the user selection screen
     let card2 = document.getElementById("drinkCard2");    
     var findCardImg2 = $(card2).find(".drink-image");
     var CardImg2 = $(findCardImg2).attr("src");
     let selectedCardImg = document.getElementById("drinkImageSelector");   
     $(selectedCardImg).attr("src",CardImg2)
 
-
+// finds the title from the card and then transfers it to the user selection screen.
     var findTitle2 = $(card2).find("#drinkTitle2").text();
     console.log(findTitle2);
     let selectedCardTitle = document.getElementById("drinkTitleSelector");
     $(selectedCardTitle).text(findTitle2)  
   })
 
+// once the user clicks on the third drink button
   selectedDrink3.addEventListener("click", () => {
     
-
+// finds the image from the card and then transfers it to the user selection screen
     let card3 = document.getElementById("drinkCard3");    
     var findCardImg3 = $(card3).find(".drink-image");    
     var CardImg3 = $(findCardImg3).attr("src");
     let selectedCardImg = document.getElementById("drinkImageSelector");
     $(selectedCardImg).attr("src",CardImg3)
 
-
+// finds the title from the card and then transfers it to the user selection screen.
     var findTitle3 = $(card3).find("#drinkTitle3").text();
     console.log(findTitle3);
     let selectedCardTitle = document.getElementById("drinkTitleSelector");
