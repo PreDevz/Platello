@@ -342,11 +342,11 @@ function getDrink() {
             console.log("drink id looked up " + drinkId[i])
             
             //let drinksId = JSON.stringify(idData)
-            localStorage.setItem("drinkIngredients" + drinkId[i], JSON.stringify(idData))
+            localStorage.setItem("drinkIngredients" + drinkId, JSON.stringify(idData))
 
-            // generateDrinkCards()
+            generateDrinkCards()
     
-            // generateCardIngredients()
+            generateCardIngredients()
 
           })
       }
