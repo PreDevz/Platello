@@ -268,16 +268,16 @@ footer .container {
 
 .card-ingredients {
 	align-items: baseline;
-	display: flex;
-	flex-direction: column;
-	font-size: 18px;
-	height: auto;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  height: auto;
 }
 
 .card-ingredients li {
 	color: black;
-	margin-left: 15px;
-	list-style-type: disc !important;
+  margin-left: 15px;
+  list-style-type: disc !important;
 }
 
 /* Few media queries  */
