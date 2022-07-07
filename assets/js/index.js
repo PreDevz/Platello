@@ -350,6 +350,14 @@ function getDrink() {
 
             //Adds ingredients to each individual drink card
             let cardIngredients = document.getElementsByClassName("card-ingredients");
+            
+
+            const drinkInstructions = idData.drinks[0].strInstructions
+            let cardInstructions = document.getElementsByClassName("card-instructions");
+            cardInstructions[i].textContent = drinkInstructions;
+            console.log(cardInstructions);
+
+
 
             for (j = 1; j < 16; j++) {
               let drinkIngredient = idData.drinks[0]["strIngredient" + j]
@@ -399,6 +407,28 @@ const userSelectedDrinkArea = document.querySelector("#user-selected")
     console.log(findTitle1);
     let selectedCardTitle = document.getElementById("drinkTitleSelector");
     $(selectedCardTitle).text(findTitle1)
+
+// finds the Instructions from the card and then transfers it to the user selection screen.
+    var findInstructions1 = $(card1).find("#in1").text();
+    let selectedCardInstructions = document.getElementById("selectedSteps");
+    $(selectedCardInstructions).text(findInstructions1)
+
+    //finds ingredients from card and transfers it to the user selected area
+    const findIngUl = $("#1");
+    const findIngChildren = findIngUl.children()
+    console.log(findIngChildren);
+
+    let selectedChildren = $("#selectedDrinkIngredient");
+    selectedChildren.empty()
+    
+    findIngChildren.each(function() {
+      let liText = $(this).text()
+      
+      let liEl = $("<li>" + liText + "</li>")
+      selectedChildren.append(liEl)
+      
+    });
+
   })
 
 // once the user clicks on the second drink button
@@ -415,7 +445,27 @@ const userSelectedDrinkArea = document.querySelector("#user-selected")
     var findTitle2 = $(card2).find("#drinkTitle2").text();
     console.log(findTitle2);
     let selectedCardTitle = document.getElementById("drinkTitleSelector");
-    $(selectedCardTitle).text(findTitle2)  
+    $(selectedCardTitle).text(findTitle2)
+    
+    var findInstructions2 = $(card2).find("#in2").text();
+    let selectedCardInstructions = document.getElementById("selectedSteps");
+    $(selectedCardInstructions).text(findInstructions2)
+
+     //finds ingredients from card and transfers it to the user selected area
+     const findIngUl = $("#2");
+     const findIngChildren = findIngUl.children()
+     console.log(findIngChildren);
+ 
+     let selectedChildren = $("#selectedDrinkIngredient");
+     selectedChildren.empty()
+     
+     findIngChildren.each(function() {
+       let liText = $(this).text()
+       
+       let liEl = $("<li>" + liText + "</li>")
+       selectedChildren.append(liEl)
+       
+     });
   })
 
 // once the user clicks on the third drink button
@@ -433,6 +483,26 @@ const userSelectedDrinkArea = document.querySelector("#user-selected")
     console.log(findTitle3);
     let selectedCardTitle = document.getElementById("drinkTitleSelector");
     $(selectedCardTitle).text(findTitle3)
+
+    var findInstructions3 = $(card3).find("#in3").text();
+    let selectedCardInstructions = document.getElementById("selectedSteps");
+    $(selectedCardInstructions).text(findInstructions3)
+
+     //finds ingredients from card and transfers it to the user selected area
+     const findIngUl = $("#3");
+     const findIngChildren = findIngUl.children()
+     console.log(findIngChildren);
+ 
+     let selectedChildren = $("#selectedDrinkIngredient");
+     selectedChildren.empty()
+     
+     findIngChildren.each(function() {
+       let liText = $(this).text()
+       
+       let liEl = $("<li>" + liText + "</li>")
+       selectedChildren.append(liEl)
+       
+     });
 
   })
 
