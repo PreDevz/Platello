@@ -321,6 +321,8 @@ function retrieveFoodData() {
 
 retrieveFoodData()
 
+const userSelectedArea = document.querySelector("#user-selected")
+
 //Will generate all cards and "selected" section below the page
 function generateFoodInfo() {
   console.log("Food data:\n -------------")
@@ -366,7 +368,6 @@ function generateFoodInfo() {
   const selectedStepList = document.querySelector("#selected-food-steps");
   const selectedIngredientList = document.querySelector(".ingr");
 
-  const userSelectedArea = document.querySelector("#user-selected")
 
   //Generates generic recipe info at bottom of page
   function createRecipeInfo(recipeNum) {
@@ -587,6 +588,8 @@ const userSelectedDrinkArea = document.querySelector("#user-selected")
 // once the user clicks on the first drink button 
 selectedDrink1.addEventListener("click", () => {
 
+  userSelectedArea.style.display = 'flex'
+
   // calling for drinkcard1 in the html 
   let card1 = document.getElementById("drinkCard1");
   console.log(card1);
@@ -628,6 +631,8 @@ selectedDrink1.addEventListener("click", () => {
 // once the user clicks on the second drink button
 selectedDrink2.addEventListener("click", () => {
 
+  userSelectedArea.style.display = 'flex'
+
   // finds the image from the card and then transfers it to the user selection screen
   let card2 = document.getElementById("drinkCard2");
   var findCardImg2 = $(card2).find(".drink-image");
@@ -664,6 +669,8 @@ selectedDrink2.addEventListener("click", () => {
 
 // once the user clicks on the third drink button
 selectedDrink3.addEventListener("click", () => {
+
+  userSelectedArea.style.display = 'flex'
 
   // finds the image from the card and then transfers it to the user selection screen
   let card3 = document.getElementById("drinkCard3");

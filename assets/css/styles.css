@@ -478,6 +478,7 @@ footer {
 	min-height: 25vh;
 	padding: 3.5rem 0;
 	justify-content: center;
+	margin-top: 2rem;
 }
 
 footer .logo {
@@ -532,7 +533,8 @@ footer .container {
 	color: black;
 }
 
-.confirm-food {
+.confirm-food,
+.confirm-drink {
 	margin: 10px;
 	width: 100%;
 	cursor: pointer;
