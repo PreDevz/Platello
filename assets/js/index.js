@@ -18,9 +18,10 @@ let iconsEl = $('.material-icons')
 let headerEls = $(':header')
 let box = $('.box')
 let selectedBox = $('.selected')
+let selectDrinkPEl = $('#selectedSteps')
 let CardXIcon = $('.right')
 let footer = $('footer')
-let Els = [spanEl, sub, divEl, liEl, dateEl]
+let Els = [spanEl, sub, divEl, liEl, dateEl, selectDrinkPEl]
 Els.push(headerEls)
 Els.push(iconsEl)
 let body = document.querySelector('body');
