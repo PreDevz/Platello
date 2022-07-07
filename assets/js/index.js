@@ -299,9 +299,7 @@ function getSpoonApi() {
 
       storeFoodData(ApiData)
 
-      setTimeout(() => {
-        document.location.reload(true)
-      }, 1000)
+        // document.location.reload()
 
       //return ApiData
     })
@@ -817,19 +815,16 @@ function foodModal() {
 
   // when clicked prevent default 
   $(modalBtn).on("click", function (e) {
+    IsModalOpen = false
 
     // Get textarea value
     let exclude = itemsToExclude()
-    // get the value empty or Not
-      saveUserMealPref()
 
     // adds slide effect then hides completely
     $(modal).addClass('slide-out')
     setTimeout(() => {
       $(modal).addClass('hidden');
       $(modal).removeClass('slide-out')
-      IsModalOpen = false
-
       // call drink function since it's user's first time 
       drinkModal()
     }, 750)
@@ -874,59 +869,31 @@ function drinkModal() {
 
   // when clicked prevent default 
   $(modalBtn).on("click", function (e) {
-
+    e.preventDefault()
     // adds slide effect then hides completely
     $(modal).addClass('slide-out')
     setTimeout(() => {
       $(modal).addClass('hidden');
       $(modal).removeClass('slide-out')
       IsModalOpen = false
-
-      // calls blurbackground to check if modal is open 
-      blurBackgroundIf()
+      // manually change the nav and background 
+      $('#navbar').css('display', 'flex')
+      $('#navbar').addClass('slide-down')
+      setTimeout(() => {
+        $('#navbar').css('transform', "translateY(0px)")
+      }, 875)
+      containerDiv.removeClass('blur')
+      headerEl.removeClass('blur')
+      $('html').css('overflow-y', 'auto')
     }, 750)
 
     getSpoonApi()
+    setTimeout(() => {
+      location.reload()
+    }, 750)
 
   })
 }
-
-// Function that will blur the background if a modal is active 
-function blurBackgroundIf() {
-
-  // check if the a modal is open 
-  if (IsModalOpen === true) {
-
-    // if true, remove navbar, add blur to container and header section
-    $('#navbar').css('display', 'none')
-    containerDiv.addClass('blur')
-    headerEl.addClass('blur')
-
-    // make html overflow hidden for no scroll 
-    $('html').css('overflow', 'hidden')
-  } else {
-
-    // if false, make navbar flex, remove blur on elements
-    // slide down the navbar 
-    $('#navbar').css('display', 'flex')
-    $('#navbar').addClass('slide-down')
-
-    // after animation is done, then it will officially change the nav style to 0 on the y axis 
-    setTimeout(() => {
-      $('#navbar').css('transform', "translateY(0px)")
-    }, 875)
-
-    // blur contents on page, and make body flow auto to scroll 
-    containerDiv.removeClass('blur')
-    headerEl.removeClass('blur')
-
-    // make html overflow hidden for no scroll 
-    $('html').css('overflow-y', 'auto')
-  }
-}
-
-// Call on start 
-blurBackgroundIf()
 
 // global drink variables 
 var userDrinks = document.getElementById('user-drink-values');
@@ -966,18 +933,16 @@ function checkDrinksState() {
   }
 }
 
+// call on start 
 checkDrinksState()
 
 // Functions so user can change their Food/Drink preference 
 
 let changeFoodPrefIcon = $('#changeFoodPreference')
 let changeDrinkPrefIcon = $('#changeDrinkPreference')
-console.log($(changeFoodPrefIcon), $(changeDrinkPrefIcon))
 
 // function for changing user's pref
 function changePref(e) {
-
-  localStorage.removeItem('UserPreferredMeal')
 
   // get the data attr to compare
   let userPicked = e.target.dataset.changepref
@@ -997,8 +962,9 @@ function changePref(e) {
     
      // when clicked prevent default 
     $(modalBtn).on("click", function (e) {
+      // localStorage.removeItem('UserPreferredMeal')
+      localStorage.removeItem('UserExcludes')
 
-    localStorage.removeItem('UserExcludes')
 
     // Get textarea value
     let exclude = itemsToExclude()
@@ -1011,19 +977,17 @@ function changePref(e) {
     setTimeout(() => {
       $(modal).addClass('hidden');
       $(modal).removeClass('slide-out')
-
-      // reload page since it's bugs out after change 
-      //location.reload()
       IsModalOpen = false
+      // reload page since it's bugs out after change 
+      location.reload()
     }, 750)
-
-      getSpoonApi()
-
     })
   }
 
   // else if they clicked the drink cog 
   else if (userPicked == 'cdDrink') {
+    // e.preventDefault()
+
     // repeat food modal 
     let modal = document.querySelector('.modal-drink')
     IsModalOpen = true 
@@ -1038,15 +1002,14 @@ function changePref(e) {
     // when clicked prevent default 
     $(modalBtn).on("click", function (e) {
 
+
     // adds slide effect then hides completely
     $(modal).addClass('slide-out')
     setTimeout(() => {
       $(modal).addClass('hidden');
       $(modal).removeClass('slide-out')
-
-      location.reload()
-
       IsModalOpen = false
+      location.reload()
     }, 750)
   })
   }
@@ -1058,19 +1021,26 @@ $(changeFoodPrefIcon).on('click', changePref)
 // Listener for if they click for changing drinks pref 
 $(changeDrinkPrefIcon).on('click', changePref)
 
-// Function that will blur the background if a modal is active 
+// Function that will blur the background if a modal is active
+
 function blurBackgroundIf() {
+
+  // scroll to the top of the page if modals is showing
+  $("html, body").animate({ scrollTop: 0 }, "fast")
 
   // check if the a modal is open 
   if (IsModalOpen === true) {
-    // if true, remove navbar, add blur to container and header section 
+
+    // if true, remove navbar, add blur to container and header section
     $('#navbar').css('display', 'none')
     containerDiv.addClass('blur')
     headerEl.addClass('blur')
+
+    // make html overflow hidden for no scroll 
     $('html').css('overflow', 'hidden')
   } else {
 
-    // if false, make navbar flex, remove blur on elements 
+    // if false, make navbar flex, remove blur on elements
     // slide down the navbar 
     $('#navbar').css('display', 'flex')
     $('#navbar').addClass('slide-down')
@@ -1083,6 +1053,8 @@ function blurBackgroundIf() {
     // blur contents on page, and make body flow auto to scroll 
     containerDiv.removeClass('blur')
     headerEl.removeClass('blur')
+
+    // make html overflow hidden for no scroll 
     $('html').css('overflow-y', 'auto')
   }
 }
