@@ -300,6 +300,9 @@ function getSpoonApi() {
       storeFoodData(ApiData)
 
         // document.location.reload()
+        setTimeout(() => {
+          location.reload()
+        }, 750)
 
       //return ApiData
     })
@@ -563,7 +566,7 @@ function getDrink() {
           )
       }
     }
-    )
+  )
 }
 
 // first attempt to create a function to transfer the data from the drink cards to the user selection area 
@@ -696,9 +699,6 @@ selectedDrink3.addEventListener("click", () => {
   });
 
 })
-
-getDrink()
-
 
 // check if there is a users meal preference
 function restoreMealsData() {
@@ -886,14 +886,12 @@ function drinkModal() {
       headerEl.removeClass('blur')
       $('html').css('overflow-y', 'auto')
     }, 750)
-
     getSpoonApi()
-    setTimeout(() => {
-      location.reload()
-    }, 750)
 
   })
 }
+
+getDrink()
 
 // global drink variables 
 var userDrinks = document.getElementById('user-drink-values');
@@ -979,7 +977,7 @@ function changePref(e) {
       $(modal).removeClass('slide-out')
       IsModalOpen = false
       // reload page since it's bugs out after change 
-      location.reload()
+      getSpoonApi()
     }, 750)
     })
   }
