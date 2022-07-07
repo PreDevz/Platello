@@ -302,7 +302,12 @@ let randomBase = Math.floor(Math.random() * drinksArray.length);
 let baseIngredient = drinksArray[randomBase]
 console.log(baseIngredient);
 
-// main function of fetching all data from the API and generating cocktails based on user choices
+
+/* The above code is making a request to the API and storing the data in localStorage. */
+/**
+ * It makes a request to the API, stores the data in localStorage, generates 3 random numbers, uses
+ * those numbers to make another request to the API, and then stores that data in localStorage.
+ */
 function getDrink() {
 
   fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + baseIngredient)
@@ -317,7 +322,7 @@ function getDrink() {
       generateRandomNums()
 
       let usedNumbers = JSON.parse(localStorage.getItem('ranDrinkNums'))
-      console.log(usedNumbers)
+      // console.log(usedNumbers)
 
       for (i = 0; i <= 2; i++) {
         let storedDrinkData = JSON.parse(localStorage.drinkData)
@@ -326,6 +331,7 @@ function getDrink() {
 
         //Id of specific drink, used to make another request to the API with further instructions
         let drinkId = storedDrinkData[usedNumbers[i]].idDrink
+        console.log(drinkId)
 
         fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId)
           .then(response => {
@@ -333,10 +339,10 @@ function getDrink() {
           })
 
           .then((idData) => {
-            console.log("drink id looked up")
+            console.log("drink id looked up " + drinkId[i])
             
             //let drinksId = JSON.stringify(idData)
-            localStorage.setItem("drinkIngredients" + i.toString(), JSON.stringify(idData))
+            localStorage.setItem("drinkIngredients" + drinkId[i], JSON.stringify(idData))
 
             // generateDrinkCards()
     
