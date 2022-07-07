@@ -50,9 +50,9 @@
 			<div class="modal-Intro modal-welcome hidden">
 				<h2 class="modalText">Welcome to Platello!</h2>
 				<p class="modalP">
-					New foods and drinks are just a couple clicks away! <br />
-					Everyday you will be shown three new meals, and three new drinks. Be sure to
-					favorite what you like so we can save it for you later!
+					New foods and drinks are just a couple clicks away! Choose from
+					different categories and we'll provide a meal and drink combo tailored
+					to your taste-buds.
 				</p>
 				<div class="container-modal-btn">
 					<button class="next">Next</button>
@@ -107,7 +107,7 @@
 									<option data-dish="american+" selected>American</option>
 									<option data-dish="cajun+" selected>Cajun</option>
 									<!-- <option data-dish="mexican+" selected>Mexican</option> -->
-                  <option data-dish="" selected>Latin American</option>
+									<option data-dish="" selected>Latin American</option>
 									<option data-dish="southern+" selected>Southern</option>
 								</select>
 								<label>Americas</label>
@@ -391,102 +391,135 @@
 								<h5>Drinks<i class="material-icons">local_bar</i></h5>
 								<div class="card-container">
 									<!-- card 1 -->
-									<div class="card">
+									<div class="card drinkcard" id="drinkCard1">
 										<div
 											class="card-image waves-effect waves-block waves-light"
 										>
 											<img
-												class="activator"
+												class="activator drink-image"
 												src="https://img.huffingtonpost.com/asset/5d025e362500006813e55475.jpeg?ops=1778_1000"
 											/>
 										</div>
 										<div class="card-content">
 											<span
-												class="card-title activator grey-text text-darken-4"
+												class="card-title activator grey-text text-darken-4 drink-card-title"
+												id="drinkTitle1"
 											>
 												<div class="progress blue lighten-5">
 													<div class="indeterminate blue"></div>
 												</div>
 												<i class="material-icons right">more_vert</i></span
 											>
-											<p><a href="#">This is a link</a></p>
+											<p class="base-ingredient-needed">
+												Base Ingredient Needed:
+											</p>
 										</div>
 										<div class="card-reveal">
 											<span class="card-title grey-text text-darken-4"
-												>Card Title<i class="material-icons right"
+												>Ingredients<i class="material-icons right"
 													>close</i
 												></span
 											>
-											<p>
-												Here is some more information about this product that is
-												only revealed once clicked on.
-											</p>
+											<ul class="card-ingredients" id="1"></ul>
+											<p
+												style="display: none"
+												class="card-instructions"
+												id="in1"
+											></p>
+
+											<a class="select-drink" href="#user-selected"
+												><button id="confirm-drink-1" class="confirm-drink">
+													View Instructions
+												</button></a
+											>
 										</div>
 									</div>
 									<!-- card 2  -->
-									<div class="card">
+									<div class="card drinkcard" id="drinkCard2">
 										<div
 											class="card-image waves-effect waves-block waves-light"
 										>
 											<img
-												class="activator"
+												class="activator drink-image"
 												src="https://img.huffingtonpost.com/asset/5d025e362500006813e55475.jpeg?ops=1778_1000"
 											/>
 										</div>
 										<div class="card-content">
 											<span
-												class="card-title activator grey-text text-darken-4"
+												class="card-title activator grey-text text-darken-4 drink-card-title"
+												id="drinkTitle2"
 											>
 												<div class="progress blue lighten-5">
 													<div class="indeterminate blue"></div>
 												</div>
 												<i class="material-icons right">more_vert</i></span
 											>
-											<p><a href="#">This is a link</a></p>
+											<p class="base-ingredient-needed">
+												Base Ingredient Needed:
+											</p>
 										</div>
 										<div class="card-reveal">
 											<span class="card-title grey-text text-darken-4"
-												>Card Title<i class="material-icons right"
+												>Ingredients<i class="material-icons right"
 													>close</i
 												></span
 											>
-											<p>
-												Here is some more information about this product that is
-												only revealed once clicked on.
-											</p>
+											<ul class="card-ingredients" id="2"></ul>
+											<p
+												style="display: none"
+												class="card-instructions"
+												id="in2"
+											></p>
+
+											<a class="select-drink" href="#user-selected"
+												><button id="confirm-drink-2" class="confirm-drink">
+													View Instructions
+												</button></a
+											>
 										</div>
 									</div>
 									<!-- card 3  -->
-									<div class="card">
+									<div class="card drinkcard" id="drinkCard3">
 										<div
 											class="card-image waves-effect waves-block waves-light"
 										>
 											<img
-												class="activator"
+												class="activator drink-image"
 												src="https://img.huffingtonpost.com/asset/5d025e362500006813e55475.jpeg?ops=1778_1000"
 											/>
 										</div>
 										<div class="card-content">
 											<span
-												class="card-title activator grey-text text-darken-4"
+												class="card-title activator grey-text text-darken-4 drink-card-title"
+												id="drinkTitle3"
 											>
 												<div class="progress blue lighten-5">
 													<div class="indeterminate blue"></div>
 												</div>
 												<i class="material-icons right">more_vert</i></span
 											>
-											<p><a href="#">This is a link</a></p>
+											<p class="base-ingredient-needed">
+												Base Ingredient Needed:
+											</p>
 										</div>
 										<div class="card-reveal">
 											<span class="card-title grey-text text-darken-4"
-												>Card Title<i class="material-icons right"
+												>Ingredients<i class="material-icons right"
 													>close</i
 												></span
 											>
-											<p>
-												Here is some more information about this product that is
-												only revealed once clicked on.
-											</p>
+											<ul class="card-ingredients" id="3"></ul>
+											<p
+												style="display: none"
+												class="card-instructions"
+												id="in3"
+											></p>
+
+											<a class="select-drink" href="#user-selected"
+												><button id="confirm-drink-3" class="confirm-drink">
+													View Instructions
+												</button></a
+											>
 										</div>
 									</div>
 								</div>
@@ -509,7 +542,7 @@
 										alt=""
 										class="selected-food-img"
 									/>
-									<h5 class="selected-food-title">Beef Noodles</h5>
+									<h5 class="selected-food-title">[Food Not Selected]</h5>
 									<p><span id="selected-food-prep-time"></span></p>
 									<p><span id="selected-food-servings"></span></p>
 									<div class="sects">
@@ -528,50 +561,26 @@
 							<div class="col s12 m12 l6">
 								<div class="selected">
 									<img
-										src="https://www.kitchensanctuary.com/wp-content/uploads/2018/01/Crispy-Chilli-Beef-Noodles-recipe-square-FS.jpg"
+										src="https://media.discordapp.net/attachments/982122490836959255/994715628759941140/unknown.png?width=705&height=470"
 										alt=""
+										class="selected-drink-img"
+										id="drinkImageSelector"
 									/>
-									<h5>Beef Noodles</h5>
+									<h5 class="selected-drink-title" id="drinkTitleSelector">
+										[Drink Not Selected]
+									</h5>
+									<p><span id="selected-drink-base"></span></p>
 									<div class="sects">
 										<span>Ingredients</span>
-										<ul>
-											<li>Egg Noodles</li>
-											<li>Beef Stew Meat</li>
-											<li>celery</li>
-											<li>onion</li>
-											<li>beef stock</li>
-											<li>cornstarch</li>
-											<li>salt & pepper</li>
-										</ul>
+										<n1 class="ingr"></n1>
+										<ul
+											class="selectedDrinkIngredient"
+											id="selectedDrinkIngredient"
+										></ul>
 									</div>
 									<div class="sects">
-										<span>Recipe</span>
-										<ol>
-											<li>
-												To a pan over medium heat add beef, beef stock, celery,
-												and onion. Generously salt and pepper.
-											</li>
-											<li>
-												Cover and simmer for about an hour, until meat and
-												veggies are tender. Stirring occasionally.
-											</li>
-											<li>
-												While meat cooks, prepare your egg noodles per the
-												package instructions. Or make your own homemade egg
-												noodles.
-											</li>
-											<li>
-												When the meat is tender, add corn starch/water mixture
-												and stir, the sauce will thicken in just a few minutes.
-											</li>
-											<li>
-												Drain and add the noodles, combine with meat mixture.
-											</li>
-											<li>
-												I love mine just like it is, but my hubby tops it with
-												sour cream!
-											</li>
-										</ol>
+										<span>Instructions</span>
+										<p id="selectedSteps"></p>
 									</div>
 								</div>
 							</div>
@@ -582,7 +591,7 @@
 
 				<!-- Your Favorite Section  -->
 
-				<section class="user-fav">
+				<section style="display: none" class="user-fav">
 					<h2>Favorites</h2>
 					<div class="box">
 						<div class="card-container">
