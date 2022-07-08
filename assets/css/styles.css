@@ -538,10 +538,19 @@ footer .container {
 .confirm-food,
 .confirm-drink {
 	margin: 10px;
-	width: 100%;
-	cursor: pointer;
-	margin-left: 0px;
-	font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+    margin-left: 0px;
+    font-size: 18px;
+    background-color: var(--logo-clr);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid black;
+}
+
+.confirm-food:hover, .confirm-drink:hover {
+    background-color: rgb(99 167 248);
 }
 
 .select-recipe {

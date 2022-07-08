@@ -487,11 +487,11 @@ let storedUserExclude = [];
 // main function of fetching all data from the API and generating cocktails based on user choices
 function getDrink() {
 
-  let possibleBase = JSON.parse(localStorage.drinksArray)
-  console.log(JSON.parse(localStorage.drinksArray))
+  let possibleBase = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
 
-  if (possibleBase === null) {
-    possibleBase = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
+  if (localStorage.drinksArray) {
+    //possibleBase = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
+    possibleBase = JSON.parse(localStorage.drinksArray)
   }
 
   //Selecting one random base ingredient from the drinksArray 
