@@ -326,7 +326,6 @@ const userSelectedArea = document.querySelector("#user-selected")
 
 //Will generate all cards and "selected" section below the page
 function generateFoodInfo() {
-  console.log("Food data:\n -------------")
   console.log(foodData)
   //Generates top three cards with recipes
   for (let i = 0; i < foodData.length; i++) {
@@ -460,6 +459,8 @@ function generateFoodInfo() {
 
   });
 
+  getDrink()
+
 }
 
 if (localStorage.foodData != null) {
@@ -471,8 +472,7 @@ if (localStorage.foodData != null) {
 // ```````````````````````````generating cocktail```````````````````````````````````
 
 // drinksArray is generated based on the user selection of base ingredients (Gin, Rum, Tequila, Vodka, Whiskey, and Wine)
-let possibleBase = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
-
+//let possibleBase = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
 
 // Modal Functionality
 
@@ -487,6 +487,13 @@ let storedUserExclude = [];
 // main function of fetching all data from the API and generating cocktails based on user choices
 function getDrink() {
 
+  let possibleBase = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
+
+  if (localStorage.drinksArray) {
+    //possibleBase = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
+    possibleBase = JSON.parse(localStorage.drinksArray)
+  }
+
   //Selecting one random base ingredient from the drinksArray 
   let randomBase = Math.floor(Math.random() * possibleBase.length);
 
@@ -499,7 +506,6 @@ function getDrink() {
       return response.json()
     })
     .then((data) => {
-      console.log(data)
 
       //Calls for and replaces the data from "drinkcard" in the index 
       let drinkCard = document.querySelectorAll(".drinkcard")
@@ -541,19 +547,13 @@ function getDrink() {
           })
 
           .then((idData) => {
-            console.log(idData)
 
             //Adds ingredients to each individual drink card
             let cardIngredients = document.getElementsByClassName("card-ingredients");
             
-
             const drinkInstructions = idData.drinks[0].strInstructions
             let cardInstructions = document.getElementsByClassName("card-instructions");
             cardInstructions[i].textContent = drinkInstructions;
-            console.log(cardInstructions);
-          
-
-
 
             for (j = 1; j < 16; j++) {
               let drinkIngredient = idData.drinks[0]["strIngredient" + j]
@@ -899,8 +899,6 @@ function drinkModal() {
   })
 }
 
-getDrink()
-
 // global drink variables 
 var userDrinks = document.getElementById('user-drink-values');
 var checkboxes = document.querySelectorAll('.checkbox');
@@ -934,7 +932,6 @@ function checkDrinksState() {
 
       /* Storing the drinksArray in local storage. */
       localStorage.setItem('drinksArray', JSON.stringify(drinksArray));
-      var storedDrinks = JSON.parse(localStorage.getItem('drinksArray'));
     })
   }
 }
@@ -1016,6 +1013,7 @@ function changePref(e) {
       $(modal).removeClass('slide-out')
       IsModalOpen = false
       location.reload()
+      getDrink()
     }, 750)
   })
   }
