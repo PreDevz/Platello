@@ -624,7 +624,7 @@ footer .container {
 }
 
 .pushModalDown {
-	margin-top: 85%;
+	margin-top: 85vh;
 }
 
 /* Few media queries  */
@@ -680,7 +680,7 @@ footer .container {
 	}
 
 	.sects ol {
-		font-size: 1.9rem;
+		font-size: 1.5rem;
 	}
 
 	/* tablet favorite section  */
