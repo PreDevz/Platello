@@ -326,7 +326,6 @@ const userSelectedArea = document.querySelector("#user-selected")
 
 //Will generate all cards and "selected" section below the page
 function generateFoodInfo() {
-  console.log("Food data:\n -------------")
   console.log(foodData)
   //Generates top three cards with recipes
   for (let i = 0; i < foodData.length; i++) {
@@ -507,7 +506,6 @@ function getDrink() {
       return response.json()
     })
     .then((data) => {
-      console.log(data)
 
       //Calls for and replaces the data from "drinkcard" in the index 
       let drinkCard = document.querySelectorAll(".drinkcard")
@@ -549,19 +547,13 @@ function getDrink() {
           })
 
           .then((idData) => {
-            console.log(idData)
 
             //Adds ingredients to each individual drink card
             let cardIngredients = document.getElementsByClassName("card-ingredients");
             
-
             const drinkInstructions = idData.drinks[0].strInstructions
             let cardInstructions = document.getElementsByClassName("card-instructions");
             cardInstructions[i].textContent = drinkInstructions;
-            console.log(cardInstructions);
-          
-
-
 
             for (j = 1; j < 16; j++) {
               let drinkIngredient = idData.drinks[0]["strIngredient" + j]
