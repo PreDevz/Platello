@@ -460,6 +460,8 @@ function generateFoodInfo() {
 
   });
 
+  getDrink()
+
 }
 
 if (localStorage.foodData != null) {
@@ -471,8 +473,7 @@ if (localStorage.foodData != null) {
 // ```````````````````````````generating cocktail```````````````````````````````````
 
 // drinksArray is generated based on the user selection of base ingredients (Gin, Rum, Tequila, Vodka, Whiskey, and Wine)
-let possibleBase = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
-
+//let possibleBase = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
 
 // Modal Functionality
 
@@ -486,6 +487,13 @@ let storedUserExclude = [];
 
 // main function of fetching all data from the API and generating cocktails based on user choices
 function getDrink() {
+
+  let possibleBase = JSON.parse(localStorage.drinksArray)
+  console.log(JSON.parse(localStorage.drinksArray))
+
+  if (possibleBase === null) {
+    possibleBase = ["rum", "gin", "vodka", "tequila", "wine", "whiskey"]
+  }
 
   //Selecting one random base ingredient from the drinksArray 
   let randomBase = Math.floor(Math.random() * possibleBase.length);
@@ -899,8 +907,6 @@ function drinkModal() {
   })
 }
 
-getDrink()
-
 // global drink variables 
 var userDrinks = document.getElementById('user-drink-values');
 var checkboxes = document.querySelectorAll('.checkbox');
@@ -934,7 +940,6 @@ function checkDrinksState() {
 
       /* Storing the drinksArray in local storage. */
       localStorage.setItem('drinksArray', JSON.stringify(drinksArray));
-      var storedDrinks = JSON.parse(localStorage.getItem('drinksArray'));
     })
   }
 }
@@ -1016,6 +1021,7 @@ function changePref(e) {
       $(modal).removeClass('slide-out')
       IsModalOpen = false
       location.reload()
+      getDrink()
     }, 750)
   })
   }
