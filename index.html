@@ -1,725 +1,561 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/x-icon" href="favicon.ico" />
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-		/>
-		<link
-			href="https://fonts.googleapis.com/icon?family=Material+Icons"
-			rel="stylesheet"
-		/>
-		<link rel="stylesheet" href="./assets/css/public.css" />
-		<link rel="stylesheet" href="./assets/css/styles.css" />
-		<title>Platello</title>
-	</head>
 
-	<body>
-		<nav id="navbar">
-			<div class="logo"><span class="logo-pre">Pre</span>Devz</div>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/x-icon" href="favicon.ico" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link rel="stylesheet" href="./assets/css/public.css" />
+	<link rel="stylesheet" href="./assets/css/styles.css" />
+	<title>Platello</title>
+</head>
 
-			<p id="date" class="headerDate"></p>
+<body>
+	<nav id="navbar">
+		<div class="logo"><span class="logo-pre">Pre</span>Devz</div>
 
-			<ul>
-				<li class="nav-item">
-					<p id="sun" href="">
-						<i id="themeBtn" class="material-icons">wb_sunny</i>
-					</p>
-				</li>
-			</ul>
-		</nav>
+		<p id="date" class="headerDate"></p>
 
-		<header>
-			<h1>
-				<img
-					src="./assets/images/logo/platello-logo.png"
-					id="platello-logo"
-					alt="Platello logo"
-				/>
-			</h1>
-			<p id="subTitle">Cheers to a new dish! 🥂</p>
-		</header>
-
-		<div class="modal-container">
-			<!-- welcome modal  -->
-
-			<div class="modal-Intro modal-welcome hidden">
-				<h2 class="modalText">Welcome to Platello!</h2>
-				<p class="modalP">
-					New foods and drinks are just a couple clicks away! Choose from
-					different categories and we'll provide a meal and drink combo tailored
-					to your taste-buds.
+		<ul>
+			<li class="nav-item">
+				<p id="sun" href="">
+					<i id="themeBtn" class="material-icons">wb_sunny</i>
 				</p>
-				<div class="container-modal-btn">
-					<button class="next">Next</button>
-				</div>
-			</div>
+			</li>
+		</ul>
+	</nav>
 
-			<!-- food modal  -->
+	<header>
+		<h1>
+			<img src="./assets/images/logo/platello-logo.png" id="platello-logo" alt="Platello logo" />
+		</h1>
+		<p id="subTitle">Cheers to a new dish! 🥂</p>
+	</header>
 
-			<div class="modal-Intro modal-food hidden">
-				<h2 class="modalText">Customize Desired Cuisines</h2>
-				<p class="modalP">
-					Click to remove/add on the cuisines you want to be presented.
-				</p>
-				<div class="container-choices">
-					<div class="row">
-						<div class="col s12 m6">
-							<div class="input-field">
-								<select class="asian-cuisines" multiple>
-									<option data-dish="chinese+" selected>Chinese</option>
-									<option data-dish="indian+" selected>Indian</option>
-									<option data-dish="japanese+" selected>Japanese</option>
-									<option data-dish="korean+" selected>Korean</option>
-									<option data-dish="thai+" selected>Thai</option>
-									<option data-dish="vietnamese+" selected>Vietnamese</option>
-									<option data-dish="middle+eastern+" selected>
-										Middle Eastern
-									</option>
-								</select>
-								<label>Asian</label>
-							</div>
-						</div>
-						<div class="col s12 m6">
-							<div class="input-field">
-								<select class="europe-cuisines" multiple>
-									<option data-dish="british+" selected>British</option>
-									<option data-dish="french+" selected>French</option>
-									<option data-dish="german+" selected>German</option>
-									<option data-dish="greek+" selected>Greek</option>
-									<option data-dish="irish+" selected>Irish</option>
-									<option data-dish="italian+" selected>Italian</option>
-									<option data-dish="nordic+" selected>Nordic</option>
-									<option class="ee" data-dish="eastern+european+" selected>
-										Eastern European
-									</option>
-								</select>
-								<label>European</label>
-							</div>
-						</div>
-						<div class="col s12 m6">
-							<div class="input-field">
-								<select class="north-america" multiple>
-									<option data-dish="american+" selected>American</option>
-									<option data-dish="cajun+" selected>Cajun</option>
-									<option data-dish="" selected>Latin American</option>
-									<option data-dish="southern+" selected>Southern</option>
-								</select>
-								<label>Americas</label>
-							</div>
-						</div>
-						<div class="col s12 m6">
-							<div class="input-field">
-								<select class="more-option" multiple>
-									<option data-dish="african+" selected>African</option>
-									<option data-dish="caribbean+" selected>Caribbean</option>
-									<option data-dish="jewish+" selected>Jewish</option>
-									<option data-dish="mediterranean" selected>
-										Mediterranean
-									</option>
-								</select>
-								<label>More Options</label>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- form to remove user's dislikes on meals  -->
-				<form class="col s12" id="formRemove">
-					<label class="explainRemove"
-						>List all the items you don't want in your meal, separate each item
-						with a comma. "<strong>,</strong>"
-					</label>
-					<div class="row">
-						<div class="input-field col s12">
-							<textarea
-								id="textareaRemove"
-								class="materialize-textarea"
-								placeholder="eggs, peanuts, milk"
-							></textarea>
-						</div>
-					</div>
-				</form>
-				<div class="container-modal-btn">
-					<button id="foodSave" class="next">Save</button>
-				</div>
-			</div>
+	<div class="modal-container">
+		<!-- welcome modal  -->
 
-			<!-- drinks modal  -->
-
-			<div class="modal-Intro modal-drink hidden">
-				<h2 class="modalText">Drinks</h2>
-				<p class="modalP">
-					Pick a base ingredient for your drink, <br />
-					if none are selected, all options will be shown
-				</p>
-				<div class="drink-container">
-					<div class="row input-box-wrapper">
-						<div class="col s12 m6 l6">
-							<div class="drink-box">
-								<label for="gin">
-									<input
-										type="checkbox"
-										value="gin"
-										class="checkbox"
-										id="gin"
-									/>
-									<span>Gin</span>
-								</label>
-							</div>
-						</div>
-						<div class="col s12 m6 l6">
-							<div class="drink-box">
-								<label for="rum">
-									<input
-										type="checkbox"
-										value="rum"
-										class="checkbox"
-										id="rum"
-									/>
-									<span>Rum</span>
-								</label>
-							</div>
-						</div>
-						<div class="col s12 m6 l6">
-							<div class="drink-box">
-								<label for="tequila">
-									<input
-										type="checkbox"
-										value="tequila"
-										class="checkbox"
-										id="tequila"
-									/>
-									<span>Tequila</span>
-								</label>
-							</div>
-						</div>
-						<div class="col s12 m6 l6">
-							<div class="drink-box">
-								<label for="vodka">
-									<input
-										type="checkbox"
-										value="vodka"
-										class="checkbox"
-										id="vodka"
-									/>
-									<span>Vodka</span>
-								</label>
-							</div>
-						</div>
-						<div class="col s12 m6 l6">
-							<div class="drink-box">
-								<label for="whiskey">
-									<input
-										type="checkbox"
-										value="whiskey"
-										class="checkbox"
-										id="whiskey"
-									/>
-									<span>Whiskey</span>
-								</label>
-							</div>
-						</div>
-						<div class="col s12 m6 l6">
-							<div class="drink-box">
-								<label for="wine">
-									<input
-										type="checkbox"
-										value="wine"
-										class="checkbox"
-										id="wine"
-									/>
-									<span>Wine</span>
-								</label>
-							</div>
-						</div>
-					</div>
-					<div class="user-drink-choices">
-						<p id="user-drink-values">You have selected:</p>
-					</div>
-				</div>
-				<div class="container-modal-btn">
-					<button class="next">Next</button>
-				</div>
+		<div class="modal-Intro modal-welcome hidden">
+			<h2 class="modalText">Welcome to Platello!</h2>
+			<p class="modalP">
+				New foods and drinks are just a couple clicks away! Choose from
+				different categories and we'll provide a meal and drink combo tailored
+				to your taste-buds.
+			</p>
+			<div class="container-modal-btn">
+				<button class="next">Next</button>
 			</div>
 		</div>
 
-		<!-- Full Main Section  -->
+		<!-- food modal  -->
 
-		<main>
-			<div class="container">
-				<div class="dashboard">
-					<div class="row">
-						<!-- food section  -->
+		<div class="modal-Intro modal-food hidden">
+			<h2 class="modalText">Customize Desired Cuisines</h2>
+			<p class="modalP">
+				Click to remove/add on the cuisines you want to be presented.
+			</p>
+			<div class="container-choices">
+				<div class="row">
+					<div class="col s12 m6">
+						<div class="input-field">
+							<select class="asian-cuisines" multiple>
+								<option data-dish="chinese+" selected>Chinese</option>
+								<option data-dish="indian+" selected>Indian</option>
+								<option data-dish="japanese+" selected>Japanese</option>
+								<option data-dish="korean+" selected>Korean</option>
+								<option data-dish="thai+" selected>Thai</option>
+								<option data-dish="vietnamese+" selected>Vietnamese</option>
+								<option data-dish="middle+eastern+" selected>
+									Middle Eastern
+								</option>
+							</select>
+							<label>Asian</label>
+						</div>
+					</div>
+					<div class="col s12 m6">
+						<div class="input-field">
+							<select class="europe-cuisines" multiple>
+								<option data-dish="british+" selected>British</option>
+								<option data-dish="french+" selected>French</option>
+								<option data-dish="german+" selected>German</option>
+								<option data-dish="greek+" selected>Greek</option>
+								<option data-dish="irish+" selected>Irish</option>
+								<option data-dish="italian+" selected>Italian</option>
+								<option data-dish="nordic+" selected>Nordic</option>
+								<option class="ee" data-dish="eastern+european+" selected>
+									Eastern European
+								</option>
+							</select>
+							<label>European</label>
+						</div>
+					</div>
+					<div class="col s12 m6">
+						<div class="input-field">
+							<select class="north-america" multiple>
+								<option data-dish="american+" selected>American</option>
+								<option data-dish="cajun+" selected>Cajun</option>
+								<option data-dish="" selected>Latin American</option>
+								<option data-dish="southern+" selected>Southern</option>
+							</select>
+							<label>Americas</label>
+						</div>
+					</div>
+					<div class="col s12 m6">
+						<div class="input-field">
+							<select class="more-option" multiple>
+								<option data-dish="african+" selected>African</option>
+								<option data-dish="caribbean+" selected>Caribbean</option>
+								<option data-dish="jewish+" selected>Jewish</option>
+								<option data-dish="mediterranean" selected>
+									Mediterranean
+								</option>
+							</select>
+							<label>More Options</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- form to remove user's dislikes on meals  -->
+			<form class="col s12" id="formRemove">
+				<label class="explainRemove">List all the items you don't want in your meal, separate each item
+					with a comma. "<strong>,</strong>"
+				</label>
+				<div class="row">
+					<div class="input-field col s12">
+						<textarea id="textareaRemove" class="materialize-textarea" placeholder="eggs, peanuts, milk"></textarea>
+					</div>
+				</div>
+			</form>
+			<div class="container-modal-btn">
+				<button id="foodSave" class="next">Save</button>
+			</div>
+		</div>
 
-						<div class="col s12">
-							<div class="box" id="foods">
-								<i
-									class="material-icons change-pref-icon"
-									id="changeFoodPreference"
-									data-ChangePref="cdFood"
-									>more_vert</i
-								>
-								<h5>Food <i class="material-icons">restaurant</i></h5>
-								<div class="card-container">
-									<!-- card 1  -->
-									<div class="card">
-										<div
-											class="card-image waves-effect waves-block waves-light"
-										>
-											<img
-												class="activator food-card-img"
-												src="https://th.bing.com/th/id/R.faf34ed0c0e4c5bf47af4b58b3d90ab4?rik=85dyP%2fRNcboyNw&pid=ImgRaw&r=0"
-											/>
-										</div>
-										<div class="card-content">
-											<span
-												class="card-title activator grey-text text-darken-4 food-card-title"
-											>
-												<div class="progress blue lighten-5">
-													<div class="indeterminate blue"></div>
-												</div>
-												<i class="material-icons right">more_vert</i></span
-											>
-											<p class="prep-time">Prep time:</p>
-										</div>
-										<div class="card-reveal">
-											<span class="card-title grey-text text-darken-4"
-												><i class="material-icons right">close</i></span
-											>
-											<p class="recipe-summary">
-												Here is some more information about this product that is
-												only revealed once clicked on.
-											</p>
-											<a class="select-recipe" href="#user-selected"
-												><button id="confirm-food-1" class="confirm-food">
-													View Recipe
-												</button></a
-											>
-										</div>
+		<!-- drinks modal  -->
+
+		<div class="modal-Intro modal-drink hidden">
+			<h2 class="modalText">Drinks</h2>
+			<p class="modalP">
+				Pick a base ingredient for your drink, <br />
+				if none are selected, all options will be shown
+			</p>
+			<div class="drink-container">
+				<div class="row input-box-wrapper">
+					<div class="col s12 m6 l6">
+						<div class="drink-box">
+							<label for="gin">
+								<input type="checkbox" value="gin" class="checkbox" id="gin" />
+								<span>Gin</span>
+							</label>
+						</div>
+					</div>
+					<div class="col s12 m6 l6">
+						<div class="drink-box">
+							<label for="rum">
+								<input type="checkbox" value="rum" class="checkbox" id="rum" />
+								<span>Rum</span>
+							</label>
+						</div>
+					</div>
+					<div class="col s12 m6 l6">
+						<div class="drink-box">
+							<label for="tequila">
+								<input type="checkbox" value="tequila" class="checkbox" id="tequila" />
+								<span>Tequila</span>
+							</label>
+						</div>
+					</div>
+					<div class="col s12 m6 l6">
+						<div class="drink-box">
+							<label for="vodka">
+								<input type="checkbox" value="vodka" class="checkbox" id="vodka" />
+								<span>Vodka</span>
+							</label>
+						</div>
+					</div>
+					<div class="col s12 m6 l6">
+						<div class="drink-box">
+							<label for="whiskey">
+								<input type="checkbox" value="whiskey" class="checkbox" id="whiskey" />
+								<span>Whiskey</span>
+							</label>
+						</div>
+					</div>
+					<div class="col s12 m6 l6">
+						<div class="drink-box">
+							<label for="wine">
+								<input type="checkbox" value="wine" class="checkbox" id="wine" />
+								<span>Wine</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="user-drink-choices">
+					<p id="user-drink-values">You have selected:</p>
+				</div>
+			</div>
+			<div class="container-modal-btn">
+				<button class="next">Next</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Full Main Section  -->
+
+	<main>
+		<div class="container">
+			<div class="dashboard">
+				<div class="row">
+					<!-- food section  -->
+
+					<div class="col s12">
+						<div class="box" id="foods">
+							<i class="material-icons change-pref-icon" id="changeFoodPreference"
+								data-ChangePref="cdFood">more_vert</i>
+							<h5>Food <i class="material-icons">restaurant</i></h5>
+							<div class="card-container">
+								<!-- card 1  -->
+								<div class="card">
+									<div class="card-image waves-effect waves-block waves-light">
+										<img class="activator food-card-img"
+											src="https://th.bing.com/th/id/R.faf34ed0c0e4c5bf47af4b58b3d90ab4?rik=85dyP%2fRNcboyNw&pid=ImgRaw&r=0" />
 									</div>
-									<!-- card 2  -->
-									<div class="card">
-										<div
-											class="card-image waves-effect waves-block waves-light"
-										>
-											<img
-												class="activator food-card-img"
-												src="https://www.washingtonpost.com/resizer/Y8B2f3IF5ZZSZqdR-EI8wyvGDmc=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/KXWS4XFKMQ5QBN7KGRHVEYJBD4.jpg"
-											/>
-										</div>
-										<div class="card-content">
-											<span
-												class="card-title activator grey-text text-darken-4 food-card-title"
-											>
-												<div class="progress blue lighten-5">
-													<div class="indeterminate blue"></div>
-												</div>
-												<i class="material-icons right">more_vert</i>
-											</span>
-											<p class="prep-time">Prep time:</p>
-										</div>
-										<div class="card-reveal">
-											<span class="card-title grey-text text-darken-4"
-												><i class="material-icons right">close</i></span
-											>
-											<p class="recipe-summary">
-												Here is some more information about this product that is
-												only revealed once clicked on.
-											</p>
-											<a class="select-recipe" href="#user-selected"
-												><button id="confirm-food-2" class="confirm-food">
-													View Recipe
-												</button></a
-											>
-										</div>
+									<div class="card-content">
+										<span class="card-title activator grey-text text-darken-4 food-card-title">
+											<div class="progress blue lighten-5">
+												<div class="indeterminate blue"></div>
+											</div>
+											<i class="material-icons right">more_vert</i>
+										</span>
+										<p class="prep-time">Prep time:</p>
 									</div>
-									<!-- card 3  -->
-									<div class="card">
-										<div
-											class="card-image waves-effect waves-block waves-light"
-										>
-											<img
-												class="activator food-card-img"
-												src="https://img.huffingtonpost.com/asset/5d025e362500006813e55475.jpeg?ops=1778_1000"
-											/>
-										</div>
-										<div class="card-content">
-											<span
-												class="card-title activator grey-text text-darken-4 food-card-title"
-											>
-												<div class="progress blue lighten-5">
-													<div class="indeterminate blue"></div>
-												</div>
-												<i class="material-icons right">more_vert</i></span
-											>
-											<p class="prep-time">Prep time:</p>
-										</div>
-										<div class="card-reveal">
-											<span class="card-title grey-text text-darken-4"
-												><i class="material-icons right">close</i></span
-											>
-											<p class="recipe-summary">
-												Here is some more information about this product that is
-												only revealed once clicked on.
-											</p>
-											<a class="select-recipe" href="#user-selected"
-												><button id="confirm-food-3" class="confirm-food">
-													View Recipe
-												</button></a
-											>
-										</div>
+									<div class="card-reveal">
+										<span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+										<p class="recipe-summary">
+											Here is some more information about this product that is
+											only revealed once clicked on.
+										</p>
+										<a class="select-recipe" href="#user-selected"><button id="confirm-food-1" class="confirm-food">
+												View Recipe
+											</button></a>
+									</div>
+								</div>
+								<!-- card 2  -->
+								<div class="card">
+									<div class="card-image waves-effect waves-block waves-light">
+										<img class="activator food-card-img"
+											src="https://www.washingtonpost.com/resizer/Y8B2f3IF5ZZSZqdR-EI8wyvGDmc=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/KXWS4XFKMQ5QBN7KGRHVEYJBD4.jpg" />
+									</div>
+									<div class="card-content">
+										<span class="card-title activator grey-text text-darken-4 food-card-title">
+											<div class="progress blue lighten-5">
+												<div class="indeterminate blue"></div>
+											</div>
+											<i class="material-icons right">more_vert</i>
+										</span>
+										<p class="prep-time">Prep time:</p>
+									</div>
+									<div class="card-reveal">
+										<span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+										<p class="recipe-summary">
+											Here is some more information about this product that is
+											only revealed once clicked on.
+										</p>
+										<a class="select-recipe" href="#user-selected"><button id="confirm-food-2" class="confirm-food">
+												View Recipe
+											</button></a>
+									</div>
+								</div>
+								<!-- card 3  -->
+								<div class="card">
+									<div class="card-image waves-effect waves-block waves-light">
+										<img class="activator food-card-img"
+											src="https://img.huffingtonpost.com/asset/5d025e362500006813e55475.jpeg?ops=1778_1000" />
+									</div>
+									<div class="card-content">
+										<span class="card-title activator grey-text text-darken-4 food-card-title">
+											<div class="progress blue lighten-5">
+												<div class="indeterminate blue"></div>
+											</div>
+											<i class="material-icons right">more_vert</i>
+										</span>
+										<p class="prep-time">Prep time:</p>
+									</div>
+									<div class="card-reveal">
+										<span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+										<p class="recipe-summary">
+											Here is some more information about this product that is
+											only revealed once clicked on.
+										</p>
+										<a class="select-recipe" href="#user-selected"><button id="confirm-food-3" class="confirm-food">
+												View Recipe
+											</button></a>
 									</div>
 								</div>
 							</div>
 						</div>
+					</div>
 
-						<!-- drinks sections  -->
+					<!-- drinks sections  -->
 
-						<div class="col s12">
-							<div class="box" id="drinks">
-								<i
-									class="material-icons change-pref-icon"
-									id="changeDrinkPreference"
-									data-ChangePref="cdDrink"
-									>more_vert</i
-								>
-								<h5>Drinks<i class="material-icons">local_bar</i></h5>
-								<div class="card-container">
-									<!-- card 1 -->
-									<div class="card drinkcard" id="drinkCard1">
-										<div
-											class="card-image waves-effect waves-block waves-light"
-										>
-											<img
-												class="activator drink-image"
-												src="https://img.huffingtonpost.com/asset/5d025e362500006813e55475.jpeg?ops=1778_1000"
-											/>
-										</div>
-										<div class="card-content">
-											<span
-												class="card-title activator grey-text text-darken-4 drink-card-title"
-												id="drinkTitle1"
-											>
-												<div class="progress blue lighten-5">
-													<div class="indeterminate blue"></div>
-												</div>
-												<i class="material-icons right">more_vert</i></span
-											>
-											<p class="base-ingredient-needed">
-												Base Ingredient Needed:
-											</p>
-										</div>
-										<div class="card-reveal">
-											<span class="card-title grey-text text-darken-4"
-												>Ingredients<i class="material-icons right"
-													>close</i
-												></span
-											>
-											<ul class="card-ingredients" id="1"></ul>
-											<p
-												style="display: none"
-												class="card-instructions"
-												id="in1"
-											></p>
-
-											<a class="select-drink" href="#user-selected"
-												><button id="confirm-drink-1" class="confirm-drink">
-													View Instructions
-												</button></a
-											>
-										</div>
+					<div class="col s12">
+						<div class="box" id="drinks">
+							<i class="material-icons change-pref-icon" id="changeDrinkPreference"
+								data-ChangePref="cdDrink">more_vert</i>
+							<h5>Drinks<i class="material-icons">local_bar</i></h5>
+							<div class="card-container">
+								<!-- card 1 -->
+								<div class="card drinkcard" id="drinkCard1">
+									<div class="card-image waves-effect waves-block waves-light">
+										<img class="activator drink-image"
+											src="https://img.huffingtonpost.com/asset/5d025e362500006813e55475.jpeg?ops=1778_1000" />
 									</div>
-									<!-- card 2  -->
-									<div class="card drinkcard" id="drinkCard2">
-										<div
-											class="card-image waves-effect waves-block waves-light"
-										>
-											<img
-												class="activator drink-image"
-												src="https://img.huffingtonpost.com/asset/5d025e362500006813e55475.jpeg?ops=1778_1000"
-											/>
-										</div>
-										<div class="card-content">
-											<span
-												class="card-title activator grey-text text-darken-4 drink-card-title"
-												id="drinkTitle2"
-											>
-												<div class="progress blue lighten-5">
-													<div class="indeterminate blue"></div>
-												</div>
-												<i class="material-icons right">more_vert</i></span
-											>
-											<p class="base-ingredient-needed">
-												Base Ingredient Needed:
-											</p>
-										</div>
-										<div class="card-reveal">
-											<span class="card-title grey-text text-darken-4"
-												>Ingredients<i class="material-icons right"
-													>close</i
-												></span
-											>
-											<ul class="card-ingredients" id="2"></ul>
-											<p
-												style="display: none"
-												class="card-instructions"
-												id="in2"
-											></p>
-
-											<a class="select-drink" href="#user-selected"
-												><button id="confirm-drink-2" class="confirm-drink">
-													View Instructions
-												</button></a
-											>
-										</div>
+									<div class="card-content">
+										<span class="card-title activator grey-text text-darken-4 drink-card-title" id="drinkTitle1">
+											<div class="progress blue lighten-5">
+												<div class="indeterminate blue"></div>
+											</div>
+											<i class="material-icons right">more_vert</i>
+										</span>
+										<p class="base-ingredient-needed">
+											Base Ingredient Needed:
+										</p>
 									</div>
-									<!-- card 3  -->
-									<div class="card drinkcard" id="drinkCard3">
-										<div
-											class="card-image waves-effect waves-block waves-light"
-										>
-											<img
-												class="activator drink-image"
-												src="https://img.huffingtonpost.com/asset/5d025e362500006813e55475.jpeg?ops=1778_1000"
-											/>
-										</div>
-										<div class="card-content">
-											<span
-												class="card-title activator grey-text text-darken-4 drink-card-title"
-												id="drinkTitle3"
-											>
-												<div class="progress blue lighten-5">
-													<div class="indeterminate blue"></div>
-												</div>
-												<i class="material-icons right">more_vert</i></span
-											>
-											<p class="base-ingredient-needed">
-												Base Ingredient Needed:
-											</p>
-										</div>
-										<div class="card-reveal">
-											<span class="card-title grey-text text-darken-4"
-												>Ingredients<i class="material-icons right"
-													>close</i
-												></span
-											>
-											<ul class="card-ingredients" id="3"></ul>
-											<p
-												style="display: none"
-												class="card-instructions"
-												id="in3"
-											></p>
+									<div class="card-reveal">
+										<span class="card-title grey-text text-darken-4">Ingredients<i
+												class="material-icons right">close</i></span>
+										<ul class="card-ingredients" id="1"></ul>
+										<p style="display: none" class="card-instructions" id="in1"></p>
 
-											<a class="select-drink" href="#user-selected"
-												><button id="confirm-drink-3" class="confirm-drink">
-													View Instructions
-												</button></a
-											>
-										</div>
+										<a class="select-drink" href="#user-selected"><button id="confirm-drink-1" class="confirm-drink">
+												View Instructions
+											</button></a>
+									</div>
+								</div>
+								<!-- card 2  -->
+								<div class="card drinkcard" id="drinkCard2">
+									<div class="card-image waves-effect waves-block waves-light">
+										<img class="activator drink-image"
+											src="https://img.huffingtonpost.com/asset/5d025e362500006813e55475.jpeg?ops=1778_1000" />
+									</div>
+									<div class="card-content">
+										<span class="card-title activator grey-text text-darken-4 drink-card-title" id="drinkTitle2">
+											<div class="progress blue lighten-5">
+												<div class="indeterminate blue"></div>
+											</div>
+											<i class="material-icons right">more_vert</i>
+										</span>
+										<p class="base-ingredient-needed">
+											Base Ingredient Needed:
+										</p>
+									</div>
+									<div class="card-reveal">
+										<span class="card-title grey-text text-darken-4">Ingredients<i
+												class="material-icons right">close</i></span>
+										<ul class="card-ingredients" id="2"></ul>
+										<p style="display: none" class="card-instructions" id="in2"></p>
+
+										<a class="select-drink" href="#user-selected"><button id="confirm-drink-2" class="confirm-drink">
+												View Instructions
+											</button></a>
+									</div>
+								</div>
+								<!-- card 3  -->
+								<div class="card drinkcard" id="drinkCard3">
+									<div class="card-image waves-effect waves-block waves-light">
+										<img class="activator drink-image"
+											src="https://img.huffingtonpost.com/asset/5d025e362500006813e55475.jpeg?ops=1778_1000" />
+									</div>
+									<div class="card-content">
+										<span class="card-title activator grey-text text-darken-4 drink-card-title" id="drinkTitle3">
+											<div class="progress blue lighten-5">
+												<div class="indeterminate blue"></div>
+											</div>
+											<i class="material-icons right">more_vert</i>
+										</span>
+										<p class="base-ingredient-needed">
+											Base Ingredient Needed:
+										</p>
+									</div>
+									<div class="card-reveal">
+										<span class="card-title grey-text text-darken-4">Ingredients<i
+												class="material-icons right">close</i></span>
+										<ul class="card-ingredients" id="3"></ul>
+										<p style="display: none" class="card-instructions" id="in3"></p>
+
+										<a class="select-drink" href="#user-selected"><button id="confirm-drink-3" class="confirm-drink">
+												View Instructions
+											</button></a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
 
-				<!-- Your Selected Drinks and Food Section  -->
+			<!-- Your Selected Drinks and Food Section  -->
 
-				<section class="user-selected" id="user-selected">
-					<div class="box">
-						<h5>You've Selected</h5>
-						<div class="row">
-							<!-- Food Section -->
-							<div class="col s12 m12 l6">
-								<div class="selected">
-									<img
-										src="https://www.kitchensanctuary.com/wp-content/uploads/2018/01/Crispy-Chilli-Beef-Noodles-recipe-square-FS.jpg"
-										alt=""
-										class="selected-food-img"
-									/>
-									<h5 class="selected-food-title">[Food Not Selected]</h5>
-									<p><span id="selected-food-prep-time"></span></p>
-									<p><span id="selected-food-servings"></span></p>
-									<div class="sects">
-										<span>Ingredients</span>
-										<nl class="ingr"> </nl>
-									</div>
-									<div class="sects">
-										<span>Instructions</span>
-										<ol id="selected-food-steps"></ol>
-									</div>
+			<section class="user-selected" id="user-selected">
+				<div class="box">
+					<h5>You've Selected</h5>
+					<div class="row">
+						<!-- Food Section -->
+						<div class="col s12 m12 l6">
+							<div class="selected">
+								<img
+									src="https://www.kitchensanctuary.com/wp-content/uploads/2018/01/Crispy-Chilli-Beef-Noodles-recipe-square-FS.jpg"
+									alt="" class="selected-food-img" />
+								<h5 class="selected-food-title">[Food Not Selected]</h5>
+								<p><span id="selected-food-prep-time"></span></p>
+								<p><span id="selected-food-servings"></span></p>
+								<div class="sects">
+									<span>Ingredients</span>
+									<nl class="ingr"> </nl>
+								</div>
+								<div class="sects">
+									<span>Instructions</span>
+									<ol id="selected-food-steps"></ol>
 								</div>
 							</div>
+						</div>
 
-							<!-- Drink Section -->
+						<!-- Drink Section -->
 
-							<div class="col s12 m12 l6">
-								<div class="selected">
-									<img
-										src="https://media.discordapp.net/attachments/982122490836959255/994715628759941140/unknown.png?width=705&height=470"
-										alt=""
-										class="selected-drink-img"
-										id="drinkImageSelector"
-									/>
-									<h5 class="selected-drink-title" id="drinkTitleSelector">
-										[Drink Not Selected]
-									</h5>
-									<p><span id="selected-drink-base"></span></p>
-									<div class="sects">
-										<span>Ingredients</span>
-										<nl
-											class="ingr selectedDrinkIngredient"
-											id="selectedDrinkIngredient"
-										></nl>
-										<!-- <ul
+						<div class="col s12 m12 l6">
+							<div class="selected">
+								<img
+									src="https://media.discordapp.net/attachments/982122490836959255/994715628759941140/unknown.png?width=705&height=470"
+									alt="" class="selected-drink-img" id="drinkImageSelector" />
+								<h5 class="selected-drink-title" id="drinkTitleSelector">
+									[Drink Not Selected]
+								</h5>
+								<p><span id="selected-drink-base"></span></p>
+								<div class="sects">
+									<span>Ingredients</span>
+									<nl class="ingr selectedDrinkIngredient" id="selectedDrinkIngredient"></nl>
+									<!-- <ul
 											class="selectedDrinkIngredient"
 											id="selectedDrinkIngredient"
 										></ul> -->
-									</div>
-									<div class="sects">
-										<span>Instructions</span>
-										<p id="selectedSteps"></p>
-									</div>
+								</div>
+								<div class="sects">
+									<span>Instructions</span>
+									<p id="selectedSteps"></p>
 								</div>
 							</div>
-							<!-- over  -->
 						</div>
+						<!-- over  -->
 					</div>
-				</section>
+				</div>
+			</section>
 
-				<!-- Your Favorite Section  -->
+			<!-- Your Favorite Section  -->
 
-				<section style="display: none" class="user-fav">
-					<h2>Favorites</h2>
-					<div class="box">
-						<div class="card-container">
-							<div class="card">
-								<div class="card-image waves-effect waves-block waves-light">
-									<img
-										class="activator"
-										src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/drink-to-order-at-the-bar-1642641671.png?crop=1.00xw:0.742xh;0,0.211xh&resize=640:*"
-									/>
-								</div>
-								<div class="card-content">
-									<span class="card-title activator grey-text text-darken-4"
-										>Card Title<i class="material-icons right"
-											>more_vert</i
-										></span
-									>
-									<p><a href="#">This is a link</a></p>
-								</div>
-								<div class="card-reveal">
-									<span class="card-title grey-text text-darken-4"
-										>Card Title<i class="material-icons right">close</i></span
-									>
-									<p>
-										Here is some more information about this product that is
-										only revealed once clicked on.
-									</p>
-									<div class="delete-fav-btn-container">
-										<button class="delete-fav-btn">Delete Item</button>
-									</div>
+			<section style="display: none" class="user-fav">
+				<h2>Favorites</h2>
+				<div class="box">
+					<div class="card-container">
+						<div class="card">
+							<div class="card-image waves-effect waves-block waves-light">
+								<img class="activator"
+									src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/drink-to-order-at-the-bar-1642641671.png?crop=1.00xw:0.742xh;0,0.211xh&resize=640:*" />
+							</div>
+							<div class="card-content">
+								<span class="card-title activator grey-text text-darken-4">Card Title<i
+										class="material-icons right">more_vert</i></span>
+								<p><a href="#">This is a link</a></p>
+							</div>
+							<div class="card-reveal">
+								<span class="card-title grey-text text-darken-4">Card Title<i
+										class="material-icons right">close</i></span>
+								<p>
+									Here is some more information about this product that is
+									only revealed once clicked on.
+								</p>
+								<div class="delete-fav-btn-container">
+									<button class="delete-fav-btn">Delete Item</button>
 								</div>
 							</div>
-							<!-- 2 cards in favorites  -->
-							<div class="card">
-								<div class="card-image waves-effect waves-block waves-light">
-									<img
-										class="activator"
-										src="https://www.eatthis.com/wp-content/uploads/sites/4/2019/06/deep-dish-pizza-chicago.jpg"
-									/>
-								</div>
-								<div class="card-content">
-									<span class="card-title activator grey-text text-darken-4"
-										>Card Title<i class="material-icons right"
-											>more_vert</i
-										></span
-									>
-									<p><a href="#">This is a link</a></p>
-								</div>
-								<div class="card-reveal">
-									<span class="card-title grey-text text-darken-4"
-										>Card Title<i class="material-icons right">close</i></span
-									>
-									<p>
-										Here is some more information about this product that is
-										only revealed once clicked on.
-									</p>
-									<div class="delete-fav-btn-container">
-										<button class="delete-fav-btn">Delete Item</button>
-									</div>
+						</div>
+						<!-- 2 cards in favorites  -->
+						<div class="card">
+							<div class="card-image waves-effect waves-block waves-light">
+								<img class="activator"
+									src="https://www.eatthis.com/wp-content/uploads/sites/4/2019/06/deep-dish-pizza-chicago.jpg" />
+							</div>
+							<div class="card-content">
+								<span class="card-title activator grey-text text-darken-4">Card Title<i
+										class="material-icons right">more_vert</i></span>
+								<p><a href="#">This is a link</a></p>
+							</div>
+							<div class="card-reveal">
+								<span class="card-title grey-text text-darken-4">Card Title<i
+										class="material-icons right">close</i></span>
+								<p>
+									Here is some more information about this product that is
+									only revealed once clicked on.
+								</p>
+								<div class="delete-fav-btn-container">
+									<button class="delete-fav-btn">Delete Item</button>
 								</div>
 							</div>
 						</div>
 					</div>
-				</section>
-			</div>
-		</main>
+				</div>
+			</section>
+		</div>
+	</main>
 
-		<!-- footer section  -->
+	<!-- footer section  -->
 
-		<footer>
-			<div class="container">
-				<h3 class="logo">CSS Frameworks</h3>
-				<a target="_blank" href="https://materializecss.com/"
-					><img
-						id="materialize-logo"
-						src="./assets/images/footer/materialize-logo.png"
-				/></a>
-				<!-- This will be for APIs and Frameworks used -->
-			</div>
-			<div class="container">
-				<div class="logo"><span class="logo-pre">Pre</span>Devz</div>
-				<ul>
-					<li>
-						<a target="_blank" href="https://www.instagram.com/imnzte/"
-							>Christian Nate McIlvenny</a
-						>
-					</li>
-					<li>
-						<a target="_blank" href="https://github.com/Cesar-Infante"
-							>Cesar Infante</a
-						>
-					</li>
-					<li>
-						<a target="_blank" href="https://github.com/n7-gil"
-							>Gilberto Escobedo</a
-						>
-					</li>
-					<li>
-						<a target="_blank" href="https://github.com/TonyQ032"
-							>Anthony Quinones</a
-						>
-					</li>
-				</ul>
-			</div>
-			<div class="container">
-				<h3 class="logo">APIs Used</h3>
-				<ul>
-					<li>
-						<a target="_blank" href="https://spoonacular.com/food-api"
-							>Spoonacular</a
-						>
-					</li>
-					<li>
-						<a target="_blank" href="https://www.thecocktaildb.com/api.php"
-							>The Cocktail DB</a
-						>
-					</li>
-				</ul>
+	<footer>
+		<div class="container">
+			<h3 class="logo">CSS Frameworks</h3>
+			<a target="_blank" href="https://materializecss.com/"><img id="materialize-logo"
+					src="./assets/images/footer/materialize-logo.png" /></a>
+			<!-- This will be for APIs and Frameworks used -->
+		</div>
+		<div class="container">
+			<div class="logo"><span class="logo-pre">Pre</span>Devz</div>
+			<ul>
+				<li>
+					<a target="_blank" href="https://www.instagram.com/imnzte/">Christian Nate McIlvenny</a>
+				</li>
+				<li>
+					<a target="_blank" href="https://github.com/Cesar-Infante">Cesar Infante</a>
+				</li>
+				<li>
+					<a target="_blank" href="https://github.com/n7-gil">Gilberto Escobedo</a>
+				</li>
+				<li>
+					<a target="_blank" href="https://github.com/TonyQ032">Anthony Quinones</a>
+				</li>
+			</ul>
+		</div>
+		<div class="container">
+			<h3 class="logo">APIs Used</h3>
+			<ul>
+				<li>
+					<a target="_blank" href="https://spoonacular.com/food-api">Spoonacular</a>
+				</li>
+				<li>
+					<a target="_blank" href="https://www.thecocktaildb.com/api.php">The Cocktail DB</a>
+				</li>
+			</ul>
 
-				<!-- This will be for APIs and Frameworks used -->
-			</div>
-		</footer>
+			<!-- This will be for APIs and Frameworks used -->
+		</div>
+	</footer>
 
-		<!-- script tags  -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-		<script src="./assets/js/index.js"></script>
-	</body>
+	<!-- script tags  -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="./assets/js/index.js"></script>
+</body>
+
 </html>
